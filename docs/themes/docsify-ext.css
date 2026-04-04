@@ -136,9 +136,10 @@ html.ext-folder-chevron
   top: 3px;
   left: 0;
   right: 0;
-  height: 48px;
+  height: 53px;
   background: var(--t-sidebar-bg);
   border-bottom: 1px solid var(--t-border);
+  padding-bottom: 5px;
   display: grid;
   grid-template-columns: 320px 1fr auto auto auto;
   align-items: center;
@@ -149,7 +150,7 @@ html.ext-folder-chevron
 .ext-top-brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 1.3rem;
   width: 320px;
   box-sizing: border-box;
   text-decoration: none !important;
@@ -159,8 +160,8 @@ html.ext-folder-chevron
 }
 
 .ext-top-brand-icon {
-  width: 30px;
-  height: 30px;
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
 }
 
@@ -171,7 +172,7 @@ html.ext-folder-chevron
     BlinkMacSystemFont,
     sans-serif;
   font-weight: 700;
-  font-size: 1.2em;
+  font-size: 1.75em;
   color: var(--t-heading) !important;
   letter-spacing: -0.02em;
   white-space: nowrap;
@@ -194,9 +195,9 @@ html.ext-folder-chevron
     -apple-system,
     BlinkMacSystemFont,
     sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--t-sidebar-text);
+  font-size: 17px;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--t-sidebar-text) 65%, transparent);
   padding: 0 1.1em;
   height: 100%;
   cursor: pointer;
@@ -396,11 +397,11 @@ html.ext-has-top-nav .sidebar .search {
 }
 
 html.ext-has-top-nav .sidebar {
-  padding-top: 51px !important;
+  padding-top: 56px !important;
 }
 
 html.ext-has-top-nav section.content {
-  padding-top: 58px !important;
+  padding-top: 63px !important;
 }
 
 html.ext-has-top-nav body::before {
