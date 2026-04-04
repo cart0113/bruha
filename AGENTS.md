@@ -1,4 +1,4 @@
-# CONTEXT.md
+# AGENTS.md
 
 This file provides guidance to AI assistants when working with code in this repository.
 
@@ -22,7 +22,7 @@ docs/                       Docsify site root (served as static files)
   docsify-ext.yaml          Config (single source of truth)
   themes/                   CSS + JS plugins
   index.html                Docsify entry point
-CONTEXT/                    Project knowledge (context-md format)
+context-db/                 Project knowledge database (context-db format)
 ```
 
 ## Development Workflow
@@ -52,3 +52,7 @@ Or any static file server pointed at `docs/`.
 - Python: PyYAML (`import yaml`)
 - Use `python-main` (never `python` or `python3`)
 - Use `ruff-main` for formatting
+
+## context-db
+
+Read `context-db/context-db-instructions.md` for the project knowledge database.
