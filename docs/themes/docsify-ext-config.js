@@ -8,7 +8,12 @@ window.__docsifyExtConfig = {
   "github_corner": false,
   "content_folder": "src",
   "folder_chevron": true,
-  "page_section_collapsible": true
+  "page_section_collapsible": true,
+  "site_icon": "assets/bruha-icon.svg",
+  "search_style": "magnify-glass",
+  "social_links": {
+    "github": "https://github.com/cart0113/bruha"
+  }
 };
 (function(c) {
   if (!c.hamburger_menu) document.documentElement.classList.add('ext-no-hamburger');

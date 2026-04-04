@@ -22,6 +22,12 @@ REQUIRED_KEYS = [
     "content_folder",
     "folder_chevron",
     "page_section_collapsible",
+    "search_style",
+]
+
+OPTIONAL_KEYS = [
+    "site_icon",
+    "social_links",
 ]
 
 JS_TEMPLATE = """\
