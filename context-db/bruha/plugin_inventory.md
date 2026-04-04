@@ -18,9 +18,11 @@ Layers on docsify's vue.css.
 that overrides `--t-*` variables. The default Parchment palette is in code-one.css `:root`.
 
 ### docsify-ext.css
-Extension styles: hamburger/github-corner hide rules, sidebar bar indicator,
-collapsible folder chevrons and collapse behavior, top nav bar layout and
-active states.
+Extension styles: hamburger/github-corner hide rules, sidebar bar indicator
+(border-left on sub-section `<a>` elements, gated by `html.ext-inline-sidebar`),
+collapsible folder chevrons (gated by `html.ext-folder-chevron`), page section
+collapse, top nav bar layout and active states. Kills vue.css dash markers
+(`.app-sub-sidebar li:before { content: "-" }`).
 
 ## JS Files
 
@@ -37,18 +39,28 @@ Adds line numbers (`.code-line > .line-num + .line-content`) and a copy-to-clipb
 button to every fenced code block. Runs on `hook.doneEach`.
 
 ### sidebar-nav.js
-Sidebar bar indicator. Finds the active page's `<li>`, adds `.sb-spanning` class,
-calculates bar offset for nested items, marks current link with `.sb-current`.
-Includes a collapse guard (two clicks to collapse an expanded section).
+Sidebar bar indicator. Finds the active page's `<li>`, adds `.sb-active-page`
+class, marks current section's `<li>` with `.sb-current`. CSS handles the
+visual bar via `border-left` on sub-section `<a>` elements. Finding the
+active page: first checks for `.app-sub-sidebar` (most reliable), then
+URL matching, then docsify's `.active` class. Current section matched
+by `?id=` parameter only (base path may differ due to homepage aliasing).
 
 ### collapsible-folders.js
-Makes folder `<p>` elements clickable. Toggles `.ext-folder-collapsed` class.
-Auto-expands the folder containing the current page, collapses others.
+Makes folder header elements (`<p>` or `<strong>`) clickable. Toggles
+`.ext-folder-collapsed` class. Auto-expands the folder containing the
+current page, collapses others. When `page_section_collapsible` is true,
+also handles page sub-section collapse: re-clicking an active page header
+collapses only if already at page top (no `?id=` in URL); clicking from
+a sub-section navigates to top first.
 
 ### top-nav.js
 Builds a horizontal nav bar from top-level sidebar folders. Hides folder `<li>`
 elements from sidebar, shows only the active folder's children. Updates on
-page navigation.
+page navigation. Build happens on first `doneEach` (not `mounted`) because
+docsify loads `_sidebar.md` asynchronously. Detects folder headers as `<p>`
+or `<strong>` (docsify renders `**bold**` list items as bare `<strong>`,
+not `<p>`).
 
 ## Load Order (in index.html `<head>`)
 

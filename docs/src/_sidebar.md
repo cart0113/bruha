@@ -1,0 +1,12 @@
+- **Overview**
+  - [bruha](overview/overview.md)
+- **Configuration**
+  - [Configuration Reference](configuration/config-reference.md)
+  - [Sidebar Builder](configuration/sidebar-builder.md)
+- **Examples**
+  - **General**
+    - [Docsify Features](examples/general/docsify-features.md)
+    - [Tables and Lists](examples/general/tables-and-lists.md)
+  - **Theme Demos**
+    - [Code Blocks](examples/theme-demos/code-blocks.md)
+    - [Typography](examples/theme-demos/typography.md)

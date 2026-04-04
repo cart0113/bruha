@@ -52,8 +52,15 @@
 body {
   background: var(--t-bg) !important;
   color: var(--t-text);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
   font-size: 17px;
   line-height: 1.75;
 }
@@ -83,7 +90,11 @@ body::before {
 }
 
 .sidebar .app-name-link {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-weight: 700;
   font-size: 1.45em;
   color: var(--t-heading) !important;
@@ -135,7 +146,11 @@ body::before {
 /* Main page headers in sidebar */
 .sidebar-nav li > a {
   color: var(--t-sidebar-text) !important;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-size: 1.15em;
   font-weight: 600;
   border: none !important;
@@ -212,7 +227,11 @@ body::before {
   border-radius: 8px !important;
   padding: 0.6em 1em !important;
   font-size: 0.9em !important;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif !important;
 }
 
 .search input:focus {
@@ -239,7 +258,11 @@ body::before {
 /* ------------------------------------------------------------------ */
 
 .markdown-section h1 {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-size: 2.4em;
   font-weight: 700;
   color: var(--t-heading);
@@ -251,7 +274,11 @@ body::before {
 }
 
 .markdown-section h2 {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-size: 1.6em;
   font-weight: 700;
   color: var(--t-heading);
@@ -263,7 +290,11 @@ body::before {
 }
 
 .markdown-section h3 {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-size: 1.2em;
   font-weight: 600;
   color: var(--t-heading);
@@ -324,7 +355,7 @@ body::before {
 /* ------------------------------------------------------------------ */
 
 .markdown-section code {
-  font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
   font-size: 0.82em;
   background: var(--t-inline-code-bg);
   color: var(--t-inline-code-text);
@@ -362,7 +393,7 @@ body::before {
   color: var(--t-code-text) !important;
   border: none !important;
   padding: 1.1em 1.4em 1.1em 0 !important;
-  font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
   font-size: 0.8em;
   line-height: 1.6;
   overflow-x: auto;
@@ -529,7 +560,11 @@ body::before {
 /* ------------------------------------------------------------------ */
 
 .markdown-section table {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-size: 0.9em;
   border-collapse: collapse;
   width: 100%;

@@ -1,5 +1,5 @@
 ---
-description: Sidebar builder — numbered filesystem convention, validation rules, output format
+description: Sidebar builder — content rules, _order files, validation, output format
 ---
 
 # Sidebar Builder
@@ -11,54 +11,95 @@ pages are added or removed.
 
 ## Solution
 
-A Python tool that generates `_sidebar.md` from the filesystem. Ordering
-is controlled by numeric prefixes. Prefixes are stripped in output.
+A Python tool that generates `_sidebar.md` from the filesystem. Content lives
+under a configurable subdirectory (default: `src/`) parallel to `themes/`.
 
-## Filesystem Convention
+## Content Structure Rules
 
-Pattern: `N_name` where N is an integer (0, 1, 2...) and _ is the separator.
+### No mixing files and folders
+
+A directory must contain EITHER markdown files OR sub-directories, never both.
+Violation raises `SidebarError`.
+
+```
+src/examples/           ← folders only
+  theme-demos/          ← files only
+    code-blocks.md
+    typography.md
+  general/              ← files only
+    tables-and-lists.md
+```
+
+### Content lives in src/
+
+All markdown content lives under `docs/src/`. The `content_folder` config key
+controls this (default: `src`). This keeps content separate from themes, config,
+and docsify infrastructure.
 
 ```
 docs/
-├── 0_overview/
-│   └── 0_about.md
-├── 1_configuration/
-│   ├── 0_config-reference.md
-│   └── 1_sidebar-builder.md
-├── 2_examples/
-│   └── 0_theme-demos/
-│       └── 0_code-blocks.md
+  src/        ← markdown content
+  themes/     ← CSS + JS plugins
+  index.html
+  docsify-ext.yaml
 ```
 
-## Validation Rules
+## Ordering
 
-- All items must have a numeric prefix (SidebarError if not)
-- No duplicate numbers at the same level
-- Numbers must be contiguous (no gaps)
-- When `top_level_folders_only` is true, all root items must be directories
+### _order files
+
+Each directory can contain a file named `_order` that lists entries one per
+line in the desired display order.
+
+```
+# Comments start with #
+theme-demos
+general
+```
+
+Rules:
+- Items listed in `_order` appear in that order
+- Items on disk but not in `_order` are appended alphabetically
+- Items in `_order` that don't exist on disk are silently ignored
+
+### Default ordering (no _order file)
+
+When no `_order` file exists:
+1. A file whose stem matches the folder name sorts first
+   (e.g. `overview.md` inside `overview/`)
+2. Remaining items sort alphabetically
 
 ## Display Names
 
-Files: first `# heading` in the file, or filename with prefix stripped and title-cased.
-Folders: directory name with prefix stripped and title-cased.
+Files: first `# heading` in the file, or filename with dashes/underscores
+replaced by spaces and title-cased.
+Folders: directory name with dashes/underscores replaced by spaces and
+title-cased.
+
+## Skipped Items
+
+- Files starting with `_` or `.`
+- `_sidebar.md`, `_navbar.md`, `_coverpage.md`, `_order`
+- Directories with no `.md` files anywhere inside
 
 ## Output Format
 
 ```markdown
 - **Overview**
-  - [bruha](0_overview/0_about.md)
+  - [bruha](src/overview/overview.md)
 - **Configuration**
-  - [Config Reference](1_configuration/0_config-reference.md)
+  - [Config Reference](src/configuration/config-reference.md)
 ```
 
+Links are relative to the docs root (include `src/` prefix).
 Files become links. Folders become bold labels.
 
 ## API
 
-- `build_sidebar(docs_folder, top_level_folders_only)` — returns markdown string
-- `write_sidebar(docs_folder, top_level_folders_only)` — writes `_sidebar.md`, returns path
+- `build_sidebar(docs_folder, top_level_folders_only, content_folder)`
+- `write_sidebar(docs_folder, top_level_folders_only, content_folder)`
 
 ## Integration
 
-The pre-commit hook runs the builder on every commit that touches `docs/`.
-Both `_sidebar.md` and `docsify-ext-config.js` are auto-staged.
+`bin/build.sh` reads `content_folder` from the YAML config and passes it
+to the sidebar builder.

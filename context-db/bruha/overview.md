@@ -16,8 +16,9 @@ and behave a specific way.
 - Provides a custom CSS theme (code-one) with 10 switchable color palettes
 - Adds sidebar enhancements: collapsible folders, bar position indicator
 - Adds a horizontal top navigation bar for top-level doc sections
-- Auto-generates `_sidebar.md` from a numbered filesystem convention
+- Auto-generates `_sidebar.md` from filesystem with `_order` files for ordering
 - Hides docsify defaults (hamburger menu, GitHub corner) when configured
+- Formats all JS, CSS, MD with prettier
 
 ## Project Structure
 
@@ -27,13 +28,16 @@ docs/                       Docsify site root
 docs/themes/                CSS + JS plugins
 docs/docsify-ext.yaml       Config (source of truth)
 docs/themes/docsify-ext-config.js  Generated JS config (do not edit)
-CONTEXT/                    Project knowledge for AI assistants
+docs/*/_order               Ordering files (one per directory)
+bin/                        Build, format, serve scripts
+context-db/                 Project knowledge for AI assistants
 ```
 
 ## Key Design Decisions
 
 - YAML is the single source of truth. Python generates JS from it.
 - All config keys are required — no defaults, no optional fields.
-- The pre-commit hook auto-rebuilds sidebar and config on every commit.
+- `_order` files control sidebar ordering; no numeric prefixes on filenames.
 - CSS is layered: base theme, color palettes, extension styles.
 - All JS plugins are standard docsify plugins (functions receiving `hook`).
+- Prettier enforces consistent formatting for JS, CSS, and MD.

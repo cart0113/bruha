@@ -1,22 +1,26 @@
-"""Generate a docsify _sidebar.md from a numbered filesystem structure.
+"""Generate a docsify _sidebar.md from the filesystem.
 
-Every .md file and directory at a given level must have a numeric prefix
-(e.g., 0_name, 1_name). Files and folders are treated identically — both
-are sorted by prefix number. Files become clickable links, folders become
-bold section headers with their children indented beneath them. Prefixes
-are stripped from all display text.
+Content lives under a configurable subdirectory (default: src/) parallel
+to themes/. Ordering is controlled by optional _order files; if absent,
+a file whose stem matches the folder name sorts first, then the rest
+alphabetically. Folders must not mix files and sub-folders.
 """
 
 import pathlib
 import re
 
-SKIP_FILES = {"_sidebar.md", "_navbar.md", "_coverpage.md"}
-PREFIX_RE = re.compile(r"^(\d+)_(.+)$")
+SKIP_NAMES = {"_sidebar.md", "_navbar.md", "_coverpage.md", "_order"}
 H1_RE = re.compile(r"^#\s+(.+)", re.MULTILINE | re.IGNORECASE)
+ORDER_FILENAME = "_order"
 
 
 class SidebarError(Exception):
     pass
+
+
+def _format_name(name):
+    stem = name.rsplit(".", 1)[0] if "." in name else name
+    return stem.replace("-", " ").replace("_", " ").title()
 
 
 def _extract_h1(file_path):
@@ -24,26 +28,12 @@ def _extract_h1(file_path):
     match = H1_RE.search(text)
     if match:
         return match.group(1).strip()
-    return _strip_prefix(file_path.stem)
-
-
-def _strip_prefix(name):
-    match = PREFIX_RE.match(name)
-    if match:
-        name = match.group(2)
-    return name.replace("-", " ").replace("_", " ").title()
-
-
-def _parse_prefix(name):
-    match = PREFIX_RE.match(name)
-    if match:
-        return int(match.group(1))
-    return None
+    return _format_name(file_path.stem)
 
 
 def _has_md_files(directory):
     for p in directory.rglob("*.md"):
-        if p.name not in SKIP_FILES:
+        if p.name not in SKIP_NAMES and not p.name.startswith("_"):
             return True
     return False
 
@@ -54,7 +44,7 @@ def _collect_items(directory):
         if entry.name.startswith("_") or entry.name.startswith("."):
             continue
         if entry.is_file():
-            if entry.suffix != ".md" or entry.name in SKIP_FILES:
+            if entry.suffix != ".md" or entry.name in SKIP_NAMES:
                 continue
             items.append(entry)
         elif entry.is_dir():
@@ -64,41 +54,56 @@ def _collect_items(directory):
     return items
 
 
-def _validate_numbering(items, directory):
-    numbered = []
-
-    for item in items:
-        prefix = _parse_prefix(item.name)
-        if prefix is not None:
-            numbered.append((prefix, item))
-        else:
-            raise SidebarError(
-                f"Unnumbered item '{item.name}' in {directory} "
-                f"— all files and folders must have a N_ prefix"
-            )
-
-    if not numbered:
-        return []
-
-    numbered.sort(key=lambda pair: pair[0])
-
-    seen = {}
-    for num, item in numbered:
-        if num in seen:
-            raise SidebarError(
-                f"Duplicate number {num} in {directory}: "
-                f"'{seen[num].name}' and '{item.name}'"
-            )
-        seen[num] = item
-
-    nums = [n for n, _ in numbered]
-    expected = list(range(nums[0], nums[0] + len(nums)))
-    if nums != expected:
+def _validate_no_mixing(items, directory):
+    has_files = any(item.is_file() for item in items)
+    has_dirs = any(item.is_dir() for item in items)
+    if has_files and has_dirs:
+        file_names = [i.name for i in items if i.is_file()]
+        dir_names = [i.name for i in items if i.is_dir()]
         raise SidebarError(
-            f"Number gap in {directory}: found {nums}, expected {expected}"
+            f"'{directory}' mixes files and folders — "
+            f"files: {file_names}, folders: {dir_names}. "
+            f"A folder must contain either files or sub-folders, not both."
         )
 
-    return [item for _, item in numbered]
+
+def _read_order_file(directory):
+    order_path = directory / ORDER_FILENAME
+    if not order_path.exists():
+        return None
+    lines = order_path.read_text(encoding="utf-8").splitlines()
+    return [
+        line.strip()
+        for line in lines
+        if line.strip() and not line.strip().startswith("#")
+    ]
+
+
+def _sort_items(items, directory):
+    order = _read_order_file(directory)
+
+    if order is not None:
+        name_to_item = {item.name: item for item in items}
+        ordered = []
+        seen = set()
+        for name in order:
+            if name in name_to_item:
+                ordered.append(name_to_item[name])
+                seen.add(name)
+        remaining = sorted(
+            [item for item in items if item.name not in seen],
+            key=lambda p: p.name.lower(),
+        )
+        return ordered + remaining
+
+    folder_name = directory.name
+
+    def sort_key(p):
+        if p.is_file() and p.stem == folder_name:
+            return (0, p.name.lower())
+        return (1, p.name.lower())
+
+    return sorted(items, key=sort_key)
 
 
 def _validate_top_level_folders_only(items, directory):
@@ -111,12 +116,13 @@ def _validate_top_level_folders_only(items, directory):
             )
 
 
-def _build_tree(docs_root, current_dir, depth, top_level_folders_only):
+def _build_tree(content_root, current_dir, depth, top_level_folders_only):
     indent = "  " * depth
     lines = []
 
     items = _collect_items(current_dir)
-    ordered = _validate_numbering(items, current_dir)
+    _validate_no_mixing(items, current_dir)
+    ordered = _sort_items(items, current_dir)
 
     if depth == 0 and top_level_folders_only:
         _validate_top_level_folders_only(ordered, current_dir)
@@ -124,27 +130,28 @@ def _build_tree(docs_root, current_dir, depth, top_level_folders_only):
     for item in ordered:
         if item.is_file():
             title = _extract_h1(item)
-            rel_path = item.relative_to(docs_root)
+            rel_path = item.relative_to(content_root)
             lines.append(f"{indent}- [{title}]({rel_path})")
         elif item.is_dir():
-            label = _strip_prefix(item.name)
+            label = _format_name(item.name)
             lines.append(f"{indent}- **{label}**")
             lines.extend(
-                _build_tree(docs_root, item, depth + 1, top_level_folders_only)
+                _build_tree(content_root, item, depth + 1, top_level_folders_only)
             )
 
     return lines
 
 
-def build_sidebar(docs_folder, top_level_folders_only):
+def build_sidebar(docs_folder, top_level_folders_only, content_folder):
     docs_root = pathlib.Path(docs_folder)
-    lines = _build_tree(docs_root, docs_root, 0, top_level_folders_only)
+    content_root = docs_root / content_folder
+    lines = _build_tree(content_root, content_root, 0, top_level_folders_only)
     return "\n".join(lines) + "\n"
 
 
-def write_sidebar(docs_folder, top_level_folders_only):
+def write_sidebar(docs_folder, top_level_folders_only, content_folder):
     docs_root = pathlib.Path(docs_folder)
-    content = build_sidebar(docs_root, top_level_folders_only)
-    sidebar_path = docs_root / "_sidebar.md"
+    content = build_sidebar(docs_root, top_level_folders_only, content_folder)
+    sidebar_path = docs_root / content_folder / "_sidebar.md"
     sidebar_path.write_text(content, encoding="utf-8")
     return sidebar_path

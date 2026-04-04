@@ -1,16 +1,21 @@
 # bruha
 
-A personal set of docsify extensions that make documentation pages look the way I want.
+A personal set of docsify extensions that make documentation pages look the way
+I want.
 
 Built on top of [docsify](https://docsify.js.org/), bruha adds:
 
-- **YAML-driven configuration** — a single `docsify-ext.yaml` controls all features
-- **Top navigation bar** — top-level folders become a horizontal nav (like PyData Sphinx theme)
+- **YAML-driven configuration** — a single `docsify-ext.yaml` controls all
+  features
+- **Top navigation bar** — top-level folders become a horizontal nav (like
+  PyData Sphinx theme)
 - **Collapsible sidebar folders** — click to expand/collapse sections
-- **Sidebar bar indicator** — a vertical line shows your position within a document
+- **Sidebar bar indicator** — a vertical line shows your position within a
+  document
 - **Color theme picker** — 10 palettes to choose from
 - **Code enhancements** — line numbers and copy-to-clipboard on all code blocks
-- **Auto-generated sidebar** — Python tool builds `_sidebar.md` from numbered filesystem
+- **Auto-generated sidebar** — Python tool builds `_sidebar.md` from numbered
+  filesystem
 
 ## How It Works
 

@@ -5,3 +5,6 @@ document_header_depth: 3
 top_level_folders_as_top_control: true
 hamburger_menu: false
 github_corner: false
+content_folder: src
+folder_chevron: true
+page_section_collapsible: true

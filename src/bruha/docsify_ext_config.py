@@ -19,6 +19,9 @@ REQUIRED_KEYS = [
     "top_level_folders_as_top_control",
     "hamburger_menu",
     "github_corner",
+    "content_folder",
+    "folder_chevron",
+    "page_section_collapsible",
 ]
 
 JS_TEMPLATE = """\
@@ -27,6 +30,8 @@ window.__docsifyExtConfig = {config_json};
   if (!c.hamburger_menu) document.documentElement.classList.add('ext-no-hamburger');
   if (!c.github_corner) document.documentElement.classList.add('ext-no-github-corner');
   if (c.top_level_folders_as_top_control) document.documentElement.classList.add('ext-has-top-nav');
+  if (c.folder_chevron) document.documentElement.classList.add('ext-folder-chevron');
+  if (c.document_inline_sidebar_selector) document.documentElement.classList.add('ext-inline-sidebar');
 }})(window.__docsifyExtConfig);
 """
 

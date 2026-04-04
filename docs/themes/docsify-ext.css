@@ -2,7 +2,7 @@
  * docsify-ext.css — styles for the docsify extension system.
  *
  * Config-driven toggles, sidebar bar indicator, collapsible folders,
- * and top navigation bar. Loaded after code-one.css.
+ * page section collapse, and top navigation bar. Loaded after code-one.css.
  */
 
 /* ------------------------------------------------------------------ */
@@ -18,66 +18,90 @@ html.ext-no-github-corner .github-corner {
 }
 
 /* ------------------------------------------------------------------ */
-/* Sidebar bar indicator (managed by sidebar-nav.js)                   */
+/* Kill vue.css dash markers on sub-sidebar items                      */
+/* vue.css: .app-sub-sidebar li:before { content: "-" }               */
 /* ------------------------------------------------------------------ */
 
-.sidebar-nav li.sb-spanning {
-  position: relative;
+.app-sub-sidebar li::before {
+  content: none !important;
+  display: none !important;
 }
 
-.sidebar-nav li.sb-spanning::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: color-mix(in srgb, var(--t-accent) 20%, transparent);
-  pointer-events: none;
-  z-index: 0;
+/* ------------------------------------------------------------------ */
+/* Sidebar bar indicator (managed by sidebar-nav.js)                   */
+/* Gated by html.ext-inline-sidebar (document_inline_sidebar_selector) */
+/*                                                                     */
+/* Uses border-left on sub-section <a> elements — truly inline,        */
+/* no pseudo-elements, no absolute positioning.                        */
+/* ------------------------------------------------------------------ */
+
+/* Indent the sub-section list to make room for the bar */
+html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul {
+  padding-left: 1.5em !important;
 }
 
-.sidebar-nav li > a {
-  overflow: visible !important;
+/* Subtle bar on every sub-section link */
+/* Uses !important to override code-one.css "border: none !important" on li > a */
+html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul > li > a {
+  border-left: 2px solid color-mix(in srgb, var(--t-accent) 20%, transparent) !important;
+  padding-left: 0.7em !important;
+  transition: border-color 0.15s ease;
 }
 
-.sidebar-nav li > a::before {
-  content: '';
-  position: absolute;
-  left: var(--sb-bar-left, 0px);
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: transparent;
-  transition: background 0.15s ease;
-  z-index: 1;
+/* Hover: medium-strength bar */
+html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul > li > a:hover {
+  border-left-color: color-mix(
+    in srgb,
+    var(--t-accent) 50%,
+    transparent
+  ) !important;
 }
 
-.sidebar-nav li > a:hover::before {
-  background: color-mix(in srgb, var(--t-accent) 50%, transparent);
-}
-
-.sidebar-nav li > a.sb-current {
+/* Current section: full accent bar + text highlight */
+html.ext-inline-sidebar
+  .sidebar-nav
+  li.sb-active-page
+  > ul
+  > li.sb-current
+  > a {
+  border-left-color: var(--t-accent) !important;
   color: var(--t-accent) !important;
   font-weight: 600;
 }
 
-.sidebar-nav li > a.sb-current::before {
-  background: var(--t-accent);
+/* ------------------------------------------------------------------ */
+/* Page section collapse (sb-page-collapsed toggled by JS)             */
+/* ------------------------------------------------------------------ */
+
+.sidebar-nav li.sb-page-collapsed > ul {
+  display: none !important;
 }
 
 /* ------------------------------------------------------------------ */
 /* Collapsible folders                                                 */
 /* ------------------------------------------------------------------ */
 
-.sidebar-nav li.ext-folder > p {
+.sidebar-nav li.ext-folder > p,
+.sidebar-nav li.ext-folder > strong {
   cursor: pointer;
   user-select: none;
-  position: relative;
-  padding-left: 2.0em;
+  display: block;
 }
 
-.sidebar-nav li.ext-folder > p::before {
+.sidebar-nav li.ext-folder.ext-folder-collapsed > ul {
+  display: none;
+}
+
+/* Folder chevron — conditional on html.ext-folder-chevron */
+
+html.ext-folder-chevron .sidebar-nav li.ext-folder > p,
+html.ext-folder-chevron .sidebar-nav li.ext-folder > strong {
+  position: relative;
+  padding-left: 2em;
+}
+
+html.ext-folder-chevron .sidebar-nav li.ext-folder > p::before,
+html.ext-folder-chevron .sidebar-nav li.ext-folder > strong::before {
   content: '';
   display: inline-block;
   width: 0.4em;
@@ -92,12 +116,15 @@ html.ext-no-github-corner .github-corner {
   margin-top: -0.25em;
 }
 
-.sidebar-nav li.ext-folder.ext-folder-collapsed > p::before {
+html.ext-folder-chevron
+  .sidebar-nav
+  li.ext-folder.ext-folder-collapsed
+  > p::before,
+html.ext-folder-chevron
+  .sidebar-nav
+  li.ext-folder.ext-folder-collapsed
+  > strong::before {
   transform: rotate(-45deg);
-}
-
-.sidebar-nav li.ext-folder.ext-folder-collapsed > ul {
-  display: none;
 }
 
 /* ------------------------------------------------------------------ */
@@ -122,14 +149,20 @@ html.ext-no-github-corner .github-corner {
 .ext-top-nav button {
   background: none;
   border: none;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: var(--t-sidebar-text);
   padding: 0.6em 1.2em;
   cursor: pointer;
   border-bottom: 2px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
 }
 
 .ext-top-nav button:hover {

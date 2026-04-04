@@ -30,7 +30,10 @@
     localStorage.setItem('doc-palette', id);
     savedPalette = id;
     document.querySelectorAll('.tp-swatch').forEach(function (btn) {
-      btn.classList.toggle('tp-active', btn.getAttribute('data-palette') === id);
+      btn.classList.toggle(
+        'tp-active',
+        btn.getAttribute('data-palette') === id
+      );
     });
   }
 
@@ -67,7 +70,17 @@
   function buildHTML() {
     var swatches = PALETTES.map(function (p) {
       var cls = 'tp-swatch' + (p.id === savedPalette ? ' tp-active' : '');
-      return '<button class="' + cls + '" data-palette="' + p.id + '" data-label="' + p.label + '" style="background:' + p.color + '"></button>';
+      return (
+        '<button class="' +
+        cls +
+        '" data-palette="' +
+        p.id +
+        '" data-label="' +
+        p.label +
+        '" style="background:' +
+        p.color +
+        '"></button>'
+      );
     }).join('');
 
     return [

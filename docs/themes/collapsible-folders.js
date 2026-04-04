@@ -1,15 +1,24 @@
 /*
- * Collapsible folders — click folder headers to expand/collapse.
+ * Collapsible sections — folders and page sub-sections.
  *
- * Folder items in the sidebar are <li> elements with a <p> direct child
- * (bold section headers). Document items have <a> direct children.
- * This plugin makes folder <p> elements clickable and toggles visibility
- * of their child <ul>.
+ * Folders: <li> elements whose direct child is a <p> or <strong>
+ * (not an <a>) become collapsible. Docsify renders **bold** sidebar
+ * items as bare <strong> (no <p> wrapper).
+ *
+ * Pages: when page_section_collapsible is true, clicking an active
+ * page's header link collapses its sub-sections — but only if the
+ * user is already at the page top (no ?id= in the URL).
  */
 
 (function () {
   function getCurrentPath() {
     return (window.location.hash || '#/').split('?')[0];
+  }
+
+  function getFolderHeader(li) {
+    return (
+      li.querySelector(':scope > p') || li.querySelector(':scope > strong')
+    );
   }
 
   function folderContainsPath(li, path) {
@@ -30,19 +39,19 @@
     var allLis = nav.querySelectorAll('li');
     for (var i = 0; i < allLis.length; i++) {
       var li = allLis[i];
-      var p = li.querySelector(':scope > p');
+      var header = getFolderHeader(li);
       var ul = li.querySelector(':scope > ul');
 
-      if (!p || !ul) continue;
+      if (!header || !ul) continue;
       if (li.classList.contains('ext-folder')) continue;
 
       li.classList.add('ext-folder');
 
-      (function (folderLi) {
-        folderLi.querySelector(':scope > p').addEventListener('click', function () {
+      (function (folderLi, headerEl) {
+        headerEl.addEventListener('click', function () {
           folderLi.classList.toggle('ext-folder-collapsed');
         });
-      })(li);
+      })(li, header);
     }
 
     var folders = nav.querySelectorAll('li.ext-folder');
@@ -56,9 +65,51 @@
     }
   }
 
+  function setupPageCollapse(nav) {
+    var cfg = window.__docsifyExtConfig;
+    if (!cfg.page_section_collapsible) return;
+    if (nav._pageCollapseAttached) return;
+    nav._pageCollapseAttached = true;
+
+    nav.addEventListener(
+      'click',
+      function (e) {
+        var a = e.target.closest('a');
+        if (!a) return;
+
+        var li = a.closest('li');
+        if (!li || !li.classList.contains('sb-active-page')) return;
+        if (a.parentElement !== li) return;
+
+        var subUl = li.querySelector(':scope > ul');
+        if (!subUl) return;
+
+        if (li.classList.contains('sb-page-collapsed')) {
+          li.classList.remove('sb-page-collapsed');
+          return;
+        }
+
+        var hash = window.location.hash || '';
+        if (hash.indexOf('?id=') !== -1) {
+          return;
+        }
+
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        li.classList.add('sb-page-collapsed');
+      },
+      true
+    );
+  }
+
   function collapsibleFoldersPlugin(hook) {
     hook.doneEach(function () {
       setupFolders();
+    });
+
+    hook.ready(function () {
+      var nav = document.querySelector('.sidebar-nav');
+      if (nav) setupPageCollapse(nav);
     });
   }
 

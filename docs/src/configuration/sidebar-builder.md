@@ -1,10 +1,12 @@
 # Sidebar Builder
 
-The sidebar builder generates `_sidebar.md` from the filesystem structure of the `docs/` folder.
+The sidebar builder generates `_sidebar.md` from the filesystem structure of the
+`docs/` folder.
 
 ## Filesystem Convention
 
-Every `.md` file and every directory must have a numeric prefix followed by an underscore:
+Every `.md` file and every directory must have a numeric prefix followed by an
+underscore:
 
 ```
 docs/
@@ -32,7 +34,8 @@ docs/
 For `.md` files, the sidebar link text comes from:
 
 1. The first `# heading` in the file (if present)
-2. Otherwise, the filename with prefix stripped, separators replaced with spaces, and title-cased
+2. Otherwise, the filename with prefix stripped, separators replaced with
+   spaces, and title-cased
 
 Folders use their directory name with the same cleanup logic.
 
@@ -65,11 +68,13 @@ content = sb.build_sidebar("docs", True)
 sb.write_sidebar("docs", True)
 ```
 
-The second argument (`top_level_folders_only`) enforces that all top-level items are directories when `True`.
+The second argument (`top_level_folders_only`) enforces that all top-level items
+are directories when `True`.
 
 ## Pre-Commit Hook
 
-A pre-commit hook auto-rebuilds the sidebar and config on any commit touching `docs/`:
+A pre-commit hook auto-rebuilds the sidebar and config on any commit touching
+`docs/`:
 
 ```bash
 #!/usr/bin/env bash

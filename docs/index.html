@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>bruha</title>
+  <!-- Redirect bare root so docsify's sidebar URL matching works -->
+  <script>
+    (function() {
+      var h = window.location.hash;
+      if (!h || h === '#/' || h === '#/README') {
+        window.location.hash = '#/overview/overview';
+      }
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
   <!-- Google Fonts -->
@@ -13,23 +22,23 @@
   <!-- base docsify layout (required for structure) -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <!-- theme -->
-  <link rel="stylesheet" href="themes/code-one.css?v=20260323a">
+  <link rel="stylesheet" href="themes/code-one.css?v=20260404170755">
   <!-- color palette overrides -->
-  <link rel="stylesheet" href="themes/color-themes.css?v=20260323a">
+  <link rel="stylesheet" href="themes/color-themes.css?v=20260404170755">
   <!-- extension styles (indicator, collapsible folders, top nav, toggles) -->
-  <link rel="stylesheet" href="themes/docsify-ext.css?v=20260323a">
+  <link rel="stylesheet" href="themes/docsify-ext.css?v=20260404170755">
   <!-- generated config (applies CSS classes before render) -->
-  <script src="themes/docsify-ext-config.js?v=20260323a"></script>
+  <script src="themes/docsify-ext-config.js?v=20260404170755"></script>
   <!-- theme picker (applies saved choice before render) -->
-  <script src="themes/theme-picker.js?v=20260323a"></script>
+  <script src="themes/theme-picker.js?v=20260404170755"></script>
   <!-- code enhancements plugin (load before docsify) -->
-  <script src="themes/code-enhancements.js?v=20260323a"></script>
+  <script src="themes/code-enhancements.js?v=20260404170755"></script>
   <!-- sidebar bar indicator (load before docsify) -->
-  <script src="themes/sidebar-nav.js?v=20260323a"></script>
+  <script src="themes/sidebar-nav.js?v=20260404170755"></script>
   <!-- collapsible folder sections -->
-  <script src="themes/collapsible-folders.js?v=20260323a"></script>
+  <script src="themes/collapsible-folders.js?v=20260404170755"></script>
   <!-- top-level folder navigation bar -->
-  <script src="themes/top-nav.js?v=20260323a"></script>
+  <script src="themes/top-nav.js?v=20260404170755"></script>
 </head>
 <body>
   <div id="app"></div>
@@ -37,8 +46,9 @@
     var cfg = window.__docsifyExtConfig;
     window.$docsify = {
       name: 'bruha',
-      nameLink: '/#/0_overview/0_about',
-      homepage: '0_overview/0_about.md',
+      nameLink: '/#/overview/overview',
+      basePath: 'src/',
+      homepage: 'overview/overview.md',
       repo: cfg.github_corner ? 'https://github.com/cart0113/bruha' : '',
       loadSidebar: true,
       subMaxLevel: cfg.document_header_depth,
@@ -52,7 +62,7 @@
         codeEnhancementsPlugin,
         collapsibleFoldersPlugin,
         cfg.theme_picker ? themePickerPlugin : null,
-        cfg.document_inline_sidebar_selector ? sidebarNavPlugin : null,
+        (cfg.document_inline_sidebar_selector || cfg.page_section_collapsible) ? sidebarNavPlugin : null,
         cfg.top_level_folders_as_top_control ? topNavPlugin : null,
       ].filter(Boolean),
     }

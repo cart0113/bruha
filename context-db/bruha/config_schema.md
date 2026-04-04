@@ -18,6 +18,9 @@ The config file lives at `docs/docsify-ext.yaml`. All keys are required
 | `top_level_folders_as_top_control` | bool | Render top-level folders as a horizontal nav bar at page top |
 | `hamburger_menu` | bool | Show the docsify sidebar toggle button |
 | `github_corner` | bool | Show the GitHub corner link |
+| `content_folder` | string | Subdirectory of docs/ containing markdown content (default: `src`) |
+| `folder_chevron` | bool | Show collapse chevron on folder headers |
+| `page_section_collapsible` | bool | Allow collapsing page sub-sections by re-clicking the page header |
 
 ## Validation
 
