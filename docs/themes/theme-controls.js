@@ -8,7 +8,8 @@
  *                     dark mode toggle, and vivid code toggle
  *
  * Also reads:
- *   theme_name        — initial theme (parchment|pylab|blossom|near-midnight)
+ *   light_theme       — theme for light mode (parchment|pylab|blossom|near-midnight)
+ *   dark_theme        — theme for dark mode (defaults to light_theme)
  *   dark_mode_default — start in dark mode (boolean)
  *   code_highlighter  — "classic" or "vivid" (default vivid)
  *
@@ -51,7 +52,7 @@
   if (cfg.theme_controls === 'theme_picker' && storedTheme) {
     currentTheme = storedTheme;
   } else {
-    currentTheme = cfg.theme_name || 'parchment';
+    currentTheme = isDark ? cfg.dark_theme : cfg.light_theme;
   }
 
   /* --- Resolve initial code highlighter: localStorage > config --- */
@@ -70,13 +71,9 @@
   if (isVivid) {
     document.documentElement.classList.add('code-vivid');
   }
-  if (
-    cfg.theme_controls === 'theme_picker' &&
-    storedTheme &&
-    storedTheme !== cfg.theme_name
-  ) {
-    document.documentElement.classList.remove('theme-' + cfg.theme_name);
-    document.documentElement.classList.add('theme-' + storedTheme);
+  if (currentTheme !== cfg.light_theme) {
+    document.documentElement.classList.remove('theme-' + cfg.light_theme);
+    document.documentElement.classList.add('theme-' + currentTheme);
   }
 
   /* --- Helpers --- */
@@ -86,13 +83,17 @@
     localStorage.setItem(DARK_KEY, dark ? '1' : '0');
   }
 
-  function setTheme(id) {
+  function applyTheme(id) {
     document.documentElement.className = document.documentElement.className
       .replace(/\btheme-[\w-]+/g, '')
       .trim();
     document.documentElement.classList.add('theme-' + id);
-    localStorage.setItem(THEME_KEY, id);
     currentTheme = id;
+  }
+
+  function setTheme(id) {
+    applyTheme(id);
+    localStorage.setItem(THEME_KEY, id);
   }
 
   function setVivid(vivid) {
@@ -150,6 +151,7 @@
     var btn = wrap.querySelector('.tc-btn');
     btn.addEventListener('click', function () {
       setDark(!isDark);
+      applyTheme(isDark ? cfg.dark_theme : cfg.light_theme);
       btn.innerHTML = svgUse(isDark ? 'icon-sun' : 'icon-moon');
     });
   }

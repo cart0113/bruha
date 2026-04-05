@@ -12,7 +12,8 @@ generator merges user YAML on top of defaults.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| `theme_name` | string | `parchment` | Color theme: `parchment`, `pylab` (Eclipse-inspired), `blossom` (lavender pastel), or `near-midnight` (soft dark) |
+| `light_theme` | string | `parchment` | Theme for light mode: `parchment`, `pylab` (Eclipse-inspired), `blossom` (lavender pastel), or `near-midnight` (soft dark) |
+| `dark_theme` | string | `light_theme` | Theme for dark mode (defaults to `light_theme` if not set). Set to a different theme to swap themes when toggling dark mode |
 | `theme_controls` | string | `dark_toggle` | Bottom-right UI: `none`, `dark_toggle` (moon/sun), or `theme_picker` (palette panel with swatches, dark toggle, vivid code toggle) |
 | `dark_mode_default` | bool | `false` | Start in dark mode (every theme has light + dark variants) |
 | `code_highlighter` | string | `vivid` | Syntax coloring: `classic` (muted) or `vivid` (high-saturation) |

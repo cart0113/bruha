@@ -72,7 +72,7 @@ echo "Done."
 ## YAML
 
 ```yaml
-theme_name: parchment
+light_theme: parchment
 theme_controls: theme_picker
 dark_mode_default: false
 code_highlighter: vivid

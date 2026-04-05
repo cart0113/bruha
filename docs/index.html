@@ -26,25 +26,29 @@
   <!-- base docsify layout (required for structure) -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <!-- theme -->
-  <link rel="stylesheet" href="themes/code-one.css?v=20260405131618">
+  <link rel="stylesheet" href="themes/code-one.css?v=20260405134253">
   <!-- color theme overrides (light + dark variants) -->
-  <link rel="stylesheet" href="themes/color-themes.css?v=20260405131618">
+  <link rel="stylesheet" href="themes/color-themes.css?v=20260405134253">
   <!-- extension styles (indicator, collapsible folders, top nav, toggles) -->
-  <link rel="stylesheet" href="themes/bruha.css?v=20260405131618">
+  <link rel="stylesheet" href="themes/bruha.css?v=20260405134253">
+  <!-- mobile responsive layout (hamburger drawer) -->
+  <link rel="stylesheet" href="themes/mobile-nav.css?v=20260405134253">
   <!-- generated config (applies CSS classes before render) -->
-  <script src="themes/bruha-config.js?v=20260405131618"></script>
+  <script src="themes/bruha-config.js?v=20260405134253"></script>
   <!-- theme controls (applies saved choice before render) -->
-  <script src="themes/theme-controls.js?v=20260405131618"></script>
+  <script src="themes/theme-controls.js?v=20260405134253"></script>
   <!-- code enhancements plugin (load before docsify) -->
-  <script src="themes/code-enhancements.js?v=20260405131618"></script>
+  <script src="themes/code-enhancements.js?v=20260405134253"></script>
   <!-- sidebar bar indicator (load before docsify) -->
-  <script src="themes/sidebar-indicator.js?v=20260405131618"></script>
+  <script src="themes/sidebar-indicator.js?v=20260405134253"></script>
   <!-- collapsible folder sections -->
-  <script src="themes/collapsible-folders.js?v=20260405131618"></script>
+  <script src="themes/collapsible-folders.js?v=20260405134253"></script>
+  <!-- mobile hamburger + drawer (replaces top nav on small screens) -->
+  <script src="themes/mobile-nav.js?v=20260405134253"></script>
   <!-- top-level folder navigation bar -->
-  <script src="themes/top-nav.js?v=20260405131618"></script>
+  <script src="themes/top-nav.js?v=20260405134253"></script>
   <!-- redirect folder-only URLs to first child page -->
-  <script src="themes/folder-redirect.js?v=20260405131618"></script>
+  <script src="themes/folder-redirect.js?v=20260405134253"></script>
 </head>
 <body>
   <!-- SVG sprite — hidden, reused via <use href="#icon-name"/> -->
@@ -70,6 +74,11 @@
     <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="10" cy="10" r="7"/>
       <path d="M21 21l-5-5"/>
+    </symbol>
+    <symbol id="icon-hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
     </symbol>
     <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -111,6 +120,7 @@
         collapsibleFoldersPlugin,
         cfg.theme_controls !== 'none' ? themeControlsPlugin : null,
         (cfg.document_inline_sidebar_selector || cfg.page_section_collapsible) ? sidebarIndicatorPlugin : null,
+        cfg.top_level_folders_as_top_control ? mobileNavPlugin : null,
         cfg.top_level_folders_as_top_control ? topNavPlugin : null,
       ].filter(Boolean),
     }

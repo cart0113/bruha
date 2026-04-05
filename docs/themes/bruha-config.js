@@ -1,5 +1,6 @@
 window.__docsifyExtConfig = {
-  "theme_name": "parchment",
+  "light_theme": "parchment",
+  "dark_theme": "near-midnight",
   "theme_controls": "theme_picker",
   "dark_mode_default": false,
   "code_highlighter": "vivid",
@@ -19,7 +20,7 @@ window.__docsifyExtConfig = {
   }
 };
 (function(c) {
-  if (c.theme_name) document.documentElement.classList.add('theme-' + c.theme_name);
+  document.documentElement.classList.add('theme-' + c.light_theme);
   if (!c.hamburger_menu) document.documentElement.classList.add('ext-no-hamburger');
   if (!c.github_corner) document.documentElement.classList.add('ext-no-github-corner');
   if (c.top_level_folders_as_top_control) document.documentElement.classList.add('ext-has-top-nav');

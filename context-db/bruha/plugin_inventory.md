@@ -19,6 +19,12 @@ and dark variants. Applied via `.theme-<name>` and `.dark-mode` classes on
 `<html>`. Vivid code highlighter overrides `--t-syn-*` via `.code-vivid`.
 The default Parchment light palette is in code-one.css `:root`.
 
+### mobile-nav.css
+Mobile responsive layout. Hamburger button, slide-out drawer component styles,
+and the `@media (max-width: 768px)` block that hides desktop elements (top nav,
+floating theme controls, sidebar) and shows mobile elements (hamburger, drawer).
+When adding new features, desktop hide rules and mobile show rules go here.
+
 ### bruha.css
 Extension styles: hamburger/github-corner hide rules, sidebar bar indicator
 (continuous `border-left` on the active page's `<ul>`, with per-heading overlay
@@ -79,6 +85,14 @@ docsify's built-in `topMargin`/`scrollIntoView` is unreliable with `auto2top`,
 so `top-nav.js` scrolls to the target heading with a 75px offset via
 `requestAnimationFrame` in both `doneEach` and `hashchange`.
 
+### mobile-nav.js
+Mobile hamburger menu + slide-out drawer. On screens ≤ 768px, hides the
+desktop top nav bar and shows a hamburger button. The drawer contains:
+brand header, search input (drives docsify's hidden search), horizontal
+folder tabs (same sections as top nav), cloned sidebar tree (synced on
+each `doneEach`), theme controls (dark/theme/vivid), and social links.
+Only active when `top_level_folders_as_top_control` is true.
+
 ### folder-redirect.js
 Parses `_sidebar.md` to build a folder-to-first-child-page map. Redirects
 folder-only URLs (e.g., `/#/examples/`) to the first child page. Runs
@@ -92,7 +106,8 @@ on `hashchange` for runtime redirects when the user navigates to a folder.
 3. code-enhancements.js
 4. sidebar-indicator.js
 5. collapsible-folders.js
-6. top-nav.js
-7. folder-redirect.js
+6. mobile-nav.js (must run before top-nav.js — syncs sidebar before top-nav modifies it)
+7. top-nav.js
+8. folder-redirect.js
 
 All loaded before docsify.js in `<body>`.

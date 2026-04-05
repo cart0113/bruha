@@ -8,7 +8,8 @@ need to include the keys you want to override.
 A minimal config that only overrides a few defaults:
 
 ```yaml
-theme_name: blossom
+light_theme: blossom
+dark_theme: near-midnight
 theme_controls: theme_picker
 github_corner: true
 social_links:
@@ -17,14 +18,22 @@ social_links:
 
 ## Keys
 
-### theme_name
+### light_theme
 
 **Type:** string  
 **Default:** `parchment`
 
-The color theme. Options: `parchment`, `pylab` (Eclipse-inspired), `blossom`
-(lavender pastel), `near-midnight` (soft dark). Each theme has light and dark
-variants.
+Theme for light mode. Options: `parchment`, `pylab` (Eclipse-inspired),
+`blossom` (lavender pastel), `near-midnight` (soft dark).
+
+### dark_theme
+
+**Type:** string  
+**Default:** value of `light_theme`
+
+Theme for dark mode. When set to a different theme than `light_theme`, toggling
+dark mode also switches the color theme. Only applies in `dark_toggle` and
+`none` modes — `theme_picker` lets the user override via the palette panel.
 
 ### theme_controls
 
