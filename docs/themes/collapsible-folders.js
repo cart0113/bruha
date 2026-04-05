@@ -92,18 +92,17 @@
         if (!subUl) return;
 
         if (li.classList.contains('sb-page-collapsed')) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
           li.classList.remove('sb-page-collapsed');
           return;
         }
 
         var hash = window.location.hash || '';
-        if (hash.indexOf('?id=') !== -1) {
+        if (hash.indexOf('?id=') === -1) {
+          /* Already at page top — do nothing, don't collapse. */
           return;
         }
-
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        li.classList.add('sb-page-collapsed');
       },
       true
     );

@@ -200,9 +200,10 @@ html.ext-folder-chevron
   top: 3px;
   left: 0;
   right: 0;
-  height: 53px;
+  height: 58px;
   background: var(--t-sidebar-bg);
   border-bottom: 1px solid var(--t-border);
+  padding-top: 5px;
   padding-bottom: 5px;
   display: grid;
   grid-template-columns: 320px 1fr auto auto auto;
@@ -466,11 +467,11 @@ html.ext-has-top-nav .sidebar .search {
 }
 
 html.ext-has-top-nav .sidebar {
-  padding-top: 56px !important;
+  padding-top: 61px !important;
 }
 
 html.ext-has-top-nav section.content {
-  padding-top: 63px !important;
+  padding-top: 68px !important;
 }
 
 html.ext-has-top-nav body::before {
