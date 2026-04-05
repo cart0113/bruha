@@ -69,6 +69,14 @@ Sidebar order is controlled by `_order` files in each directory under `docs/`.
 Each `_order` lists filenames/dirnames one per line. Items not listed sort
 alphabetically at the end. If no `_order` exists, everything is alphabetical.
 
-## context-db
+## context-db — IMPORTANT: Read AND Write
 
 Read `context-db/context-db-instructions.md` for the project knowledge database.
+
+**You are expected to update the context-db when you learn something
+important.** When you discover architecture decisions, non-obvious patterns,
+constraints, gotchas, data model relationships, or anything a future agent would
+need to work safely on this codebase — add it to the context-db. If you had to
+figure it out the hard way, it belongs there. Update descriptions in frontmatter
+to stay accurate. Flag or remove stale content that contradicts the current
+code.
