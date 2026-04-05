@@ -10,15 +10,19 @@
  */
 
 /* ================================================================== */
-/* Parchment — dark variant                                            */
+/* Parchment                                                           */
 /* ================================================================== */
+
+html.theme-parchment {
+  --t-heading: #5570a0;
+}
 
 html.theme-parchment.dark-mode {
   --t-bg: #1e1d1b;
   --t-bg-alt: #282724;
   --t-text: #cdc8be;
   --t-text-muted: #8e8a80;
-  --t-heading: #ede8dc;
+  --t-heading: #d4c8a8;
   --t-accent: #90b8e0;
   --t-accent-hover: #aeccea;
   --t-link: #90b8e0;
@@ -58,7 +62,7 @@ html.theme-pylab {
   --t-bg-alt: #f8f8f8;
   --t-text: #1a1a2a;
   --t-text-muted: #505050;
-  --t-heading: #101830;
+  --t-heading: #3366bb;
   --t-accent: #2160bb;
   --t-accent-hover: #17408a;
   --t-link: #0000ff;
@@ -94,7 +98,7 @@ html.theme-pylab.dark-mode {
   --t-bg-alt: #2f2f2f;
   --t-text: #cccccc;
   --t-text-muted: #93a1a1;
-  --t-heading: #e8ecf0;
+  --t-heading: #a0c8e8;
   --t-accent: #6fc5ee;
   --t-accent-hover: #8ad4f5;
   --t-link: #6fc5ee;
@@ -134,7 +138,7 @@ html.theme-blossom {
   --t-bg-alt: #e8e0f0;
   --t-text: #2e2438;
   --t-text-muted: #6a5e78;
-  --t-heading: #1e1428;
+  --t-heading: #7744aa;
   --t-accent: #9668c4;
   --t-accent-hover: #7a4ea8;
   --t-link: #9668c4;
@@ -170,7 +174,7 @@ html.theme-blossom.dark-mode {
   --t-bg-alt: #252036;
   --t-text: #d0c8dc;
   --t-text-muted: #8a80a0;
-  --t-heading: #ece4f4;
+  --t-heading: #c8a8e0;
   --t-accent: #b890e0;
   --t-accent-hover: #cca8f0;
   --t-link: #b890e0;
@@ -210,7 +214,7 @@ html.theme-near-midnight {
   --t-bg-alt: #ebebf4;
   --t-text: #282c34;
   --t-text-muted: #636d83;
-  --t-heading: #1a1e28;
+  --t-heading: #6060aa;
   --t-accent: #6c71c4;
   --t-accent-hover: #565ba6;
   --t-link: #6c71c4;
@@ -246,7 +250,7 @@ html.theme-near-midnight.dark-mode {
   --t-bg-alt: #2d323e;
   --t-text: #c4c8d4;
   --t-text-muted: #7c84a0;
-  --t-heading: #e8ecf4;
+  --t-heading: #a8b8d8;
   --t-accent: #7cb4f0;
   --t-accent-hover: #9cc8ff;
   --t-link: #7cb4f0;

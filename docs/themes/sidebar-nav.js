@@ -11,6 +11,7 @@
 
 (function () {
   var observer;
+  var lastClickY = null;
 
   function getCurrentPath() {
     return (window.location.hash || '#/').split('?')[0];
@@ -163,13 +164,48 @@
     }
   }
 
+  function scrollActiveToClickY() {
+    if (lastClickY === null) return;
+    var clickY = lastClickY;
+    lastClickY = null;
+
+    var nav = document.querySelector('.sidebar-nav');
+    if (!nav) return;
+    var pageLi = findActivePage(nav);
+    if (!pageLi) return;
+
+    var sidebarEl = nav.closest('.sidebar');
+    if (!sidebarEl) return;
+
+    var pageLink = pageLi.querySelector(':scope > a');
+    var scrollTarget = pageLink || pageLi;
+    var rect = scrollTarget.getBoundingClientRect();
+    sidebarEl.scrollTop += rect.top - clickY;
+  }
+
   function sidebarNavPlugin(hook) {
-    hook.doneEach(applyActiveStates);
+    hook.doneEach(function () {
+      applyActiveStates();
+      scrollActiveToClickY();
+    });
 
     hook.ready(function () {
       observer = new MutationObserver(applyActiveStates);
       reconnect();
       window.addEventListener('hashchange', applyActiveStates);
+
+      document
+        .querySelector('.sidebar')
+        .addEventListener('click', function (e) {
+          var link = e.target.closest('a');
+          if (
+            link &&
+            link.closest('.sidebar-nav') &&
+            !link.closest('.app-sub-sidebar')
+          ) {
+            lastClickY = e.clientY;
+          }
+        });
     });
   }
 
