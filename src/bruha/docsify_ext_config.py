@@ -28,6 +28,7 @@ REQUIRED_KEYS = [
 OPTIONAL_KEYS = [
     "site_icon",
     "social_links",
+    "sidebar_indent",
 ]
 
 JS_TEMPLATE = """\
@@ -38,6 +39,7 @@ window.__docsifyExtConfig = {config_json};
   if (c.top_level_folders_as_top_control) document.documentElement.classList.add('ext-has-top-nav');
   if (c.folder_chevron) document.documentElement.classList.add('ext-folder-chevron');
   if (c.document_inline_sidebar_selector) document.documentElement.classList.add('ext-inline-sidebar');
+  if (c.sidebar_indent) document.documentElement.style.setProperty('--t-sidebar-indent', c.sidebar_indent);
 }})(window.__docsifyExtConfig);
 """
 

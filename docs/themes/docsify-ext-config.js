@@ -9,6 +9,7 @@ window.__docsifyExtConfig = {
   "content_folder": "src",
   "folder_chevron": true,
   "page_section_collapsible": true,
+  "sidebar_indent": "1em",
   "site_icon": "assets/bruha-icon.svg",
   "search_style": "magnify-glass",
   "social_links": {
@@ -21,4 +22,5 @@ window.__docsifyExtConfig = {
   if (c.top_level_folders_as_top_control) document.documentElement.classList.add('ext-has-top-nav');
   if (c.folder_chevron) document.documentElement.classList.add('ext-folder-chevron');
   if (c.document_inline_sidebar_selector) document.documentElement.classList.add('ext-inline-sidebar');
+  if (c.sidebar_indent) document.documentElement.style.setProperty('--t-sidebar-indent', c.sidebar_indent);
 })(window.__docsifyExtConfig);

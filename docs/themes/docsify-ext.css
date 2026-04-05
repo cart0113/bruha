@@ -385,6 +385,11 @@ html.ext-folder-chevron
   line-height: 1.4;
 }
 
+/* --- Top-level folder hiding (top nav controls visibility) --- */
+.sidebar-nav li.ext-top-hidden {
+  display: none !important;
+}
+
 /* --- Layout shifts when top nav is present --- */
 
 /* Hide sidebar title + search — they live in top bar now */

@@ -8,6 +8,7 @@ github_corner: false
 content_folder: src
 folder_chevron: true
 page_section_collapsible: true
+sidebar_indent: "1em"
 site_icon: assets/bruha-icon.svg
 search_style: magnify-glass
 social_links:

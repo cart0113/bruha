@@ -1,5 +1,5 @@
 - **Overview**
-  - [bruha](overview/overview.md)
+  - [Overview](overview/overview.md)
 - **Configuration**
   - [Configuration Reference](configuration/config-reference.md)
   - [Sidebar Builder](configuration/sidebar-builder.md)

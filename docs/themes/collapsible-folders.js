@@ -54,9 +54,16 @@
       })(li, header);
     }
 
+    /* When top nav is active, top-level folders are managed entirely
+       by top-nav.js — collapsible-folders must not touch them. */
+    var cfg = window.__docsifyExtConfig || {};
+    var topNavActive = cfg.top_level_folders_as_top_control;
+    var rootUl = nav.querySelector(':scope > ul');
+
     var folders = nav.querySelectorAll('li.ext-folder');
     for (var j = 0; j < folders.length; j++) {
       var folder = folders[j];
+      if (topNavActive && folder.parentElement === rootUl) continue;
       if (folderContainsPath(folder, currentPath)) {
         folder.classList.remove('ext-folder-collapsed');
       } else {

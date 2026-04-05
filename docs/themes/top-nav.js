@@ -42,11 +42,39 @@
     for (var i = 0; i < folderData.length; i++) {
       var isActive = i === index;
       folderData[i].button.classList.toggle('ext-top-active', isActive);
-      folderData[i].li.style.display = isActive ? '' : 'none';
+      folderData[i].li.classList.toggle('ext-top-hidden', !isActive);
 
-      if (isActive) {
-        var header = getFolderHeader(folderData[i].li);
-        if (header) header.style.display = 'none';
+      /* Always hide the folder header text — it's redundant with the tab */
+      var header = getFolderHeader(folderData[i].li);
+      if (header) header.style.display = 'none';
+    }
+  }
+
+  /* Re-acquire fresh DOM references after docsify rebuilds the sidebar */
+  function refreshFolderRefs() {
+    var nav = document.querySelector('.sidebar-nav');
+    if (!nav) return;
+
+    var rootUl = nav.querySelector(':scope > ul');
+    if (!rootUl) return;
+
+    var topLis = rootUl.querySelectorAll(':scope > li');
+
+    for (var i = 0; i < topLis.length; i++) {
+      var li = topLis[i];
+      var header = getFolderHeader(li);
+      if (!header) continue;
+
+      var label = header.textContent.trim();
+
+      for (var j = 0; j < folderData.length; j++) {
+        if (folderData[j].label === label) {
+          folderData[j].li = li;
+          folderData[j].links = Array.prototype.slice.call(
+            li.querySelectorAll('ul a')
+          );
+          break;
+        }
       }
     }
   }
@@ -214,11 +242,17 @@
       var label = header.textContent.trim();
       var links = li.querySelectorAll('ul a');
 
+      /* Store the first page href as a string so tab clicks always
+         navigate to the correct path, even after docsify rewrites
+         link hrefs (e.g. homepage → #/README). */
+      var firstHref = links.length > 0 ? links[0].getAttribute('href') : null;
+
       folderData.push({
         label: label,
         li: li,
         button: null,
         links: Array.prototype.slice.call(links),
+        firstHref: firstHref,
       });
     }
 
@@ -261,11 +295,8 @@
       (function (idx) {
         btn.addEventListener('click', function () {
           activateFolder(idx);
-          var firstLink = folderData[idx].links[0];
-          if (firstLink) {
-            var href = firstLink.getAttribute('href');
-            if (href) window.location.hash = href;
-          }
+          var href = folderData[idx].firstHref;
+          if (href) window.location.hash = href;
         });
       })(j);
 
@@ -291,13 +322,25 @@
     activateFolder(findActiveIndex());
   }
 
+  function applyFolderState() {
+    if (!topNavEl || folderData.length === 0) return;
+    refreshFolderRefs();
+    activateFolder(findActiveIndex());
+  }
+
   function topNavPlugin(hook) {
     hook.doneEach(function () {
       var nav = document.querySelector('.sidebar-nav');
-      if (nav) buildTopNav(nav);
-      if (topNavEl && folderData.length > 0) {
-        activateFolder(findActiveIndex());
+      if (nav) {
+        buildTopNav(nav);
+        applyFolderState();
       }
+    });
+
+    hook.ready(function () {
+      window.addEventListener('hashchange', function () {
+        applyFolderState();
+      });
     });
   }
 

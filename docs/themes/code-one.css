@@ -34,6 +34,7 @@
   --t-callout-bg: #edeae3;
   --t-callout-border: #8892a5;
   --t-table-header-bg: #e5e2da;
+  --t-sidebar-indent: 1em;
   --t-table-stripe: #f2f0ec;
   --t-syn-comment: #6b7286;
   --t-syn-punctuation: #404858;
@@ -143,7 +144,7 @@ body::before {
   margin-bottom: 0.15em;
 }
 
-/* Main page headers in sidebar */
+/* Main page headers in sidebar — level 1 (top-level links) */
 .sidebar-nav li > a {
   color: var(--t-sidebar-text) !important;
   font-family:
@@ -154,7 +155,7 @@ body::before {
   font-size: 1.15em;
   font-weight: 600;
   border: none !important;
-  padding: 0.5em 0.8em 0.5em 1.2em;
+  padding: 0.5em 0.8em 0.5em var(--t-sidebar-indent, 1em);
   margin: 0 !important;
   line-height: 1.6;
   display: block;
@@ -162,40 +163,41 @@ body::before {
   position: relative;
 }
 
-/* Sub-item links: smaller text, progressively indented by depth */
+/* Sub-item links: smaller text, indented by depth
+   --t-sidebar-indent (default 1em) is the increment per level */
 .sidebar-nav ul ul li > a {
   font-weight: 500;
   font-size: 14.5px;
-  padding: 0.3em 0.8em 0.3em 2.2em;
+  padding: 0.3em 0.8em 0.3em calc(var(--t-sidebar-indent, 1em) * 2);
 }
 
 /* Bold folder labels in sidebar (non-link section headers) */
 .sidebar-nav ul ul li > p {
   font-weight: 600;
   font-size: 14.5px;
-  padding: 0.3em 0.8em 0.3em 2.2em;
+  padding: 0.3em 0.8em 0.3em calc(var(--t-sidebar-indent, 1em) * 2);
   margin: 0;
   color: var(--t-sidebar-text);
 }
 
 .sidebar-nav ul ul ul li > a,
 .sidebar-nav ul ul ul li > p {
-  padding-left: 3.2em;
+  padding-left: calc(var(--t-sidebar-indent, 1em) * 3);
 }
 
 .sidebar-nav ul ul ul ul li > a,
 .sidebar-nav ul ul ul ul li > p {
-  padding-left: 4.2em;
+  padding-left: calc(var(--t-sidebar-indent, 1em) * 4);
 }
 
 .sidebar-nav ul ul ul ul ul li > a,
 .sidebar-nav ul ul ul ul ul li > p {
-  padding-left: 5.2em;
+  padding-left: calc(var(--t-sidebar-indent, 1em) * 5);
 }
 
 .sidebar-nav ul ul ul ul ul ul li > a,
 .sidebar-nav ul ul ul ul ul ul li > p {
-  padding-left: 6.2em;
+  padding-left: calc(var(--t-sidebar-indent, 1em) * 6);
 }
 
 .sidebar-toggle {
