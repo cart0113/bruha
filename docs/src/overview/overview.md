@@ -25,9 +25,9 @@ CDN. bruha layers plugins and a build tool on top.
   document
 - **Code enhancements** -- line numbers and copy-to-clipboard on all code blocks
 - **Search** -- full-text search across all pages
-- **Local dev scripts** -- `docs/bin/build.sh` and `docs/bin/serve.sh` with
-  `--port` flag. Copy these into any project using bruha for one-command local
-  preview
+- **Copy-based install** -- no CDN or package manager. Copy `docs/themes/` and
+  `docs/bin/` into your project. `docs/bin/serve.sh` with `--port` flag for
+  one-command local preview
 
 ## How It Works
 
