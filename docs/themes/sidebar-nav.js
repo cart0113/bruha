@@ -1,17 +1,12 @@
 /*
- * Sidebar bar indicator — inline bar + section highlight.
+ * Sidebar bar indicator — heading hierarchy + section highlight.
  *
- * Marks the active page's <li> with .sb-active-page and the current
- * section's <li> with .sb-current. CSS handles the visual bar via
- * border-left on sub-section <a> elements.
+ * Marks the active page's <li> with .sb-active-page. If the page has
+ * sub-sections, also adds .sb-has-sections. Within the sub-sidebar:
+ *   - depth 1 (H2) → .sb-bar-level (border-left indicator)
+ *   - depth 2+ (H3+) → .sb-text-level (text highlight only)
  *
- * Finding the active page: first looks for the <li> containing
- * docsify's .app-sub-sidebar (most reliable). Falls back to URL
- * matching, then docsify's .active class.
- *
- * Finding the current section: matches by ?id= parameter since the
- * base URL path may differ (e.g. #/README vs #/overview/about when
- * homepage aliasing is active).
+ * Current section's <li> gets .sb-current.
  */
 
 (function () {
@@ -75,6 +70,31 @@
     return activeSub || null;
   }
 
+  function assignDepthClasses(pageLi) {
+    var topUl = pageLi.querySelector(':scope > ul.app-sub-sidebar');
+    if (!topUl) return;
+
+    pageLi.classList.add('sb-has-sections');
+
+    function walk(ul, depth) {
+      var items = ul.querySelectorAll(':scope > li');
+      for (var i = 0; i < items.length; i++) {
+        var li = items[i];
+
+        if (depth === 1) {
+          li.classList.add('sb-bar-level');
+        } else {
+          li.classList.add('sb-text-level');
+        }
+
+        var childUl = li.querySelector(':scope > ul');
+        if (childUl) walk(childUl, depth + 1);
+      }
+    }
+
+    walk(topUl, 1);
+  }
+
   function applyActiveStates() {
     if (observer) observer.disconnect();
 
@@ -87,13 +107,22 @@
     nav.querySelectorAll('.sb-active-page').forEach(function (el) {
       el.classList.remove('sb-active-page');
     });
+    nav.querySelectorAll('.sb-has-sections').forEach(function (el) {
+      el.classList.remove('sb-has-sections');
+    });
     nav.querySelectorAll('.sb-current').forEach(function (el) {
       el.classList.remove('sb-current');
     });
+    nav
+      .querySelectorAll('.sb-bar-level, .sb-text-level')
+      .forEach(function (el) {
+        el.classList.remove('sb-bar-level', 'sb-text-level');
+      });
 
     var pageLi = findActivePage(nav);
     if (pageLi) {
       pageLi.classList.add('sb-active-page');
+      assignDepthClasses(pageLi);
 
       var link = findCurrentSection(pageLi);
       if (link) {

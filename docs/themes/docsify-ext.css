@@ -28,28 +28,59 @@ html.ext-no-github-corner .github-corner {
 }
 
 /* ------------------------------------------------------------------ */
-/* Sidebar bar indicator (managed by sidebar-nav.js)                   */
+/* Sidebar heading hierarchy (managed by sidebar-nav.js)               */
 /* Gated by html.ext-inline-sidebar (document_inline_sidebar_selector) */
 /*                                                                     */
-/* Uses border-left on sub-section <a> elements — truly inline,        */
-/* no pseudo-elements, no absolute positioning.                        */
+/* Page title (H1) = collapsible like a folder (sb-has-sections)       */
+/* H2 in sub-sidebar = bar indicator (sb-bar-level)                    */
+/* H3+ in sub-sidebar = text highlight only (sb-text-level)            */
 /* ------------------------------------------------------------------ */
 
-/* Indent the sub-section list to make room for the bar */
-html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul {
-  padding-left: 1.5em !important;
+/* --- Page title as collapsible folder header --- */
+html.ext-inline-sidebar .sidebar-nav li.sb-has-sections > a {
+  cursor: pointer;
+  user-select: none;
 }
 
-/* Subtle bar on every sub-section link */
-/* Uses !important to override code-one.css "border: none !important" on li > a */
-html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul > li > a {
+/* Chevron on page title when it has sub-sections */
+html.ext-folder-chevron.ext-inline-sidebar .sidebar-nav li.sb-has-sections > a {
+  position: relative;
+  padding-left: 2em !important;
+}
+
+html.ext-folder-chevron.ext-inline-sidebar
+  .sidebar-nav
+  li.sb-has-sections
+  > a::before {
+  content: '';
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  border-right: 1.5px solid var(--t-sidebar-text);
+  border-bottom: 1.5px solid var(--t-sidebar-text);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  position: absolute;
+  left: 0.8em;
+  top: 50%;
+  margin-top: -0.25em;
+}
+
+html.ext-folder-chevron.ext-inline-sidebar
+  .sidebar-nav
+  li.sb-has-sections.sb-page-collapsed
+  > a::before {
+  transform: rotate(-45deg);
+}
+
+/* --- Bar-level headings (H2) — border-left indicator --- */
+html.ext-inline-sidebar .sidebar-nav li.sb-bar-level > a {
   border-left: 2px solid color-mix(in srgb, var(--t-accent) 20%, transparent) !important;
   padding-left: 0.7em !important;
   transition: border-color 0.15s ease;
 }
 
-/* Hover: medium-strength bar */
-html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul > li > a:hover {
+html.ext-inline-sidebar .sidebar-nav li.sb-bar-level > a:hover {
   border-left-color: color-mix(
     in srgb,
     var(--t-accent) 50%,
@@ -57,16 +88,38 @@ html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul > li > a:hover {
   ) !important;
 }
 
-/* Current section: full accent bar + text highlight */
-html.ext-inline-sidebar
-  .sidebar-nav
-  li.sb-active-page
-  > ul
-  > li.sb-current
-  > a {
+html.ext-inline-sidebar .sidebar-nav li.sb-bar-level.sb-current > a {
   border-left-color: var(--t-accent) !important;
   color: var(--t-accent) !important;
   font-weight: 600;
+}
+
+/* --- Text-level headings (H3+) — text highlight only --- */
+html.ext-inline-sidebar .sidebar-nav li.sb-text-level > a {
+  border: none !important;
+  transition: color 0.15s ease;
+}
+
+html.ext-inline-sidebar .sidebar-nav li.sb-text-level > a:hover {
+  color: var(--t-accent) !important;
+}
+
+html.ext-inline-sidebar .sidebar-nav li.sb-text-level.sb-current > a {
+  color: var(--t-accent) !important;
+  font-weight: 600;
+}
+
+/* --- Sub-sidebar indentation --- */
+html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul {
+  padding-left: 1em !important;
+}
+
+html.ext-inline-sidebar .sidebar-nav li.sb-active-page ul li > a {
+  font-size: 14px;
+}
+
+html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul ul {
+  padding-left: 1em !important;
 }
 
 /* ------------------------------------------------------------------ */
