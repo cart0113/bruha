@@ -91,18 +91,28 @@
         var subUl = li.querySelector(':scope > ul');
         if (!subUl) return;
 
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
         if (li.classList.contains('sb-page-collapsed')) {
-          e.preventDefault();
-          e.stopImmediatePropagation();
           li.classList.remove('sb-page-collapsed');
           return;
         }
 
         var hash = window.location.hash || '';
-        if (hash.indexOf('?id=') === -1) {
-          /* Already at page top — do nothing, don't collapse. */
+        if (hash.indexOf('?id=') !== -1) {
+          /* On a sub-section — navigate to page top without
+             letting docsify re-render (which destroys the
+             sub-sidebar). */
+          var base = hash.split('?')[0];
+          history.pushState(null, '', window.location.pathname + base);
+          window.dispatchEvent(new HashChangeEvent('hashchange'));
+          window.scrollTo(0, 0);
           return;
         }
+
+        /* Already at page top — toggle collapse. */
+        li.classList.add('sb-page-collapsed');
       },
       true
     );
