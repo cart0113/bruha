@@ -22,9 +22,12 @@ Extension styles: hamburger/github-corner hide rules, sidebar bar indicator
 (continuous `border-left` on the active page's `<ul>`, with per-heading overlay
 segments via negative-margin `<a>` borders — gated by `html.ext-inline-sidebar`),
 collapsible folder chevrons (gated by `html.ext-folder-chevron`), page section
-collapse, top nav bar layout and active states. Kills vue.css dash markers
-(`.app-sub-sidebar li:before { content: "-" }`). See `docsify-structure/css-overrides.md`
-for the `!important` override chain required by code-one.css resets.
+collapse, top nav bar layout and active states. When top nav is active, adds
+`padding-bottom: calc(100vh - 75px)` to `.markdown-section` so the last heading
+on any page has enough scroll room to reach the top of the viewport. Kills
+vue.css dash markers (`.app-sub-sidebar li:before { content: "-" }`). See
+`docsify-structure/css-overrides.md` for the `!important` override chain
+required by code-one.css resets.
 
 ## JS Files
 
@@ -64,7 +67,10 @@ elements from sidebar, shows only the active folder's children. Updates on
 page navigation. Build happens on first `doneEach` (not `mounted`) because
 docsify loads `_sidebar.md` asynchronously. Detects folder headers as `<p>`
 or `<strong>` (docsify renders `**bold**` list items as bare `<strong>`,
-not `<p>`).
+not `<p>`). Also handles scroll-to-section for `?id=` anchor navigation:
+docsify's built-in `topMargin`/`scrollIntoView` is unreliable with `auto2top`,
+so `top-nav.js` scrolls to the target heading with a 75px offset via
+`requestAnimationFrame` in both `doneEach` and `hashchange`.
 
 ## Load Order (in index.html `<head>`)
 

@@ -110,21 +110,29 @@ html.ext-inline-sidebar .sidebar-nav li.sb-bar-level.sb-current > a {
   font-weight: 600;
 }
 
-/* --- Text-level headings (H3+) — text highlight only, tight spacing --- */
+/* --- Text-level headings (H3+) — bar highlight like H2, tight spacing --- */
 html.ext-inline-sidebar .sidebar-nav li.sb-text-level > a {
   border-left: 4px solid transparent !important;
-  margin-left: -10px !important;
-  padding-left: 1em !important;
-  transition: color 0.15s ease;
+  margin-left: -4px !important;
+  padding-left: 1.4em !important;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
   padding-top: 0.12em !important;
   padding-bottom: 0.12em !important;
 }
 
 html.ext-inline-sidebar .sidebar-nav li.sb-text-level > a:hover {
+  border-left-color: color-mix(
+    in srgb,
+    var(--t-accent) 35%,
+    transparent
+  ) !important;
   color: var(--t-accent) !important;
 }
 
 html.ext-inline-sidebar .sidebar-nav li.sb-text-level.sb-current > a {
+  border-left-color: var(--t-accent) !important;
   color: var(--t-accent) !important;
   font-weight: 600;
 }
@@ -139,7 +147,7 @@ html.ext-inline-sidebar .sidebar-nav li.sb-active-page ul li > a {
 }
 
 html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul ul {
-  padding-left: 1em !important;
+  padding-left: 0 !important;
 }
 
 /* ------------------------------------------------------------------ */
@@ -481,6 +489,11 @@ html.ext-has-top-nav .sidebar {
 
 html.ext-has-top-nav section.content {
   padding-top: 68px !important;
+}
+
+/* Add scroll room so the last heading on any page can scroll to the top */
+html.ext-has-top-nav .markdown-section {
+  padding-bottom: calc(100vh - 75px);
 }
 
 html.ext-has-top-nav body::before {

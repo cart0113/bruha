@@ -53,12 +53,14 @@ manually dispatching `hashchange` updates only our sidebar state classes
 | Hook | When | Used By |
 |------|------|---------|
 | `hook.ready` | DOM ready, once | `sidebar-nav.js` (MutationObserver + hashchange listener), `collapsible-folders.js` (click handler) |
-| `hook.doneEach` | After every page render | `sidebar-nav.js` (applyActiveStates), `collapsible-folders.js` (setupFolders), `top-nav.js` (buildTopNav + applyFolderState) |
+| `hook.doneEach` | After every page render | `sidebar-nav.js` (applyActiveStates), `collapsible-folders.js` (setupFolders), `top-nav.js` (buildTopNav + applyFolderState + scrollToId) |
 
 ### hashchange Listeners
 
 - `sidebar-nav.js`: calls `applyActiveStates()` — clears and re-applies all `sb-*` classes
-- `top-nav.js`: calls `applyFolderState()` — updates active tab and folder visibility
+- `top-nav.js`: calls `applyFolderState()` — updates active tab and folder visibility;
+  also calls `scrollToId()` via `requestAnimationFrame` to scroll the `?id=` heading
+  into view with the top nav offset
 
 ### MutationObserver (sidebar-nav.js)
 

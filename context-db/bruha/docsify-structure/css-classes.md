@@ -28,7 +28,7 @@ every `doneEach`, `hashchange`, and MutationObserver trigger:
 | `sb-has-sections` | `<li>` | Active page that has an `app-sub-sidebar` (headings) |
 | `sb-current` | `<li>` | The sub-section currently scrolled to (matched by `?id=`) |
 | `sb-bar-level` | `<li>` | H2 heading in sub-sidebar (gets border-left indicator) |
-| `sb-text-level` | `<li>` | H3+ heading in sub-sidebar (text highlight only) |
+| `sb-text-level` | `<li>` | H3+ heading in sub-sidebar (bar indicator + text highlight) |
 
 **Important:** `applyActiveStates` does NOT clear `sb-page-collapsed`. That
 class is managed exclusively by `collapsible-folders.js`.

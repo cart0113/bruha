@@ -14,6 +14,7 @@
   var topNavEl = null;
   var folderData = [];
   var cfg = window.__docsifyExtConfig || {};
+  var TOP_NAV_OFFSET = 75;
 
   function getCurrentPath() {
     return (window.location.hash || '#/').split('?')[0];
@@ -328,6 +329,21 @@
     activateFolder(findActiveIndex());
   }
 
+  /* Scroll to the ?id= target with offset for the fixed top nav bar.
+     Docsify's built-in topMargin/scrollIntoView is unreliable when
+     auto2top is enabled, so we handle it ourselves. */
+  function scrollToId() {
+    var hash = window.location.hash || '';
+    var match = hash.match(/[?&]id=([^&]*)/);
+    if (!match) return;
+
+    var el = document.getElementById(match[1]);
+    if (!el) return;
+
+    var targetY = el.offsetTop - TOP_NAV_OFFSET;
+    window.scrollTo(0, Math.max(0, targetY));
+  }
+
   function topNavPlugin(hook) {
     hook.doneEach(function () {
       var nav = document.querySelector('.sidebar-nav');
@@ -335,11 +351,13 @@
         buildTopNav(nav);
         applyFolderState();
       }
+      requestAnimationFrame(scrollToId);
     });
 
     hook.ready(function () {
       window.addEventListener('hashchange', function () {
         applyFolderState();
+        requestAnimationFrame(scrollToId);
       });
     });
   }
