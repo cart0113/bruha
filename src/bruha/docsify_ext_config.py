@@ -13,7 +13,7 @@ import yaml
 
 REQUIRED_KEYS = [
     "theme_name",
-    "dark_mode_toggle",
+    "theme_controls",
     "dark_mode_default",
     "document_inline_sidebar_selector",
     "document_header_depth",

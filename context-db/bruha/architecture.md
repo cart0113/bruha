@@ -19,6 +19,8 @@ description: Architecture — how config flows from YAML through Python to JS ru
 
 ## CSS Classes Applied by Config
 
+- `theme-<name>` — active color theme (e.g. `theme-parchment`, `theme-pylab`)
+- `dark-mode` — dark variant of the active theme (toggled by user or config)
 - `ext-no-hamburger` — hides sidebar toggle
 - `ext-no-github-corner` — hides repo ribbon
 - `ext-has-top-nav` — shifts sidebar/content down for top nav bar
@@ -34,15 +36,15 @@ Conditional loading uses `.filter(Boolean)`:
 |--------|------|-------------|
 | `codeEnhancementsPlugin` | `code-enhancements.js` | Always active |
 | `collapsibleFoldersPlugin` | `collapsible-folders.js` | Always active |
-| `themePickerPlugin` | `theme-picker.js` | `theme_picker` |
+| `darkTogglePlugin` | `dark-toggle.js` | `theme_controls` !== `none` |
 | `sidebarNavPlugin` | `sidebar-nav.js` | `document_inline_sidebar_selector` or `page_section_collapsible` |
 | `topNavPlugin` | `top-nav.js` | `top_level_folders_as_top_control` |
 
 ## CSS Layers
 
 1. `vue.css` — docsify base layout (CDN)
-2. `code-one.css` — bruha theme (colors, typography, layout)
-3. `color-themes.css` — palette overrides via `.palette-*` classes
+2. `code-one.css` — bruha base theme (Parchment light defaults, typography, layout)
+3. `color-themes.css` — 4 themes × 2 modes via `.theme-*` and `.dark-mode` classes
 4. `docsify-ext.css` — extension styles (indicator, folders, top nav, toggles)
 
 ## Build and Formatting

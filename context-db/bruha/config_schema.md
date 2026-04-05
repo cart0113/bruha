@@ -11,8 +11,9 @@ The config file lives at `docs/docsify-ext.yaml`. All keys are required
 
 | Key | Type | Description |
 |-----|------|-------------|
-| `theme_name` | string | CSS theme name (currently only `code-one`) |
-| `theme_picker` | bool | Show the floating color palette picker button |
+| `theme_name` | string | Color theme: `parchment`, `pylab`, `blossom`, or `midnight` |
+| `theme_controls` | string | Bottom-right UI: `none`, `dark_toggle` (moon/sun), or `theme_picker` (palette panel with swatches + dark toggle) |
+| `dark_mode_default` | bool | Start in dark mode (every theme has light + dark variants) |
 | `document_inline_sidebar_selector` | bool | Show the sidebar bar indicator for document sections |
 | `document_header_depth` | int | How many heading levels to show in sidebar (3 = title + h1 + h2) |
 | `top_level_folders_as_top_control` | bool | Render top-level folders as a horizontal nav bar at page top |

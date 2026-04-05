@@ -1,6 +1,6 @@
 window.__docsifyExtConfig = {
   "theme_name": "parchment",
-  "dark_mode_toggle": true,
+  "theme_controls": "theme_picker",
   "dark_mode_default": false,
   "document_inline_sidebar_selector": true,
   "document_header_depth": 3,
