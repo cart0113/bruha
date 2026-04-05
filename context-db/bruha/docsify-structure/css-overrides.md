@@ -101,6 +101,53 @@ page link. The chevron is positioned at `left: 0.8em` in the `a::before`
 pseudo-element. Fine-tuning requires visual iteration — `calc(1em - Xpx)`
 where X is adjusted by 0.5-1px increments.
 
+## Nested Folder Indentation
+
+Pages under sub-folders (e.g., Examples > General > Docsify Features) are
+at `ul ul ul` depth (level 3+). Three things must shift right together:
+
+### 1. Text indent (code-one.css)
+
+```css
+.sidebar-nav ul ul ul li > a {
+  padding-left: calc(var(--t-sidebar-indent, 1em) * 3 + 8px);
+}
+```
+
+The `+ 8px` adds visual separation from the parent folder header. Without
+it, the page link text aligns with the folder header text since both use
+the same base chevron padding (`2em`).
+
+### 2. Chevron position (docsify-ext.css)
+
+```css
+.sidebar-nav ul ul ul li.sb-page-link > a::before {
+  left: calc(1.8em + 8px);  /* vs 0.8em for level 2 */
+}
+```
+
+The chevron `::before` uses `position: absolute; left: X`. Since all `<ul>`
+and `<li>` elements have 0 padding/margin, the `<a>` left edge is always
+at the sidebar content edge regardless of depth. The `left` value must
+shift by the same amount as the text padding difference (`1em + 8px`).
+
+### 3. Bar indicator position (docsify-ext.css)
+
+```css
+.sidebar-nav ul ul ul li.sb-active-page > ul {
+  margin-left: calc(2em + 3.8px) !important;  /* vs calc(1em - 4.2px) for level 2 */
+}
+```
+
+The bar indicator shifts by the same amount so it aligns with the
+shifted chevron. The H2/H3 overlay technique still works because
+the `-4px` margin on `<a>` elements is relative to their parent `<ul>`.
+
+**Important:** The flat `padding-left: 2em !important` was removed from
+the page link chevron rule (`.sb-page-link > a`). If restored, it would
+override the depth-based padding and flatten all pages back to the same
+indent.
+
 ## Top Nav: Scroll Offset and Padding
 
 When `ext-has-top-nav` is active, the fixed nav bar covers the top ~62px

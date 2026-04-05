@@ -81,10 +81,25 @@ html.ext-folder-chevron.ext-inline-sidebar
   transform: rotate(-45deg);
 }
 
+/* --- Shift chevron + bar for pages under nested folders (ul ul ul = level 3+) --- */
+html.ext-folder-chevron.ext-inline-sidebar
+  .sidebar-nav
+  ul
+  ul
+  ul
+  li.sb-page-link
+  > a::before {
+  left: calc(1.8em + 8px);
+}
+
 /* --- Continuous bar along entire page section list --- */
 html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul {
   border-left: 4px solid color-mix(in srgb, var(--t-accent) 20%, transparent);
   margin-left: calc(1em - 4.2px) !important;
+}
+
+html.ext-inline-sidebar .sidebar-nav ul ul ul li.sb-active-page > ul {
+  margin-left: calc(2em + 3.8px) !important;
 }
 
 /* --- Bar-level headings (H2) — highlight segment on hover/current --- */

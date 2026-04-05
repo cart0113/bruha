@@ -323,9 +323,13 @@ body::before {
 }
 
 /* Heading anchor links should not show underlines */
+/* vue.css sets color on .anchor span — force inherit through the chain */
 .markdown-section h1 a,
 .markdown-section h2 a,
-.markdown-section h3 a {
+.markdown-section h3 a,
+.markdown-section h1 a span,
+.markdown-section h2 a span,
+.markdown-section h3 a span {
   text-decoration: none !important;
   color: inherit !important;
 }
