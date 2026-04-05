@@ -1,73 +1,152 @@
 # Configuration Reference
 
-All bruha settings live in `docs/docsify-ext.yaml`. Every key is required —
-there are no defaults.
+All bruha settings live in `docs/bruha.yaml`. Every key has a default — you only
+need to include the keys you want to override.
 
 ## Example Config
 
+A minimal config that only overrides a few defaults:
+
 ```yaml
-theme_name: code-one
-theme_picker: true
-document_inline_sidebar_selector: true
-document_header_depth: 3
-top_level_folders_as_top_control: true
-hamburger_menu: false
-github_corner: false
+theme_name: blossom
+theme_controls: theme_picker
+github_corner: true
+social_links:
+  github: https://github.com/yourname/yourrepo
 ```
 
 ## Keys
 
 ### theme_name
 
-**Type:** string
+**Type:** string  
+**Default:** `parchment`
 
-The CSS theme to use. Currently the only theme is `code-one`.
+The color theme. Options: `parchment`, `pylab` (Eclipse-inspired), `blossom`
+(lavender pastel), `near-midnight` (soft dark). Each theme has light and dark
+variants.
 
-### theme_picker
+### theme_controls
 
-**Type:** boolean
+**Type:** string  
+**Default:** `dark_toggle`
 
-When `true`, a floating palette button appears in the bottom-right corner.
-Clicking it opens a panel with 10 color palette swatches. The selected palette
-is saved to localStorage.
+Bottom-right UI controls. Options:
+
+- `none` — no controls
+- `dark_toggle` — moon/sun button for light/dark switching
+- `theme_picker` — palette button opening a panel with theme swatches, dark mode
+  toggle, and vivid code toggle
+
+### dark_mode_default
+
+**Type:** boolean  
+**Default:** `false`
+
+Start in dark mode. Every theme has a dark variant.
+
+### code_highlighter
+
+**Type:** string  
+**Default:** `vivid`
+
+Syntax coloring style. Options: `classic` (muted), `vivid` (high-saturation).
 
 ### document_inline_sidebar_selector
 
-**Type:** boolean
+**Type:** boolean  
+**Default:** `true`
 
-When `true`, shows a vertical bar indicator in the sidebar that spans the
-current document's section. The bar highlights which heading you're currently
-viewing.
+Show a vertical bar indicator in the sidebar that spans the current document's
+section. The bar highlights which heading you're currently viewing.
 
 ### document_header_depth
 
-**Type:** integer
+**Type:** integer  
+**Default:** `3`
 
-Controls how many heading levels appear in the sidebar for the active document.
-A value of `3` shows the document title, h1 headings, and h2 headings. Maps
-directly to docsify's `subMaxLevel`.
+How many heading levels appear in the sidebar for the active document. A value
+of `3` shows the document title, h2 headings, and h3 headings. Maps directly to
+docsify's `subMaxLevel`.
 
 ### top_level_folders_as_top_control
 
-**Type:** boolean
+**Type:** boolean  
+**Default:** `true`
 
-When `true`, top-level folders become buttons in a horizontal navigation bar at
-the top of the page. The sidebar shows only the active folder's children. When
-enabled, the sidebar builder validates that all top-level items are folders — no
-loose `.md` files are allowed at the docs root.
+Top-level folders become buttons in a horizontal navigation bar at the top of
+the page. The sidebar shows only the active folder's children. When enabled, the
+sidebar builder validates that all top-level items are folders.
 
 ### hamburger_menu
 
-**Type:** boolean
+**Type:** boolean  
+**Default:** `false`
 
-When `true`, shows docsify's default sidebar toggle button (hamburger icon). Set
-to `false` to hide it.
+Show docsify's default sidebar toggle button (hamburger icon).
 
 ### github_corner
 
-**Type:** boolean
+**Type:** boolean  
+**Default:** `false`
 
-When `true`, shows the GitHub corner ribbon linking to the repo. Set to `false`
-to hide it.
+Show the GitHub corner ribbon linking to the repo.
 
-## Another Header
+### content_folder
+
+**Type:** string  
+**Default:** `src`
+
+Subdirectory of `docs/` containing markdown content. Keeps content separate from
+themes, config, and docsify infrastructure.
+
+### folder_chevron
+
+**Type:** boolean  
+**Default:** `true`
+
+Show collapse chevron arrows on folder headers in the sidebar.
+
+### page_section_collapsible
+
+**Type:** boolean  
+**Default:** `true`
+
+Allow collapsing page sub-sections by re-clicking the active page header in the
+sidebar.
+
+### search_style
+
+**Type:** string  
+**Default:** `magnify-glass`
+
+Style of the search control in the top nav bar.
+
+### sidebar_indent
+
+**Type:** string  
+**Default:** `1em`
+
+CSS value for sidebar indentation depth. Sets the `--t-sidebar-indent` custom
+property.
+
+### site_icon
+
+**Type:** string  
+**Default:** `""` (empty — no icon)
+
+Path to an SVG icon displayed in the top nav bar.
+
+### social_links
+
+**Type:** object  
+**Default:** `{}` (empty — no links)
+
+Social media links shown in the top nav bar. Keys are platform names, values are
+URLs:
+
+```yaml
+social_links:
+  github: https://github.com/yourname/yourrepo
+  bluesky: https://bsky.app/profile/yourhandle
+```

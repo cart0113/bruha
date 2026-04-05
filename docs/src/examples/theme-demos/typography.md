@@ -64,13 +64,13 @@ Content continues after the rule with normal spacing.
 
 ### Mixed Content Lists
 
-- **Configuration**: edit `docsify-ext.yaml` to control features
+- **Configuration**: edit `bruha.yaml` to control features
 - **Sidebar builder**: auto-generates `_sidebar.md` from filesystem
-- **Theme picker**: 10 color palettes saved to localStorage
-  1. Parchment (default warm tones)
-  2. Arctic (cool blue-white)
-  3. Forest (sage green and earth)
-  4. Ocean (teal and deep blue)
+- **Theme controls**: 4 color themes saved to localStorage
+  1. Parchment (warm, traditional)
+  2. Pylab (bold, scientific)
+  3. Blossom (soft, lavender)
+  4. Near-Midnight (cool, dark)
 
 ## Images
 

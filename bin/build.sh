@@ -8,7 +8,7 @@ import bruha.sidebar_builder as sb
 config = cfg.load_config('docs')
 sb.write_sidebar('docs', config['top_level_folders_as_top_control'], config['content_folder'])
 cfg.generate_config_js('docs')
-print('Built _sidebar.md + docsify-ext-config.js')
+print('Built _sidebar.md + bruha-config.js')
 "
 
 # Cache-bust all asset references in index.html

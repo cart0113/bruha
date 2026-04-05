@@ -1,9 +1,9 @@
-"""Read docsify-ext.yaml and generate a JS config file for the browser.
+"""Read bruha.yaml and generate a JS config file for the browser.
 
-The YAML file is the single source of truth for all docsify extension
-settings. This module reads it, validates required keys, and writes a
-JS file that sets window.__docsifyExtConfig plus applies immediate CSS
-classes to <html> before docsify renders.
+The YAML file is the single source of truth for all bruha extension
+settings. This module reads it, applies defaults for any missing keys,
+and writes a JS file that sets window.__docsifyExtConfig plus applies
+immediate CSS classes to <html> before docsify renders.
 """
 
 import json
@@ -11,27 +11,24 @@ import pathlib
 
 import yaml
 
-REQUIRED_KEYS = [
-    "theme_name",
-    "theme_controls",
-    "dark_mode_default",
-    "code_highlighter",
-    "document_inline_sidebar_selector",
-    "document_header_depth",
-    "top_level_folders_as_top_control",
-    "hamburger_menu",
-    "github_corner",
-    "content_folder",
-    "folder_chevron",
-    "page_section_collapsible",
-    "search_style",
-]
-
-OPTIONAL_KEYS = [
-    "site_icon",
-    "social_links",
-    "sidebar_indent",
-]
+DEFAULTS = {
+    "theme_name": "parchment",
+    "theme_controls": "dark_toggle",
+    "dark_mode_default": False,
+    "code_highlighter": "vivid",
+    "document_inline_sidebar_selector": True,
+    "document_header_depth": 3,
+    "top_level_folders_as_top_control": True,
+    "hamburger_menu": False,
+    "github_corner": False,
+    "content_folder": "src",
+    "folder_chevron": True,
+    "page_section_collapsible": True,
+    "search_style": "magnify-glass",
+    "sidebar_indent": "1em",
+    "site_icon": "",
+    "social_links": {},
+}
 
 JS_TEMPLATE = """\
 window.__docsifyExtConfig = {config_json};
@@ -47,28 +44,23 @@ window.__docsifyExtConfig = {config_json};
 """
 
 
-class ConfigError(Exception):
-    pass
-
-
 def load_config(docs_folder):
-    """Read docsify-ext.yaml and return the config dict."""
-    config_path = pathlib.Path(docs_folder) / "docsify-ext.yaml"
-    raw = yaml.safe_load(config_path.read_text(encoding="utf-8"))
-
-    missing = [k for k in REQUIRED_KEYS if k not in raw]
-    if missing:
-        raise ConfigError(f"Missing required config keys: {missing}")
-
-    return raw
+    """Read bruha.yaml and return the config dict with defaults applied."""
+    config_path = pathlib.Path(docs_folder) / "bruha.yaml"
+    config = dict(DEFAULTS)
+    if config_path.exists():
+        raw = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+        if raw:
+            config.update(raw)
+    return config
 
 
 def generate_config_js(docs_folder):
-    """Generate docs/themes/docsify-ext-config.js from the YAML config."""
+    """Generate docs/themes/bruha-config.js from the YAML config."""
     config = load_config(docs_folder)
     docs_root = pathlib.Path(docs_folder)
     config_json = json.dumps(config, indent=2)
     js_content = JS_TEMPLATE.format(config_json=config_json)
-    output_path = docs_root / "themes" / "docsify-ext-config.js"
+    output_path = docs_root / "themes" / "bruha-config.js"
     output_path.write_text(js_content, encoding="utf-8")
     return output_path

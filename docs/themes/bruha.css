@@ -1,5 +1,5 @@
 /*
- * docsify-ext.css — styles for the docsify extension system.
+ * bruha.css — styles for the bruha extension system.
  *
  * Config-driven toggles, sidebar bar indicator, collapsible folders,
  * page section collapse, and top navigation bar. Loaded after code-one.css.
@@ -28,7 +28,7 @@ html.ext-no-github-corner .github-corner {
 }
 
 /* ------------------------------------------------------------------ */
-/* Sidebar heading hierarchy (managed by sidebar-nav.js)               */
+/* Sidebar heading hierarchy (managed by sidebar-indicator.js)          */
 /* Gated by html.ext-inline-sidebar (document_inline_sidebar_selector) */
 /*                                                                     */
 /* Page title (H1) = collapsible like a folder (sb-has-sections)       */

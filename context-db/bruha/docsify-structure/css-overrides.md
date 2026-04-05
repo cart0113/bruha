@@ -26,7 +26,7 @@ description: CSS override pitfalls — code-one.css !important resets, how to ov
 }
 ```
 
-**Any override in `docsify-ext.css` MUST also use `!important`** or it will
+**Any override in `bruha.css` MUST also use `!important`** or it will
 silently fail. The `margin: 0 !important` shorthand is especially easy to
 miss — it blocks `margin-left`, `margin-right`, etc. even when set with a
 more specific selector.
@@ -118,7 +118,7 @@ The `+ 8px` adds visual separation from the parent folder header. Without
 it, the page link text aligns with the folder header text since both use
 the same base chevron padding (`2em`).
 
-### 2. Chevron position (docsify-ext.css)
+### 2. Chevron position (bruha.css)
 
 ```css
 .sidebar-nav ul ul ul li.sb-page-link > a::before {
@@ -131,7 +131,7 @@ and `<li>` elements have 0 padding/margin, the `<a>` left edge is always
 at the sidebar content edge regardless of depth. The `left` value must
 shift by the same amount as the text padding difference (`1em + 8px`).
 
-### 3. Bar indicator position (docsify-ext.css)
+### 3. Bar indicator position (bruha.css)
 
 ```css
 .sidebar-nav ul ul ul li.sb-active-page > ul {

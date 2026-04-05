@@ -28,23 +28,22 @@ for key in config.keys():
 
 ```javascript
 (function () {
-  var palettes = [
+  var themes = [
     { id: 'parchment', label: 'Parchment', color: '#4a6591' },
-    { id: 'arctic', label: 'Arctic', color: '#2563eb' },
-    { id: 'forest', label: 'Forest', color: '#3d7a4a' },
+    { id: 'pylab', label: 'Pylab', color: '#d35400' },
+    { id: 'blossom', label: 'Blossom', color: '#7e57c2' },
+    { id: 'near-midnight', label: 'Near Midnight', color: '#7cafc2' },
   ];
 
-  function applyPalette(id) {
+  function applyTheme(id) {
     var html = document.documentElement;
-    html.className = html.className.replace(/\bpalette-\w+/g, '').trim();
-    if (id !== 'parchment') {
-      html.classList.add('palette-' + id);
-    }
-    localStorage.setItem('doc-palette', id);
+    html.className = html.className.replace(/\btheme-\w+/g, '').trim();
+    html.classList.add('theme-' + id);
+    localStorage.setItem('doc-theme', id);
   }
 
-  palettes.forEach(function (p) {
-    console.log('Available palette:', p.label);
+  themes.forEach(function (t) {
+    console.log('Available theme:', t.label);
   });
 })();
 ```
@@ -60,18 +59,23 @@ DOCS_DIR="${REPO_ROOT}/docs"
 
 echo "Building sidebar..."
 PYTHONPATH="${REPO_ROOT}/src" python-main -c "
+import bruha.docsify_ext_config as cfg
 import bruha.sidebar_builder as sb
-sb.write_sidebar('${DOCS_DIR}', True)
+config = cfg.load_config('${DOCS_DIR}')
+sb.write_sidebar('${DOCS_DIR}', config['top_level_folders_as_top_control'], config['content_folder'])
+cfg.generate_config_js('${DOCS_DIR}')
 "
 
-echo "Done. Sidebar written to ${DOCS_DIR}/_sidebar.md"
+echo "Done."
 ```
 
 ## YAML
 
 ```yaml
-theme_name: code-one
-theme_picker: true
+theme_name: parchment
+theme_controls: theme_picker
+dark_mode_default: false
+code_highlighter: vivid
 document_inline_sidebar_selector: true
 document_header_depth: 3
 top_level_folders_as_top_control: true
@@ -110,8 +114,8 @@ github_corner: false
   "version": "1.0.0",
   "description": "Personal docsify extensions",
   "scripts": {
-    "build": "python-main -m bruha.build",
-    "serve": "docsify serve docs"
+    "build": "bin/build.sh",
+    "serve": "bin/serve.sh"
   },
   "keywords": ["docsify", "theme", "documentation"]
 }

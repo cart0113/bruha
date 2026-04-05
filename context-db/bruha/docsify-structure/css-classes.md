@@ -6,7 +6,7 @@ description: CSS class system — all sb-* and ext-* classes, what sets them, wh
 
 ## HTML-level Toggle Classes
 
-Set by `docsify-ext-config.js` on page load. Gate entire feature sets:
+Set by `bruha-config.js` on page load. Gate entire feature sets:
 
 | Class | Config Key | Effect |
 |-------|-----------|--------|
@@ -18,7 +18,7 @@ Set by `docsify-ext-config.js` on page load. Gate entire feature sets:
 
 ## Sidebar State Classes (sb-*)
 
-Set by `sidebar-nav.js` in `applyActiveStates()`. Cleared and re-applied on
+Set by `sidebar-indicator.js` in `applyActiveStates()`. Cleared and re-applied on
 every `doneEach`, `hashchange`, and MutationObserver trigger:
 
 | Class | Set On | Meaning |

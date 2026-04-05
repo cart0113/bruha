@@ -1,41 +1,74 @@
 # Sidebar Builder
 
 The sidebar builder generates `_sidebar.md` from the filesystem structure of the
-`docs/` folder.
+`docs/src/` folder (or whichever `content_folder` is configured).
 
-## Filesystem Convention
+## Filesystem Structure
 
-Every `.md` file and every directory must have a numeric prefix followed by an
-underscore:
+Content lives under `docs/src/`, separate from themes and config:
 
 ```
 docs/
-├── 0_overview/
-│   └── 0_about.md
-├── 1_configuration/
-│   ├── 0_config-reference.md
-│   └── 1_sidebar-builder.md
-├── 2_examples/
-│   ├── 0_theme-demos/
-│   │   ├── 0_code-blocks.md
-│   │   └── 1_typography.md
-│   └── 1_tables-and-lists.md
+├── src/                    ← markdown content
+│   ├── _order              ← top-level folder ordering
+│   ├── overview/
+│   │   └── overview.md
+│   ├── configuration/
+│   │   ├── config-reference.md
+│   │   └── sidebar-builder.md
+│   └── examples/
+│       ├── _order
+│       ├── general/
+│       │   ├── docsify-features.md
+│       │   └── tables-and-lists.md
+│       └── theme-demos/
+│           ├── code-blocks.md
+│           └── typography.md
+├── themes/                 ← CSS + JS plugins
+├── bruha.yaml              ← config
+└── index.html
 ```
 
-## Numbering Rules
+## Content Rules
 
-- Prefixes must be contiguous integers starting from 0 (no gaps)
-- No duplicate numbers at the same level
-- Files and folders share a single number sequence per directory
-- Unnumbered items cause an error
+### No mixing files and folders
+
+A directory must contain EITHER markdown files OR sub-directories, never both.
+Mixing raises an error.
+
+### Ordering with \_order files
+
+Each directory can contain a file named `_order` that lists entries one per line
+in the desired display order:
+
+```
+overview
+configuration
+examples
+```
+
+Rules:
+
+- Items listed in `_order` appear in that order
+- Items on disk but not in `_order` are appended alphabetically
+- Items in `_order` that don't exist on disk are silently ignored
+- Lines starting with `#` are comments
+
+### Default ordering (no \_order file)
+
+When no `_order` file exists:
+
+1. A file whose stem matches the folder name sorts first (e.g. `overview.md`
+   inside `overview/`)
+2. Remaining items sort alphabetically
 
 ## Display Names
 
 For `.md` files, the sidebar link text comes from:
 
 1. The first `# heading` in the file (if present)
-2. Otherwise, the filename with prefix stripped, separators replaced with
-   spaces, and title-cased
+2. Otherwise, the filename with dashes/underscores replaced by spaces and
+   title-cased
 
 Folders use their directory name with the same cleanup logic.
 
@@ -45,10 +78,10 @@ The builder produces standard docsify sidebar markdown:
 
 ```markdown
 - **Overview**
-  - [bruha](0_overview/0_about.md)
+  - [Overview](overview/overview.md)
 - **Configuration**
-  - [Configuration Reference](1_configuration/0_config-reference.md)
-  - [Sidebar Builder](1_configuration/1_sidebar-builder.md)
+  - [Configuration Reference](configuration/config-reference.md)
+  - [Sidebar Builder](configuration/sidebar-builder.md)
 ```
 
 ## Skipped Items
@@ -63,13 +96,15 @@ The builder produces standard docsify sidebar markdown:
 ```python
 import bruha.sidebar_builder as sb
 
-content = sb.build_sidebar("docs", True)
+content = sb.build_sidebar("docs", True, "src")
 
-sb.write_sidebar("docs", True)
+sb.write_sidebar("docs", True, "src")
 ```
 
-The second argument (`top_level_folders_only`) enforces that all top-level items
-are directories when `True`.
+- `docs_folder` — path to the docs root
+- `top_level_folders_only` — when `True`, enforces that all top-level items are
+  directories
+- `content_folder` — subdirectory containing markdown content (e.g. `"src"`)
 
 ## Pre-Commit Hook
 
@@ -82,7 +117,7 @@ set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 DOCS_DIR="${REPO_ROOT}/docs"
-SIDEBAR="${DOCS_DIR}/_sidebar.md"
+SIDEBAR="${DOCS_DIR}/src/_sidebar.md"
 
 if ! git diff --cached --name-only | grep -q '^docs/'; then
     exit 0
@@ -93,10 +128,10 @@ import bruha.docsify_ext_config as ext_config
 import bruha.sidebar_builder as sb
 
 config = ext_config.load_config('${DOCS_DIR}')
-sb.write_sidebar('${DOCS_DIR}', config['top_level_folders_as_top_control'])
+sb.write_sidebar('${DOCS_DIR}', config['top_level_folders_as_top_control'], config['content_folder'])
 ext_config.generate_config_js('${DOCS_DIR}')
 "
 
 git add "${SIDEBAR}"
-git add "${DOCS_DIR}/themes/docsify-ext-config.js"
+git add "${DOCS_DIR}/themes/bruha-config.js"
 ```

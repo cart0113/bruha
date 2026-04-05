@@ -44,7 +44,7 @@ Setting `window.location.hash` directly triggers docsify's router, which
 re-renders the page and destroys the `app-sub-sidebar`. Using
 `history.pushState` changes the URL without triggering docsify, then
 manually dispatching `hashchange` updates only our sidebar state classes
-(via `sidebar-nav.js` listener).
+(via `sidebar-indicator.js` listener).
 
 ## Event/Hook Lifecycle
 
@@ -52,17 +52,17 @@ manually dispatching `hashchange` updates only our sidebar state classes
 
 | Hook | When | Used By |
 |------|------|---------|
-| `hook.ready` | DOM ready, once | `sidebar-nav.js` (MutationObserver + hashchange listener), `collapsible-folders.js` (click handler) |
-| `hook.doneEach` | After every page render | `sidebar-nav.js` (applyActiveStates), `collapsible-folders.js` (setupFolders), `top-nav.js` (buildTopNav + applyFolderState + scrollToId) |
+| `hook.ready` | DOM ready, once | `sidebar-indicator.js` (MutationObserver + hashchange listener), `collapsible-folders.js` (click handler) |
+| `hook.doneEach` | After every page render | `sidebar-indicator.js` (applyActiveStates), `collapsible-folders.js` (setupFolders), `top-nav.js` (buildTopNav + applyFolderState + scrollToId) |
 
 ### hashchange Listeners
 
-- `sidebar-nav.js`: calls `applyActiveStates()` — clears and re-applies all `sb-*` classes
+- `sidebar-indicator.js`: calls `applyActiveStates()` — clears and re-applies all `sb-*` classes
 - `top-nav.js`: calls `applyFolderState()` — updates active tab and folder visibility;
   also calls `scrollToId()` via `requestAnimationFrame` to scroll the `?id=` heading
   into view with the top nav offset
 
-### MutationObserver (sidebar-nav.js)
+### MutationObserver (sidebar-indicator.js)
 
 Watches `.sidebar-nav` for `class` attribute changes on any descendant:
 - Fires `applyActiveStates()` when classes change
@@ -81,7 +81,7 @@ Runs on every `doneEach`. For each `<li>` with a `<p>` or `<strong>` header:
 4. Auto-collapses folders not containing the current page
 5. Skips top-level folders when `top_level_folders_as_top_control` is active
 
-## findActivePage Priority (sidebar-nav.js)
+## findActivePage Priority (sidebar-indicator.js)
 
 1. Look for `.app-sub-sidebar` and return its parent `<li>` (most reliable)
 2. Match page links by URL path (strips `?id=`)

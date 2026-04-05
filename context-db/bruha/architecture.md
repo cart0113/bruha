@@ -6,10 +6,10 @@ description: Architecture — how config flows from YAML through Python to JS ru
 
 ## Config Flow: YAML -> Python -> JS
 
-1. User edits `docs/docsify-ext.yaml` (single source of truth)
+1. User edits `docs/bruha.yaml` (single source of truth)
 2. `bin/build.sh` runs Python:
-   - `docsify_ext_config.load_config()` reads and validates the YAML
-   - `docsify_ext_config.generate_config_js()` writes `docs/themes/docsify-ext-config.js`
+   - `docsify_ext_config.load_config()` reads YAML and merges with defaults
+   - `docsify_ext_config.generate_config_js()` writes `docs/themes/bruha-config.js`
    - `sidebar_builder.write_sidebar()` reads `_order` files and generates `_sidebar.md`
 3. `bin/build.sh` runs prettier on all JS, CSS, and MD files
 4. Generated JS file is loaded first in `<head>`:
@@ -37,16 +37,20 @@ Conditional loading uses `.filter(Boolean)`:
 |--------|------|-------------|
 | `codeEnhancementsPlugin` | `code-enhancements.js` | Always active |
 | `collapsibleFoldersPlugin` | `collapsible-folders.js` | Always active |
-| `darkTogglePlugin` | `dark-toggle.js` | `theme_controls` !== `none` |
-| `sidebarNavPlugin` | `sidebar-nav.js` | `document_inline_sidebar_selector` or `page_section_collapsible` |
+| `themeControlsPlugin` | `theme-controls.js` | `theme_controls` !== `none` |
+| `sidebarIndicatorPlugin` | `sidebar-indicator.js` | `document_inline_sidebar_selector` or `page_section_collapsible` |
 | `topNavPlugin` | `top-nav.js` | `top_level_folders_as_top_control` |
+
+`folder-redirect.js` runs synchronously before docsify loads (not a docsify
+plugin). It parses `_sidebar.md` and redirects folder-only URLs to the first
+child page.
 
 ## CSS Layers
 
 1. `vue.css` — docsify base layout (CDN)
 2. `code-one.css` — bruha base theme (Parchment light defaults, typography, layout)
-3. `color-themes.css` — 4 themes × 2 modes via `.theme-*` and `.dark-mode` classes, plus vivid code highlighter via `.code-vivid`
-4. `docsify-ext.css` — extension styles (indicator, folders, top nav, toggles)
+3. `color-themes.css` — 4 themes x 2 modes via `.theme-*` and `.dark-mode` classes, plus vivid code highlighter via `.code-vivid`
+4. `bruha.css` — extension styles (indicator, folders, top nav, toggles)
 
 ## Build and Formatting
 

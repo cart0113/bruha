@@ -44,7 +44,7 @@ nav.
 
 ## Color Themes
 
-Click the palette button in the bottom-right corner to switch between 10 color
+Click the palette button in the bottom-right corner to switch between 4 color
 themes. Your choice persists across page loads via localStorage.
 
 Each theme overrides CSS custom properties (`--t-*` variables), so every element
@@ -77,9 +77,9 @@ JSON, Markdown, TOML, and REST.
 ```toml
 [tool.bruha]
 docs_folder = "docs"
-theme = "code-one"
+theme = "parchment"
 
 [tool.bruha.features]
-theme_picker = true
+theme_controls = "theme_picker"
 top_nav = true
 ```

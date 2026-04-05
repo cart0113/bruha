@@ -19,7 +19,7 @@ src/bruha/                  Python tools
   sidebar_builder.py        Generates _sidebar.md from filesystem + _order files
   docsify_ext_config.py     Reads YAML config, generates JS config bridge
 docs/                       Docsify site root (served as static files)
-  docsify-ext.yaml          Config (single source of truth)
+  bruha.yaml                Config (single source of truth)
   src/                      Markdown content (parallel to themes/)
     _order                  Top-level folder ordering
     overview/               Folders contain EITHER files OR sub-folders, never both
@@ -39,7 +39,7 @@ context-db/                 Project knowledge database (context-db format)
 bin/build.sh
 ```
 
-This rebuilds `_sidebar.md` + `docsify-ext-config.js` from the YAML config and filesystem, then runs prettier on all JS, CSS, and MD files.
+This rebuilds `_sidebar.md` + `bruha-config.js` from the YAML config and filesystem, then runs prettier on all JS, CSS, and MD files.
 
 ### Serving
 

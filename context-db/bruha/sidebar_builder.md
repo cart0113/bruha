@@ -41,7 +41,7 @@ docs/
   src/        ← markdown content
   themes/     ← CSS + JS plugins
   index.html
-  docsify-ext.yaml
+  bruha.yaml
 ```
 
 ## Ordering

@@ -1,7 +1,7 @@
 /*
  * Theme controls — bottom-right UI for dark mode, theme, and code style.
  *
- * Config key: theme_controls (in docsify-ext.yaml)
+ * Config key: theme_controls (in bruha.yaml)
  *   "none"         — no controls
  *   "dark_toggle"  — moon/sun button for light/dark
  *   "theme_picker" — palette button opening panel with theme swatches,
@@ -159,7 +159,7 @@
   /* ================================================================ */
 
   function mountThemePicker() {
-    var swatchsHtml = THEMES.map(function (t) {
+    var swatchesHtml = THEMES.map(function (t) {
       var cls = 'tc-swatch' + (t.id === currentTheme ? ' tc-active' : '');
       return (
         '<button class="' +
@@ -183,7 +183,7 @@
       '<div class="tc-panel">' +
       '  <div class="tc-head"><span>Theme</span><button class="tc-close">&times;</button></div>' +
       '  <div class="tc-swatches">' +
-      swatchsHtml +
+      swatchesHtml +
       '</div>' +
       '  <div class="tc-row">' +
       '    <span class="tc-row-label">Dark mode</span>' +
@@ -245,7 +245,7 @@
   /* Docsify plugin                                                    */
   /* ================================================================ */
 
-  function darkTogglePlugin(hook) {
+  function themeControlsPlugin(hook) {
     var mode = cfg.theme_controls || 'dark_toggle';
     if (mode === 'none') return;
 
@@ -262,5 +262,5 @@
     });
   }
 
-  window.darkTogglePlugin = darkTogglePlugin;
+  window.themeControlsPlugin = themeControlsPlugin;
 })();

@@ -192,7 +192,7 @@
     }
   }
 
-  function sidebarNavPlugin(hook) {
+  function sidebarIndicatorPlugin(hook) {
     hook.doneEach(function () {
       applyActiveStates();
       scrollActiveToClickY();
@@ -218,5 +218,5 @@
     });
   }
 
-  window.sidebarNavPlugin = sidebarNavPlugin;
+  window.sidebarIndicatorPlugin = sidebarIndicatorPlugin;
 })();

@@ -11,9 +11,9 @@ window.__docsifyExtConfig = {
   "content_folder": "src",
   "folder_chevron": true,
   "page_section_collapsible": true,
+  "search_style": "magnify-glass",
   "sidebar_indent": "1em",
   "site_icon": "assets/bruha-icon.svg",
-  "search_style": "magnify-glass",
   "social_links": {
     "github": "https://github.com/cart0113/bruha"
   }

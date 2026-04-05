@@ -26,23 +26,25 @@
   <!-- base docsify layout (required for structure) -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <!-- theme -->
-  <link rel="stylesheet" href="themes/code-one.css?v=20260405123957">
+  <link rel="stylesheet" href="themes/code-one.css?v=20260405131618">
   <!-- color theme overrides (light + dark variants) -->
-  <link rel="stylesheet" href="themes/color-themes.css?v=20260405123957">
+  <link rel="stylesheet" href="themes/color-themes.css?v=20260405131618">
   <!-- extension styles (indicator, collapsible folders, top nav, toggles) -->
-  <link rel="stylesheet" href="themes/docsify-ext.css?v=20260405123957">
+  <link rel="stylesheet" href="themes/bruha.css?v=20260405131618">
   <!-- generated config (applies CSS classes before render) -->
-  <script src="themes/docsify-ext-config.js?v=20260405123957"></script>
-  <!-- dark mode toggle (applies saved choice before render) -->
-  <script src="themes/dark-toggle.js?v=20260405123957"></script>
+  <script src="themes/bruha-config.js?v=20260405131618"></script>
+  <!-- theme controls (applies saved choice before render) -->
+  <script src="themes/theme-controls.js?v=20260405131618"></script>
   <!-- code enhancements plugin (load before docsify) -->
-  <script src="themes/code-enhancements.js?v=20260405123957"></script>
+  <script src="themes/code-enhancements.js?v=20260405131618"></script>
   <!-- sidebar bar indicator (load before docsify) -->
-  <script src="themes/sidebar-nav.js?v=20260405123957"></script>
+  <script src="themes/sidebar-indicator.js?v=20260405131618"></script>
   <!-- collapsible folder sections -->
-  <script src="themes/collapsible-folders.js?v=20260405123957"></script>
+  <script src="themes/collapsible-folders.js?v=20260405131618"></script>
   <!-- top-level folder navigation bar -->
-  <script src="themes/top-nav.js?v=20260405123957"></script>
+  <script src="themes/top-nav.js?v=20260405131618"></script>
+  <!-- redirect folder-only URLs to first child page -->
+  <script src="themes/folder-redirect.js?v=20260405131618"></script>
 </head>
 <body>
   <!-- SVG sprite — hidden, reused via <use href="#icon-name"/> -->
@@ -107,8 +109,8 @@
       plugins: [
         codeEnhancementsPlugin,
         collapsibleFoldersPlugin,
-        cfg.theme_controls !== 'none' ? darkTogglePlugin : null,
-        (cfg.document_inline_sidebar_selector || cfg.page_section_collapsible) ? sidebarNavPlugin : null,
+        cfg.theme_controls !== 'none' ? themeControlsPlugin : null,
+        (cfg.document_inline_sidebar_selector || cfg.page_section_collapsible) ? sidebarIndicatorPlugin : null,
         cfg.top_level_folders_as_top_control ? topNavPlugin : null,
       ].filter(Boolean),
     }
