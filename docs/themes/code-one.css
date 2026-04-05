@@ -182,7 +182,7 @@ body::before {
 
 .sidebar-nav ul ul ul li > a,
 .sidebar-nav ul ul ul li > p {
-  padding-left: calc(var(--t-sidebar-indent, 1em) * 3);
+  padding-left: calc(var(--t-sidebar-indent, 1em) * 3 + 8px);
 }
 
 .sidebar-nav ul ul ul ul li > a,

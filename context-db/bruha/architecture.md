@@ -19,8 +19,9 @@ description: Architecture — how config flows from YAML through Python to JS ru
 
 ## CSS Classes Applied by Config
 
-- `theme-<name>` — active color theme (e.g. `theme-parchment`, `theme-pylab`)
+- `theme-<name>` — active color theme (e.g. `theme-parchment`, `theme-near-midnight`)
 - `dark-mode` — dark variant of the active theme (toggled by user or config)
+- `code-vivid` — high-saturation syntax highlighting (toggled by user or config)
 - `ext-no-hamburger` — hides sidebar toggle
 - `ext-no-github-corner` — hides repo ribbon
 - `ext-has-top-nav` — shifts sidebar/content down for top nav bar
@@ -44,7 +45,7 @@ Conditional loading uses `.filter(Boolean)`:
 
 1. `vue.css` — docsify base layout (CDN)
 2. `code-one.css` — bruha base theme (Parchment light defaults, typography, layout)
-3. `color-themes.css` — 4 themes × 2 modes via `.theme-*` and `.dark-mode` classes
+3. `color-themes.css` — 4 themes × 2 modes via `.theme-*` and `.dark-mode` classes, plus vivid code highlighter via `.code-vivid`
 4. `docsify-ext.css` — extension styles (indicator, folders, top nav, toggles)
 
 ## Build and Formatting

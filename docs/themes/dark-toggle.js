@@ -1,15 +1,16 @@
 /*
- * Theme controls — bottom-right UI for dark mode and theme switching.
+ * Theme controls — bottom-right UI for dark mode, theme, and code style.
  *
  * Config key: theme_controls (in docsify-ext.yaml)
  *   "none"         — no controls
  *   "dark_toggle"  — moon/sun button for light/dark
- *   "theme_picker" — palette button opening panel with theme swatches
- *                     and a light/dark toggle
+ *   "theme_picker" — palette button opening panel with theme swatches,
+ *                     dark mode toggle, and vivid code toggle
  *
  * Also reads:
- *   theme_name      — initial theme (parchment|pylab|blossom|midnight)
+ *   theme_name        — initial theme (parchment|pylab|blossom|near-midnight)
  *   dark_mode_default — start in dark mode (boolean)
+ *   code_highlighter  — "classic" or "vivid" (default vivid)
  *
  * Persists choices in localStorage. Applies classes to <html>
  * immediately (before docsify renders) so there is no flash.
@@ -21,13 +22,14 @@
 (function () {
   var DARK_KEY = 'doc-dark-mode';
   var THEME_KEY = 'doc-theme';
+  var CODE_KEY = 'doc-code-highlighter';
   var cfg = window.__docsifyExtConfig || {};
 
   var THEMES = [
     { id: 'parchment', label: 'Parchment', color: '#4a6591' },
-    { id: 'pylab', label: 'Pylab', color: '#1f77b4' },
-    { id: 'blossom', label: 'Blossom', color: '#c27a8c' },
-    { id: 'midnight', label: 'Midnight', color: '#6c71c4' },
+    { id: 'pylab', label: 'Pylab', color: '#2160bb' },
+    { id: 'blossom', label: 'Blossom', color: '#9668c4' },
+    { id: 'near-midnight', label: 'Near-Midnight', color: '#6c71c4' },
   ];
 
   function svgUse(id) {
@@ -52,9 +54,21 @@
     currentTheme = cfg.theme_name || 'parchment';
   }
 
+  /* --- Resolve initial code highlighter: localStorage > config --- */
+  var storedCode = localStorage.getItem(CODE_KEY);
+  var isVivid;
+  if (storedCode !== null) {
+    isVivid = storedCode === 'vivid';
+  } else {
+    isVivid = (cfg.code_highlighter || 'vivid') === 'vivid';
+  }
+
   /* --- Apply immediately (before docsify renders) --- */
   if (isDark) {
     document.documentElement.classList.add('dark-mode');
+  }
+  if (isVivid) {
+    document.documentElement.classList.add('code-vivid');
   }
   if (
     cfg.theme_controls === 'theme_picker' &&
@@ -74,11 +88,17 @@
 
   function setTheme(id) {
     document.documentElement.className = document.documentElement.className
-      .replace(/\btheme-\w+/g, '')
+      .replace(/\btheme-[\w-]+/g, '')
       .trim();
     document.documentElement.classList.add('theme-' + id);
     localStorage.setItem(THEME_KEY, id);
     currentTheme = id;
+  }
+
+  function setVivid(vivid) {
+    isVivid = vivid;
+    document.documentElement.classList.toggle('code-vivid', vivid);
+    localStorage.setItem(CODE_KEY, vivid ? 'vivid' : 'classic');
   }
 
   /* ================================================================ */
@@ -103,8 +123,9 @@
     '.tc-swatch.tc-active{border-color:var(--t-accent);box-shadow:0 0 0 1px var(--t-accent)}',
     '.tc-swatch::after{content:attr(data-label);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--t-text-muted);white-space:nowrap;opacity:0;transition:opacity .12s;pointer-events:none}',
     '.tc-swatch:hover::after{opacity:1}',
-    '.tc-dark-row{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--t-border);transition:border-color .2s}',
-    '.tc-dark-label{font-size:13px;color:var(--t-text);font-weight:500;transition:color .2s}',
+    '.tc-row{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--t-border);transition:border-color .2s}',
+    '.tc-row+.tc-row{border-top:none;padding-top:6px}',
+    '.tc-row-label{font-size:13px;color:var(--t-text);font-weight:500;transition:color .2s}',
     '.tc-toggle{position:relative;width:40px;height:22px;cursor:pointer}',
     '.tc-toggle input{opacity:0;width:0;height:0;position:absolute}',
     '.tc-toggle .tc-track{position:absolute;inset:0;background:var(--t-border);border-radius:11px;transition:background .2s}',
@@ -134,7 +155,7 @@
   }
 
   /* ================================================================ */
-  /* theme_picker mode — palette button + panel with swatches & toggle */
+  /* theme_picker mode — palette button + panel                        */
   /* ================================================================ */
 
   function mountThemePicker() {
@@ -164,10 +185,16 @@
       '  <div class="tc-swatches">' +
       swatchsHtml +
       '</div>' +
-      '  <div class="tc-dark-row">' +
-      '    <span class="tc-dark-label">Dark mode</span>' +
-      '    <label class="tc-toggle"><input type="checkbox"' +
+      '  <div class="tc-row">' +
+      '    <span class="tc-row-label">Dark mode</span>' +
+      '    <label class="tc-toggle"><input type="checkbox" data-tc="dark"' +
       (isDark ? ' checked' : '') +
+      '><span class="tc-track"></span></label>' +
+      '  </div>' +
+      '  <div class="tc-row">' +
+      '    <span class="tc-row-label">Vivid code</span>' +
+      '    <label class="tc-toggle"><input type="checkbox" data-tc="vivid"' +
+      (isVivid ? ' checked' : '') +
       '><span class="tc-track"></span></label>' +
       '  </div>' +
       '</div>';
@@ -202,9 +229,15 @@
     });
 
     wrap
-      .querySelector('.tc-toggle input')
+      .querySelector('[data-tc="dark"]')
       .addEventListener('change', function () {
         setDark(this.checked);
+      });
+
+    wrap
+      .querySelector('[data-tc="vivid"]')
+      .addEventListener('change', function () {
+        setVivid(this.checked);
       });
   }
 

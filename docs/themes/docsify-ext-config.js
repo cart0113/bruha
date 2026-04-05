@@ -2,6 +2,7 @@ window.__docsifyExtConfig = {
   "theme_name": "parchment",
   "theme_controls": "theme_picker",
   "dark_mode_default": false,
+  "code_highlighter": "vivid",
   "document_inline_sidebar_selector": true,
   "document_header_depth": 3,
   "top_level_folders_as_top_control": true,

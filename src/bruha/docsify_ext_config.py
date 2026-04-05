@@ -15,6 +15,7 @@ REQUIRED_KEYS = [
     "theme_name",
     "theme_controls",
     "dark_mode_default",
+    "code_highlighter",
     "document_inline_sidebar_selector",
     "document_header_depth",
     "top_level_folders_as_top_control",
