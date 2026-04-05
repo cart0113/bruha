@@ -165,11 +165,13 @@
   }
 
   function scrollActiveToClickY() {
+    var nav = document.querySelector('.sidebar-nav');
+    if (nav) nav.style.paddingTop = '';
+
     if (lastClickY === null) return;
     var clickY = lastClickY;
     lastClickY = null;
 
-    var nav = document.querySelector('.sidebar-nav');
     if (!nav) return;
     var pageLi = findActivePage(nav);
     if (!pageLi) return;
@@ -180,7 +182,14 @@
     var pageLink = pageLi.querySelector(':scope > a');
     var scrollTarget = pageLink || pageLi;
     var rect = scrollTarget.getBoundingClientRect();
-    sidebarEl.scrollTop += rect.top - clickY;
+    var offset = clickY - rect.top;
+
+    if (offset > 0) {
+      sidebarEl.scrollTop = 0;
+      nav.style.paddingTop = offset + 'px';
+    } else {
+      sidebarEl.scrollTop += rect.top - clickY;
+    }
   }
 
   function sidebarNavPlugin(hook) {
