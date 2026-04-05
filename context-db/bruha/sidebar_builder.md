@@ -101,5 +101,5 @@ Files become links. Folders become bold labels.
 
 ## Integration
 
-`bin/build.sh` reads `content_folder` from the YAML config and passes it
+`docs/bin/build.sh` reads `content_folder` from the YAML config and passes it
 to the sidebar builder.

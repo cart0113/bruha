@@ -27,7 +27,7 @@ docs/                       Docsify site root (served as static files)
     examples/
   themes/                   CSS + JS plugins
   index.html                Docsify entry point
-bin/                        Build, format, serve scripts
+  bin/                      Build, format, serve scripts
 context-db/                 Project knowledge database (context-db format)
 ```
 
@@ -36,7 +36,7 @@ context-db/                 Project knowledge database (context-db format)
 ### Building
 
 ```bash
-bin/build.sh
+docs/bin/build.sh
 ```
 
 This rebuilds `_sidebar.md` + `bruha-config.js` from the YAML config and filesystem, then runs prettier on all JS, CSS, and MD files.
@@ -44,15 +44,15 @@ This rebuilds `_sidebar.md` + `bruha-config.js` from the YAML config and filesys
 ### Serving
 
 ```bash
-bin/serve.sh
+docs/bin/serve.sh
 ```
 
-Runs build then `docsify serve docs` at `http://localhost:3000`.
+Runs build then `docsify serve docs`. Supports `--port` flag (default 3000).
 
 ### Formatting
 
 ```bash
-bin/format.sh              # prettier on JS, CSS, MD
+docs/bin/format.sh              # prettier on JS, CSS, MD
 ruff-main src/             # Python formatting
 ```
 

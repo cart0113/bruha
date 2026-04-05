@@ -22,8 +22,9 @@ loaded via CDN. bruha adds structure, config, and theming on top.
 ## Quick Start
 
 ```bash
-bin/build.sh   # generate sidebar + config, run prettier
-bin/serve.sh   # build + launch dev server at http://localhost:3000
+docs/bin/build.sh              # generate sidebar + config, run prettier
+docs/bin/serve.sh              # build + launch dev server at localhost:3000
+docs/bin/serve.sh --port 4000  # custom port
 ```
 
 ## Structure
@@ -34,11 +35,11 @@ docs/
   src/                  Markdown content
   themes/               CSS + JS plugins
   index.html            Docsify entry point
+  bin/                  Build, format, serve scripts
 src/bruha/              Python tools (sidebar builder, config generator)
-bin/                    Build, format, serve scripts
 ```
 
 ## Documentation
 
-Full docs are served by the project itself. Run `bin/serve.sh` and open
+Full docs are served by the project itself. Run `docs/bin/serve.sh` and open
 http://localhost:3000, or visit https://cart0113.github.io/bruha/.

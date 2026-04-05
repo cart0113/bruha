@@ -7,11 +7,11 @@ description: Architecture — how config flows from YAML through Python to JS ru
 ## Config Flow: YAML -> Python -> JS
 
 1. User edits `docs/bruha.yaml` (single source of truth)
-2. `bin/build.sh` runs Python:
+2. `docs/bin/build.sh` runs Python:
    - `docsify_ext_config.load_config()` reads YAML and merges with defaults
    - `docsify_ext_config.generate_config_js()` writes `docs/themes/bruha-config.js`
    - `sidebar_builder.write_sidebar()` reads `_order` files and generates `_sidebar.md`
-3. `bin/build.sh` runs prettier on all JS, CSS, and MD files
+3. `docs/bin/build.sh` runs prettier on all JS, CSS, and MD files
 4. Generated JS file is loaded first in `<head>`:
    - Sets `window.__docsifyExtConfig` object
    - Applies CSS classes to `<html>` before docsify renders
@@ -56,6 +56,6 @@ child page.
 
 - Python: `python-main`, formatted with `ruff-main`
 - JS/CSS/MD: formatted with prettier (config in `.prettierrc`)
-- `bin/build.sh` — rebuild sidebar + config, run prettier
-- `bin/format.sh` — run prettier only
-- `bin/serve.sh` — build + launch docsify dev server
+- `docs/bin/build.sh` — rebuild sidebar + config, run prettier
+- `docs/bin/format.sh` — run prettier only
+- `docs/bin/serve.sh` — build + launch docsify dev server (`--port` flag)

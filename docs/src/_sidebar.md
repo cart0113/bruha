@@ -2,6 +2,7 @@
   - [Overview](overview/overview.md)
 - **Configuration**
   - [Configuration Reference](configuration/config-reference.md)
+  - [Local Development](configuration/local-development.md)
   - [Sidebar Builder](configuration/sidebar-builder.md)
 - **Examples**
   - **General**

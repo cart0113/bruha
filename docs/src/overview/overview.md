@@ -25,6 +25,9 @@ CDN. bruha layers plugins and a build tool on top.
   document
 - **Code enhancements** -- line numbers and copy-to-clipboard on all code blocks
 - **Search** -- full-text search across all pages
+- **Local dev scripts** -- `docs/bin/build.sh` and `docs/bin/serve.sh` with
+  `--port` flag. Copy these into any project using bruha for one-command local
+  preview
 
 ## How It Works
 
@@ -36,8 +39,9 @@ CDN. bruha layers plugins and a build tool on top.
 ## Quick Start
 
 ```bash
-bin/build.sh
-bin/serve.sh
+docs/bin/build.sh
+docs/bin/serve.sh              # default port 3000
+docs/bin/serve.sh --port 4000  # custom port
 ```
 
 Or manually:
