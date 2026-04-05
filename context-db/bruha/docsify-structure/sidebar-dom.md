@@ -52,6 +52,30 @@ and injects it as a child of the active page's `<li>`. It is:
 - **Controlled by `subMaxLevel`** in `index.html` docsify config (set to `document_header_depth` from YAML)
 - Contains `?id=` links for scrolling to sections within the page
 
+### H3+ nesting: sibling `<ul>`, not child of `<li>`
+
+When `subMaxLevel >= 3`, docsify nests H3 headings in a **sibling `<ul>`**
+of the H2 `<li>` elements — NOT as a child `<ul>` inside the H2's `<li>`:
+
+```
+<ul class="app-sub-sidebar">
+  <li><a>H2: Example Config</a></li>
+  <li><a>H2: Keys</a></li>
+  <ul class="app-sub-sidebar">        ← sibling <ul>, NOT inside Keys <li>!
+    <li><a>H3: theme_name</a></li>
+    <li><a>H3: theme_picker</a></li>
+  </ul>
+  <li><a>H2: Another Header</a></li>
+</ul>
+```
+
+This is invalid HTML (`<ul>` can only contain `<li>`), but it's what docsify
+generates. **Any JS that walks the sub-sidebar must account for this** —
+querying `li.querySelector(':scope > ul')` will NOT find H3 items. Instead,
+walk `ul.querySelectorAll(':scope > ul')` to find sibling `<ul>` children.
+
+The inner `<ul>` also carries the `app-sub-sidebar` class.
+
 ## Critical: Re-render Behavior
 
 **Letting a click propagate to docsify on the active page link will trigger

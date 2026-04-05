@@ -4,7 +4,7 @@
  * Marks the active page's <li> with .sb-active-page. If the page has
  * sub-sections, also adds .sb-has-sections. Within the sub-sidebar:
  *   - depth 1 (H2) → .sb-bar-level (border-left indicator)
- *   - depth 2+ (H3+) → .sb-text-level (text highlight only)
+ *   - depth 2+ (H3+) → .sb-text-level (border-left indicator + text highlight)
  *
  * Current section's <li> gets .sb-current.
  */
@@ -89,6 +89,13 @@
 
         var childUl = li.querySelector(':scope > ul');
         if (childUl) walk(childUl, depth + 1);
+      }
+
+      // Docsify places H3+ items in sibling <ul> elements (direct children
+      // of the parent <ul>), not nested inside the H2 <li>.
+      var childUls = ul.querySelectorAll(':scope > ul');
+      for (var j = 0; j < childUls.length; j++) {
+        walk(childUls[j], depth + 1);
       }
     }
 

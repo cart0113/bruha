@@ -13,7 +13,8 @@ import yaml
 
 REQUIRED_KEYS = [
     "theme_name",
-    "theme_picker",
+    "dark_mode_toggle",
+    "dark_mode_default",
     "document_inline_sidebar_selector",
     "document_header_depth",
     "top_level_folders_as_top_control",
@@ -34,6 +35,7 @@ OPTIONAL_KEYS = [
 JS_TEMPLATE = """\
 window.__docsifyExtConfig = {config_json};
 (function(c) {{
+  if (c.theme_name) document.documentElement.classList.add('theme-' + c.theme_name);
   if (!c.hamburger_menu) document.documentElement.classList.add('ext-no-hamburger');
   if (!c.github_corner) document.documentElement.classList.add('ext-no-github-corner');
   if (c.top_level_folders_as_top_control) document.documentElement.classList.add('ext-has-top-nav');

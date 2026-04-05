@@ -1,367 +1,277 @@
 /*
- * Color palettes for docsify themes.
+ * Color themes for docsify — light and dark variants.
  *
- * Each palette overrides --t-* CSS variables. Apply by adding the
- * class (e.g. .palette-arctic) to <html>. The default Parchment
- * palette is in code-one.css :root and needs no class.
+ * Each theme overrides --t-* CSS variables. Apply by adding
+ * .theme-<name> to <html>. Dark variants activate with .dark-mode.
+ * The default Parchment light palette lives in code-one.css :root.
  */
 
-/* ------------------------------------------------------------------ */
-/* Arctic — cool blue-white, clean and modern                          */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/* Parchment — dark variant                                            */
+/* ================================================================== */
 
-.palette-arctic {
-  --t-bg: #f8fafc;
-  --t-bg-alt: #eef2f7;
-  --t-text: #1e293b;
-  --t-text-muted: #64748b;
-  --t-heading: #0f172a;
-  --t-accent: #2563eb;
-  --t-accent-hover: #1d4ed8;
-  --t-link: #2563eb;
-  --t-link-hover: #1d4ed8;
-  --t-border: #cbd5e1;
-  --t-code-bg: #f1f5f9;
-  --t-code-text: #1e293b;
-  --t-code-border: #cbd5e1;
-  --t-code-gutter-bg: #e2e8f0;
-  --t-code-gutter-text: #64748b;
-  --t-code-gutter-border: #cbd5e1;
-  --t-inline-code-bg: #e2e8f0;
-  --t-inline-code-text: #1e40af;
-  --t-sidebar-bg: #f1f5f9;
-  --t-sidebar-text: #334155;
-  --t-sidebar-active: #2563eb;
-  --t-callout-bg: #eff6ff;
-  --t-callout-border: #60a5fa;
-  --t-table-header-bg: #e2e8f0;
-  --t-table-stripe: #f8fafc;
-  --t-syn-comment: #64748b;
-  --t-syn-punctuation: #475569;
-  --t-syn-property: #b45309;
-  --t-syn-string: #047857;
-  --t-syn-operator: #6366f1;
-  --t-syn-keyword: #1d4ed8;
-  --t-syn-function: #7c3aed;
-  --t-syn-regex: #c2410c;
+html.theme-parchment.dark-mode {
+  --t-bg: #1e1d1b;
+  --t-bg-alt: #282724;
+  --t-text: #cdc8be;
+  --t-text-muted: #8e8a80;
+  --t-heading: #e8e4da;
+  --t-accent: #7a9ec9;
+  --t-accent-hover: #9ab6d8;
+  --t-link: #7a9ec9;
+  --t-link-hover: #9ab6d8;
+  --t-border: #3e3c38;
+  --t-code-bg: #262523;
+  --t-code-text: #d4d0c8;
+  --t-code-border: #3a3835;
+  --t-code-gutter-bg: #2c2b28;
+  --t-code-gutter-text: #6e6b64;
+  --t-code-gutter-border: #3a3835;
+  --t-inline-code-bg: #302e2a;
+  --t-inline-code-text: #8ab4d6;
+  --t-sidebar-bg: #24231f;
+  --t-sidebar-text: #a8a49a;
+  --t-sidebar-active: #7a9ec9;
+  --t-callout-bg: #28272a;
+  --t-callout-border: #5a6478;
+  --t-table-header-bg: #2c2b28;
+  --t-table-stripe: #222120;
+  --t-syn-comment: #6b7286;
+  --t-syn-punctuation: #9a9aaa;
+  --t-syn-property: #d4a05a;
+  --t-syn-string: #7ab870;
+  --t-syn-operator: #8a9ab0;
+  --t-syn-keyword: #6aadee;
+  --t-syn-function: #b68ad6;
+  --t-syn-regex: #e09050;
 }
 
-/* ------------------------------------------------------------------ */
-/* Forest — sage green and warm earth tones                            */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/* Pylab — matplotlib-inspired: white canvas, tab10 accents            */
+/* ================================================================== */
 
-.palette-forest {
-  --t-bg: #f6f7f4;
-  --t-bg-alt: #eaede5;
-  --t-text: #2d3429;
-  --t-text-muted: #5c6556;
-  --t-heading: #1a2016;
-  --t-accent: #3d7a4a;
-  --t-accent-hover: #2d5e38;
-  --t-link: #3d7a4a;
-  --t-link-hover: #2d5e38;
-  --t-border: #c0c8b8;
-  --t-code-bg: #e8ede4;
-  --t-code-text: #1a2016;
-  --t-code-border: #b3bcaa;
-  --t-code-gutter-bg: #d6ddd0;
-  --t-code-gutter-text: #6b7565;
-  --t-code-gutter-border: #b3bcaa;
-  --t-inline-code-bg: #dde3d6;
-  --t-inline-code-text: #2d5e38;
-  --t-sidebar-bg: #eaede5;
-  --t-sidebar-text: #3d4a36;
-  --t-sidebar-active: #3d7a4a;
-  --t-callout-bg: #eef2ea;
-  --t-callout-border: #7da47f;
-  --t-table-header-bg: #dde3d6;
-  --t-table-stripe: #f2f4f0;
-  --t-syn-comment: #6b7565;
-  --t-syn-punctuation: #404840;
-  --t-syn-property: #8b6b2a;
-  --t-syn-string: #2d5e38;
-  --t-syn-operator: #5a7060;
-  --t-syn-keyword: #1e6599;
-  --t-syn-function: #6e4d8a;
-  --t-syn-regex: #a66500;
-}
-
-/* ------------------------------------------------------------------ */
-/* Slate — neutral gray, high contrast, minimal                        */
-/* ------------------------------------------------------------------ */
-
-.palette-slate {
-  --t-bg: #fafafa;
+html.theme-pylab {
+  --t-bg: #ffffff;
   --t-bg-alt: #f0f0f0;
-  --t-text: #1a1a1a;
-  --t-text-muted: #666666;
+  --t-text: #222222;
+  --t-text-muted: #555555;
   --t-heading: #000000;
-  --t-accent: #333333;
-  --t-accent-hover: #111111;
-  --t-link: #0055aa;
-  --t-link-hover: #003d7a;
-  --t-border: #d4d4d4;
-  --t-code-bg: #f0f0f0;
-  --t-code-text: #1a1a1a;
-  --t-code-border: #d4d4d4;
-  --t-code-gutter-bg: #e5e5e5;
-  --t-code-gutter-text: #888888;
-  --t-code-gutter-border: #d4d4d4;
+  --t-accent: #1f77b4;
+  --t-accent-hover: #17608f;
+  --t-link: #1f77b4;
+  --t-link-hover: #17608f;
+  --t-border: #b0b0b0;
+  --t-code-bg: #f5f5f5;
+  --t-code-text: #222222;
+  --t-code-border: #c0c0c0;
+  --t-code-gutter-bg: #e8e8e8;
+  --t-code-gutter-text: #7f7f7f;
+  --t-code-gutter-border: #c0c0c0;
   --t-inline-code-bg: #e8e8e8;
-  --t-inline-code-text: #333333;
-  --t-sidebar-bg: #f0f0f0;
+  --t-inline-code-text: #17608f;
+  --t-sidebar-bg: #f5f5f5;
   --t-sidebar-text: #333333;
-  --t-sidebar-active: #1a1a1a;
-  --t-callout-bg: #f0f0f0;
-  --t-callout-border: #999999;
-  --t-table-header-bg: #e5e5e5;
-  --t-table-stripe: #f5f5f5;
-  --t-syn-comment: #888888;
-  --t-syn-punctuation: #555555;
-  --t-syn-property: #8b5c2a;
-  --t-syn-string: #2a7a3a;
-  --t-syn-operator: #555555;
-  --t-syn-keyword: #0055aa;
-  --t-syn-function: #6a3d9a;
-  --t-syn-regex: #b35900;
+  --t-sidebar-active: #1f77b4;
+  --t-callout-bg: #eef5fb;
+  --t-callout-border: #1f77b4;
+  --t-table-header-bg: #e8e8e8;
+  --t-table-stripe: #fafafa;
+  --t-syn-comment: #7f7f7f;
+  --t-syn-punctuation: #333333;
+  --t-syn-property: #ff7f0e;
+  --t-syn-string: #2ca02c;
+  --t-syn-operator: #9467bd;
+  --t-syn-keyword: #1f77b4;
+  --t-syn-function: #d62728;
+  --t-syn-regex: #8c564b;
 }
 
-/* ------------------------------------------------------------------ */
-/* Dusk — warm rose and lavender                                       */
-/* ------------------------------------------------------------------ */
-
-.palette-dusk {
-  --t-bg: #faf7f8;
-  --t-bg-alt: #f0eaed;
-  --t-text: #2e2433;
-  --t-text-muted: #6b5b72;
-  --t-heading: #1e1424;
-  --t-accent: #7c4d8a;
-  --t-accent-hover: #5e3868;
-  --t-link: #7c4d8a;
-  --t-link-hover: #5e3868;
-  --t-border: #d4c6d0;
-  --t-code-bg: #f0e8ed;
-  --t-code-text: #2e2433;
-  --t-code-border: #c8b8c2;
-  --t-code-gutter-bg: #e4d8e0;
-  --t-code-gutter-text: #8a7a90;
-  --t-code-gutter-border: #c8b8c2;
-  --t-inline-code-bg: #e8dde3;
-  --t-inline-code-text: #6b3d7a;
-  --t-sidebar-bg: #f0eaed;
-  --t-sidebar-text: #4a3d52;
-  --t-sidebar-active: #7c4d8a;
-  --t-callout-bg: #f2eaf0;
-  --t-callout-border: #a07aaa;
-  --t-table-header-bg: #e4d8e0;
-  --t-table-stripe: #f5f2f4;
-  --t-syn-comment: #8a7a90;
-  --t-syn-punctuation: #504058;
-  --t-syn-property: #8b6530;
-  --t-syn-string: #3a6e42;
-  --t-syn-operator: #6b5b72;
-  --t-syn-keyword: #3d5599;
-  --t-syn-function: #7c4d8a;
-  --t-syn-regex: #a65520;
+html.theme-pylab.dark-mode {
+  --t-bg: #1a1a2e;
+  --t-bg-alt: #222240;
+  --t-text: #d0d0d8;
+  --t-text-muted: #8888a0;
+  --t-heading: #eeeef4;
+  --t-accent: #4a9bd9;
+  --t-accent-hover: #6db3e8;
+  --t-link: #4a9bd9;
+  --t-link-hover: #6db3e8;
+  --t-border: #3a3a55;
+  --t-code-bg: #222238;
+  --t-code-text: #d4d4de;
+  --t-code-border: #3a3a50;
+  --t-code-gutter-bg: #282844;
+  --t-code-gutter-text: #6a6a88;
+  --t-code-gutter-border: #3a3a50;
+  --t-inline-code-bg: #2a2a44;
+  --t-inline-code-text: #6db3e8;
+  --t-sidebar-bg: #1e1e36;
+  --t-sidebar-text: #a0a0b8;
+  --t-sidebar-active: #4a9bd9;
+  --t-callout-bg: #222244;
+  --t-callout-border: #4a9bd9;
+  --t-table-header-bg: #282844;
+  --t-table-stripe: #1e1e32;
+  --t-syn-comment: #6a6a88;
+  --t-syn-punctuation: #9090a8;
+  --t-syn-property: #ffaa44;
+  --t-syn-string: #5ec45e;
+  --t-syn-operator: #b088d0;
+  --t-syn-keyword: #4a9bd9;
+  --t-syn-function: #f06060;
+  --t-syn-regex: #c08060;
 }
 
-/* ------------------------------------------------------------------ */
-/* Ocean — teal and deep blue, coastal                                 */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/* Blossom — soft pastels, warm pink/peach tones                       */
+/* ================================================================== */
 
-.palette-ocean {
-  --t-bg: #f5f9fa;
-  --t-bg-alt: #e6eff2;
-  --t-text: #1a2e35;
-  --t-text-muted: #4a6670;
-  --t-heading: #0d1f28;
-  --t-accent: #0d7377;
-  --t-accent-hover: #095558;
-  --t-link: #0d7377;
-  --t-link-hover: #095558;
-  --t-border: #b8cdd2;
-  --t-code-bg: #e4eff2;
-  --t-code-text: #0d1f28;
-  --t-code-border: #afc4ca;
-  --t-code-gutter-bg: #d0dfe4;
-  --t-code-gutter-text: #5a7a82;
-  --t-code-gutter-border: #afc4ca;
-  --t-inline-code-bg: #d8e8ec;
-  --t-inline-code-text: #095558;
-  --t-sidebar-bg: #e6eff2;
-  --t-sidebar-text: #2a4a52;
-  --t-sidebar-active: #0d7377;
-  --t-callout-bg: #e8f4f5;
-  --t-callout-border: #5aadae;
-  --t-table-header-bg: #d8e8ec;
-  --t-table-stripe: #f0f6f7;
-  --t-syn-comment: #5a7a82;
-  --t-syn-punctuation: #3a5a62;
-  --t-syn-property: #9a6520;
-  --t-syn-string: #0d7377;
-  --t-syn-operator: #4a6a72;
-  --t-syn-keyword: #1a5599;
-  --t-syn-function: #5e4d8a;
-  --t-syn-regex: #b85a10;
+html.theme-blossom {
+  --t-bg: #fdf8f6;
+  --t-bg-alt: #f4ece8;
+  --t-text: #3a2e32;
+  --t-text-muted: #7a6a6e;
+  --t-heading: #2a1e22;
+  --t-accent: #c27a8c;
+  --t-accent-hover: #a8606e;
+  --t-link: #c27a8c;
+  --t-link-hover: #a8606e;
+  --t-border: #ddd0cc;
+  --t-code-bg: #f5edea;
+  --t-code-text: #2a1e22;
+  --t-code-border: #d4c8c2;
+  --t-code-gutter-bg: #ede2dd;
+  --t-code-gutter-text: #8a7a7e;
+  --t-code-gutter-border: #d4c8c2;
+  --t-inline-code-bg: #eeddd8;
+  --t-inline-code-text: #a05a6a;
+  --t-sidebar-bg: #f4ece8;
+  --t-sidebar-text: #5a4a4e;
+  --t-sidebar-active: #c27a8c;
+  --t-callout-bg: #faf0ee;
+  --t-callout-border: #d4a0aa;
+  --t-table-header-bg: #eeddd8;
+  --t-table-stripe: #faf5f3;
+  --t-syn-comment: #8a7a7e;
+  --t-syn-punctuation: #5a4a50;
+  --t-syn-property: #c08040;
+  --t-syn-string: #5a8a52;
+  --t-syn-operator: #8a7090;
+  --t-syn-keyword: #5a80b0;
+  --t-syn-function: #a05a6a;
+  --t-syn-regex: #c07040;
 }
 
-/* ------------------------------------------------------------------ */
-/* Sand — warm beige and tan                                           */
-/* ------------------------------------------------------------------ */
-
-.palette-sand {
-  --t-bg: #faf8f5;
-  --t-bg-alt: #f0ebe3;
-  --t-text: #3a3228;
-  --t-text-muted: #7a6e5e;
-  --t-heading: #2a2018;
-  --t-accent: #a07840;
-  --t-accent-hover: #7a5c30;
-  --t-link: #a07840;
-  --t-link-hover: #7a5c30;
-  --t-border: #d4c8b4;
-  --t-code-bg: #f0e8dc;
-  --t-code-text: #2a2018;
-  --t-code-border: #c8bca8;
-  --t-code-gutter-bg: #e2d8c8;
-  --t-code-gutter-text: #8a7e6e;
-  --t-code-gutter-border: #c8bca8;
-  --t-inline-code-bg: #e8ddd0;
-  --t-inline-code-text: #7a5c30;
-  --t-sidebar-bg: #f0ebe3;
-  --t-sidebar-text: #5a4e3e;
-  --t-sidebar-active: #a07840;
-  --t-callout-bg: #f2ede5;
-  --t-callout-border: #c0a878;
-  --t-table-header-bg: #e8ddd0;
-  --t-table-stripe: #f5f2ed;
-  --t-syn-comment: #8a7e6e;
-  --t-syn-punctuation: #5a5040;
-  --t-syn-property: #8b6b2a;
-  --t-syn-string: #3a6e42;
-  --t-syn-operator: #7a6e5e;
-  --t-syn-keyword: #2a6599;
-  --t-syn-function: #7a4d6a;
-  --t-syn-regex: #b85a10;
+html.theme-blossom.dark-mode {
+  --t-bg: #1e1a1c;
+  --t-bg-alt: #2a2428;
+  --t-text: #d4c8cc;
+  --t-text-muted: #8e8084;
+  --t-heading: #ecdee2;
+  --t-accent: #d89aa8;
+  --t-accent-hover: #e4b0bc;
+  --t-link: #d89aa8;
+  --t-link-hover: #e4b0bc;
+  --t-border: #3e3438;
+  --t-code-bg: #262024;
+  --t-code-text: #d8ccd0;
+  --t-code-border: #3a3034;
+  --t-code-gutter-bg: #2c2428;
+  --t-code-gutter-text: #6e6064;
+  --t-code-gutter-border: #3a3034;
+  --t-inline-code-bg: #302830;
+  --t-inline-code-text: #d89aa8;
+  --t-sidebar-bg: #221e20;
+  --t-sidebar-text: #b0a4a8;
+  --t-sidebar-active: #d89aa8;
+  --t-callout-bg: #2a2228;
+  --t-callout-border: #8a6070;
+  --t-table-header-bg: #2c2428;
+  --t-table-stripe: #201c1e;
+  --t-syn-comment: #6e6064;
+  --t-syn-punctuation: #9a8e94;
+  --t-syn-property: #e0a860;
+  --t-syn-string: #80b878;
+  --t-syn-operator: #b098c0;
+  --t-syn-keyword: #80aad6;
+  --t-syn-function: #d88898;
+  --t-syn-regex: #d89060;
 }
 
-/* ------------------------------------------------------------------ */
-/* Copper — amber, rust, burnt orange                                  */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/* Midnight — dark by default, One Dark / Dracula inspired             */
+/* ================================================================== */
 
-.palette-copper {
-  --t-bg: #faf7f4;
-  --t-bg-alt: #f0e8e0;
-  --t-text: #38281e;
-  --t-text-muted: #7a6050;
-  --t-heading: #2a1a10;
-  --t-accent: #b85c2a;
-  --t-accent-hover: #8e4620;
-  --t-link: #b85c2a;
-  --t-link-hover: #8e4620;
-  --t-border: #d4bea8;
-  --t-code-bg: #f0e4d8;
-  --t-code-text: #2a1a10;
-  --t-code-border: #c8b09a;
-  --t-code-gutter-bg: #e2d2c0;
-  --t-code-gutter-text: #8a7060;
-  --t-code-gutter-border: #c8b09a;
-  --t-inline-code-bg: #e8d8c8;
-  --t-inline-code-text: #8e4620;
-  --t-sidebar-bg: #f0e8e0;
-  --t-sidebar-text: #5a4030;
-  --t-sidebar-active: #b85c2a;
-  --t-callout-bg: #f5ede5;
-  --t-callout-border: #d09060;
-  --t-table-header-bg: #e8d8c8;
-  --t-table-stripe: #f5f0ea;
-  --t-syn-comment: #8a7060;
-  --t-syn-punctuation: #5a4838;
-  --t-syn-property: #b85c2a;
-  --t-syn-string: #2d6e3a;
-  --t-syn-operator: #7a6050;
-  --t-syn-keyword: #1e5599;
-  --t-syn-function: #6e4d8a;
-  --t-syn-regex: #c44a00;
+/* Light variant (accessible when user toggles to light) */
+html.theme-midnight {
+  --t-bg: #f8f8fc;
+  --t-bg-alt: #ebebf4;
+  --t-text: #282c34;
+  --t-text-muted: #636d83;
+  --t-heading: #1a1e28;
+  --t-accent: #6c71c4;
+  --t-accent-hover: #565ba6;
+  --t-link: #6c71c4;
+  --t-link-hover: #565ba6;
+  --t-border: #c8c8d8;
+  --t-code-bg: #ededf5;
+  --t-code-text: #282c34;
+  --t-code-border: #c0c0d4;
+  --t-code-gutter-bg: #e0e0ee;
+  --t-code-gutter-text: #8888a0;
+  --t-code-gutter-border: #c0c0d4;
+  --t-inline-code-bg: #e4e4f0;
+  --t-inline-code-text: #565ba6;
+  --t-sidebar-bg: #ebebf4;
+  --t-sidebar-text: #3e4250;
+  --t-sidebar-active: #6c71c4;
+  --t-callout-bg: #eeeef8;
+  --t-callout-border: #8a8ec8;
+  --t-table-header-bg: #e0e0ee;
+  --t-table-stripe: #f2f2fa;
+  --t-syn-comment: #8888a0;
+  --t-syn-punctuation: #4a4e60;
+  --t-syn-property: #d19a66;
+  --t-syn-string: #5c9e5c;
+  --t-syn-operator: #56b6c2;
+  --t-syn-keyword: #6c71c4;
+  --t-syn-function: #c678dd;
+  --t-syn-regex: #e06c75;
 }
 
-/* ------------------------------------------------------------------ */
-/* Plum — deep wine and burgundy                                       */
-/* ------------------------------------------------------------------ */
-
-.palette-plum {
-  --t-bg: #faf6f8;
-  --t-bg-alt: #f0e6ec;
-  --t-text: #30202a;
-  --t-text-muted: #6e5060;
-  --t-heading: #200e18;
-  --t-accent: #882244;
-  --t-accent-hover: #661a35;
-  --t-link: #882244;
-  --t-link-hover: #661a35;
-  --t-border: #d4b8c4;
-  --t-code-bg: #f0e2ea;
-  --t-code-text: #200e18;
-  --t-code-border: #c8a8b8;
-  --t-code-gutter-bg: #e0ccd8;
-  --t-code-gutter-text: #8a6878;
-  --t-code-gutter-border: #c8a8b8;
-  --t-inline-code-bg: #e8d4e0;
-  --t-inline-code-text: #661a35;
-  --t-sidebar-bg: #f0e6ec;
-  --t-sidebar-text: #503040;
-  --t-sidebar-active: #882244;
-  --t-callout-bg: #f4eaf0;
-  --t-callout-border: #b06080;
-  --t-table-header-bg: #e8d4e0;
-  --t-table-stripe: #f5f0f3;
-  --t-syn-comment: #8a6878;
-  --t-syn-punctuation: #503040;
-  --t-syn-property: #8b5c30;
-  --t-syn-string: #2d6e42;
-  --t-syn-operator: #6e5060;
-  --t-syn-keyword: #2a4599;
-  --t-syn-function: #882244;
-  --t-syn-regex: #b85a20;
-}
-
-/* ------------------------------------------------------------------ */
-/* Mint — fresh mint green and aqua                                    */
-/* ------------------------------------------------------------------ */
-
-.palette-mint {
-  --t-bg: #f5faf8;
-  --t-bg-alt: #e4f2ec;
-  --t-text: #1e302a;
-  --t-text-muted: #4a6e5e;
-  --t-heading: #0e2018;
-  --t-accent: #2a9e70;
-  --t-accent-hover: #1e7854;
-  --t-link: #2a9e70;
-  --t-link-hover: #1e7854;
-  --t-border: #b4d4c6;
-  --t-code-bg: #e2f0ea;
-  --t-code-text: #0e2018;
-  --t-code-border: #a8c8b8;
-  --t-code-gutter-bg: #cce4d8;
-  --t-code-gutter-text: #5a8872;
-  --t-code-gutter-border: #a8c8b8;
-  --t-inline-code-bg: #d4e8de;
-  --t-inline-code-text: #1e7854;
-  --t-sidebar-bg: #e4f2ec;
-  --t-sidebar-text: #2e5040;
-  --t-sidebar-active: #2a9e70;
-  --t-callout-bg: #e8f5ef;
-  --t-callout-border: #60c090;
-  --t-table-header-bg: #d4e8de;
-  --t-table-stripe: #f0f7f4;
-  --t-syn-comment: #5a8872;
-  --t-syn-punctuation: #3a5848;
-  --t-syn-property: #8b6b2a;
-  --t-syn-string: #1e7854;
-  --t-syn-operator: #4a6e5e;
-  --t-syn-keyword: #1a5599;
-  --t-syn-function: #5e4d8a;
-  --t-syn-regex: #b86a10;
+/* Dark variant (the flagship look) */
+html.theme-midnight.dark-mode {
+  --t-bg: #282c34;
+  --t-bg-alt: #21252b;
+  --t-text: #abb2bf;
+  --t-text-muted: #636d83;
+  --t-heading: #e0e4ee;
+  --t-accent: #61afef;
+  --t-accent-hover: #80c4ff;
+  --t-link: #61afef;
+  --t-link-hover: #80c4ff;
+  --t-border: #3e4452;
+  --t-code-bg: #2c313a;
+  --t-code-text: #abb2bf;
+  --t-code-border: #3e4452;
+  --t-code-gutter-bg: #282c34;
+  --t-code-gutter-text: #4b5263;
+  --t-code-gutter-border: #3e4452;
+  --t-inline-code-bg: #353b45;
+  --t-inline-code-text: #61afef;
+  --t-sidebar-bg: #21252b;
+  --t-sidebar-text: #8b95a8;
+  --t-sidebar-active: #61afef;
+  --t-callout-bg: #2c313c;
+  --t-callout-border: #4b6080;
+  --t-table-header-bg: #2c313a;
+  --t-table-stripe: #262a32;
+  --t-syn-comment: #5c6370;
+  --t-syn-punctuation: #8b95a8;
+  --t-syn-property: #d19a66;
+  --t-syn-string: #98c379;
+  --t-syn-operator: #56b6c2;
+  --t-syn-keyword: #c678dd;
+  --t-syn-function: #61afef;
+  --t-syn-regex: #e06c75;
 }

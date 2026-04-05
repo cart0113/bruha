@@ -22,23 +22,23 @@
   <!-- base docsify layout (required for structure) -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <!-- theme -->
-  <link rel="stylesheet" href="themes/code-one.css?v=20260405113501">
-  <!-- color palette overrides -->
-  <link rel="stylesheet" href="themes/color-themes.css?v=20260405113501">
+  <link rel="stylesheet" href="themes/code-one.css?v=20260405114948">
+  <!-- color theme overrides (light + dark variants) -->
+  <link rel="stylesheet" href="themes/color-themes.css?v=20260405114948">
   <!-- extension styles (indicator, collapsible folders, top nav, toggles) -->
-  <link rel="stylesheet" href="themes/docsify-ext.css?v=20260405113501">
+  <link rel="stylesheet" href="themes/docsify-ext.css?v=20260405114948">
   <!-- generated config (applies CSS classes before render) -->
-  <script src="themes/docsify-ext-config.js?v=20260405113501"></script>
-  <!-- theme picker (applies saved choice before render) -->
-  <script src="themes/theme-picker.js?v=20260405113501"></script>
+  <script src="themes/docsify-ext-config.js?v=20260405114948"></script>
+  <!-- dark mode toggle (applies saved choice before render) -->
+  <script src="themes/dark-toggle.js?v=20260405114948"></script>
   <!-- code enhancements plugin (load before docsify) -->
-  <script src="themes/code-enhancements.js?v=20260405113501"></script>
+  <script src="themes/code-enhancements.js?v=20260405114948"></script>
   <!-- sidebar bar indicator (load before docsify) -->
-  <script src="themes/sidebar-nav.js?v=20260405113501"></script>
+  <script src="themes/sidebar-nav.js?v=20260405114948"></script>
   <!-- collapsible folder sections -->
-  <script src="themes/collapsible-folders.js?v=20260405113501"></script>
+  <script src="themes/collapsible-folders.js?v=20260405114948"></script>
   <!-- top-level folder navigation bar -->
-  <script src="themes/top-nav.js?v=20260405113501"></script>
+  <script src="themes/top-nav.js?v=20260405114948"></script>
 </head>
 <body>
   <!-- SVG sprite — hidden, reused via <use href="#icon-name"/> -->
@@ -88,7 +88,7 @@
       plugins: [
         codeEnhancementsPlugin,
         collapsibleFoldersPlugin,
-        cfg.theme_picker ? themePickerPlugin : null,
+        cfg.dark_mode_toggle ? darkTogglePlugin : null,
         (cfg.document_inline_sidebar_selector || cfg.page_section_collapsible) ? sidebarNavPlugin : null,
         cfg.top_level_folders_as_top_control ? topNavPlugin : null,
       ].filter(Boolean),

@@ -51,26 +51,28 @@ aligning.
 
 ### Layer 2: Highlight segments (on the `<a>` elements)
 
-Both `sb-bar-level` (H2) and `sb-text-level` (H3+) use the same overlay
-technique — both get a left border indicator:
+Both `sb-bar-level` (H2) and `sb-text-level` (H3+) get a left border
+indicator, but with different margin values due to docsify's DOM structure:
 
 ```css
-li.sb-bar-level > a,
-li.sb-text-level > a {
+li.sb-bar-level > a {
   border-left: 4px solid transparent !important;
   margin-left: -4px !important;  /* pulls left to overlap ul border */
-  padding-left: 1em !important;  /* text indentation (replaces ul padding) */
+  padding-left: 1em !important;
+}
+
+li.sb-text-level > a {
+  border-left: 4px solid transparent !important;
+  margin-left: -4px !important;              /* same as H2 — overlays continuous bar */
+  padding-left: calc(1.4em + 8px) !important; /* extra 8px: 4px for margin + 4px indent */
 }
 ```
 
-The negative margin (`-4px` = border width) pulls the `a` element's border
-box left so its `border-left` sits exactly on top of the `ul`'s
-`border-left`. On hover/click, the `a`'s border color changes from
-transparent to a visible color, creating the highlight effect.
-
-**Important:** Both levels use `margin-left: -4px`. An earlier version used
-`-10px` for `sb-text-level` which pulled H3+ items too far left of the
-continuous bar.
+Both H2 and H3+ use `margin-left: -4px` to overlay the continuous bar.
+H3+ items live inside a sibling `<ul>` (see sidebar-dom.md) which has
+`padding-left: 0`. The extra `8px` in H3+'s `padding-left` compensates:
+4px for the margin shift (same as H2) plus 4px of visual indent so H3
+text sits slightly to the right of H2 text.
 
 ### Why padding-left: 0 on the ul
 
@@ -85,11 +87,11 @@ moves to `padding-left` on the `a` elements themselves.
 
 ### Nested Sub-Sidebar Indentation
 
-H3+ headings are nested inside `ul ul` under the active page. The
-`padding-left` on this nested `ul` controls how far H3+ items indent
-relative to H2 items. Currently `0.4em` — chosen to keep H3 items close
-to H2 items without collision. Using `1em` (the original value) caused
-2.5x too much indent.
+H3+ headings live in a sibling `<ul>` inside the outer `<ul>` (see
+sidebar-dom.md). This inner `<ul>` must have `padding-left: 0` so the
+H3 `<a>` border-left aligns with the continuous bar. All text indentation
+is handled by `padding-left` on the `<a>` elements (1.4em for H3 vs
+1em for H2).
 
 ### Alignment with Chevron
 

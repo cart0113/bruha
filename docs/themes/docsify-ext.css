@@ -114,7 +114,7 @@ html.ext-inline-sidebar .sidebar-nav li.sb-bar-level.sb-current > a {
 html.ext-inline-sidebar .sidebar-nav li.sb-text-level > a {
   border-left: 4px solid transparent !important;
   margin-left: -4px !important;
-  padding-left: 1.4em !important;
+  padding-left: calc(1.4em + 8px) !important;
   transition:
     border-color 0.15s ease,
     color 0.15s ease;
