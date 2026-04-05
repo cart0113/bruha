@@ -18,7 +18,7 @@ html.theme-parchment.dark-mode {
   --t-bg-alt: #282724;
   --t-text: #cdc8be;
   --t-text-muted: #8e8a80;
-  --t-heading: #f5f2ea;
+  --t-heading: #ffffff;
   --t-accent: #90b8e0;
   --t-accent-hover: #aeccea;
   --t-link: #90b8e0;
@@ -94,7 +94,7 @@ html.theme-pylab.dark-mode {
   --t-bg-alt: #2f2f2f;
   --t-text: #cccccc;
   --t-text-muted: #93a1a1;
-  --t-heading: #f0f0f0;
+  --t-heading: #ffffff;
   --t-accent: #6fc5ee;
   --t-accent-hover: #8ad4f5;
   --t-link: #6fc5ee;
@@ -170,7 +170,7 @@ html.theme-blossom.dark-mode {
   --t-bg-alt: #252036;
   --t-text: #d0c8dc;
   --t-text-muted: #8a80a0;
-  --t-heading: #f0eaf8;
+  --t-heading: #ffffff;
   --t-accent: #b890e0;
   --t-accent-hover: #cca8f0;
   --t-link: #b890e0;
@@ -246,7 +246,7 @@ html.theme-near-midnight.dark-mode {
   --t-bg-alt: #2d323e;
   --t-text: #c4c8d4;
   --t-text-muted: #7c84a0;
-  --t-heading: #f0f2f8;
+  --t-heading: #ffffff;
   --t-accent: #7cb4f0;
   --t-accent-hover: #9cc8ff;
   --t-link: #7cb4f0;
@@ -284,22 +284,31 @@ html.theme-near-midnight.dark-mode {
 
 html.code-vivid {
   --t-syn-comment: #6a737d;
-  --t-syn-punctuation: #24292e;
-  --t-syn-property: #d95700;
-  --t-syn-string: #0a7e07;
-  --t-syn-operator: #ab37c8;
-  --t-syn-keyword: #0033b3;
-  --t-syn-function: #871094;
-  --t-syn-regex: #c41a16;
+  --t-syn-punctuation: #1a1a2e;
+  --t-syn-property: #e85d00;
+  --t-syn-string: #008a0e;
+  --t-syn-operator: #c020e0;
+  --t-syn-keyword: #0024d4;
+  --t-syn-function: #a000c0;
+  --t-syn-regex: #dd1100;
 }
 
 html.code-vivid.dark-mode {
   --t-syn-comment: #6e7a88;
-  --t-syn-punctuation: #b0bcc8;
-  --t-syn-property: #ffb454;
-  --t-syn-string: #5af78e;
-  --t-syn-operator: #ff6ac1;
-  --t-syn-keyword: #57c7ff;
-  --t-syn-function: #c792ea;
-  --t-syn-regex: #ff5c57;
+  --t-syn-punctuation: #c0ccda;
+  --t-syn-property: #ffc240;
+  --t-syn-string: #44ff88;
+  --t-syn-operator: #ff55cc;
+  --t-syn-keyword: #44ccff;
+  --t-syn-function: #cc88ff;
+  --t-syn-regex: #ff4444;
+}
+
+/* Vivid tokens get a slight weight boost for emphasis */
+html.code-vivid
+  .markdown-section
+  pre
+  code
+  .token:not(.comment):not(.punctuation) {
+  font-weight: 500;
 }
