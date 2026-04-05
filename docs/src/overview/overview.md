@@ -1,23 +1,30 @@
 # Overview
 
-A personal set of [docsify](https://docsify.js.org/) extensions that make
-documentation pages look the way I want. bruha is not a fork of docsify —
-docsify is loaded via CDN. bruha layers config, themes, and plugins on top.
+A set of [docsify](https://docsify.js.org/) extensions that add structure,
+config, and theming. bruha is not a fork of docsify -- docsify is loaded via
+CDN. bruha layers plugins and a build tool on top.
 
-Built on top of docsify, bruha adds:
+## Features
 
-- **YAML-driven configuration** — a single `bruha.yaml` controls all features;
-  every key has a sensible default
-- **Top navigation bar** — top-level folders become a horizontal nav (like
-  PyData Sphinx theme)
-- **Collapsible sidebar folders** — click to expand/collapse sections
-- **Sidebar bar indicator** — a vertical line shows your position within a
+- **Auto-generated sidebar from filesystem** -- add folders and markdown files,
+  run build, and the sidebar updates automatically. No hand-editing
+  `_sidebar.md`. Optional `_order` files control sequencing.
+- **Top navigation tabs from folder structure** -- top-level folders
+  automatically become a horizontal tab bar (like PyData Sphinx or Read the
+  Docs). Vanilla docsify has no concept of this.
+- **Single YAML config with defaults** -- one `bruha.yaml` controls everything
+  (themes, sidebar behavior, nav layout, code blocks). Every key has a sensible
+  default. Vanilla docsify requires wiring up each feature individually in
+  JavaScript.
+- **Coordinated theme system** -- 4 color themes with light/dark variants, vivid
+  code highlighting, and a theme picker UI, all toggled from one config. Vanilla
+  docsify gives you one static theme with no switching mechanism.
+
+- **Collapsible sidebar folders** -- click to expand/collapse sections
+- **Sidebar bar indicator** -- a vertical line shows your position within a
   document
-- **4 color themes** — parchment, pylab, blossom, near-midnight (each with light
-  and dark variants)
-- **Code enhancements** — line numbers and copy-to-clipboard on all code blocks
-- **Auto-generated sidebar** — Python tool builds `_sidebar.md` from filesystem
-  using `_order` files for ordering
+- **Code enhancements** -- line numbers and copy-to-clipboard on all code blocks
+- **Search** -- full-text search across all pages
 
 ## How It Works
 

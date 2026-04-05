@@ -1,21 +1,23 @@
 # bruha
 
-A personal set of [docsify](https://docsify.js.org/) extensions. Not a fork --
-docsify is loaded via CDN. bruha adds YAML-driven config, custom themes, sidebar
-plugins, and a Python sidebar builder on top.
+A set of [docsify](https://docsify.js.org/) extensions. Not a fork -- docsify is
+loaded via CDN. bruha adds structure, config, and theming on top.
 
 ## Features
 
-- **YAML config** -- single `bruha.yaml` controls all settings, with sensible
-  defaults for everything
-- **4 color themes** -- parchment, pylab, blossom, near-midnight (each with
-  light + dark variants)
-- **Top navigation bar** -- top-level folders as horizontal tabs
-- **Collapsible sidebar** -- folders and page sections collapse/expand
-- **Sidebar bar indicator** -- vertical line tracks your position in a document
-- **Code enhancements** -- line numbers and copy-to-clipboard on all code blocks
-- **Sidebar builder** -- Python tool generates `_sidebar.md` from filesystem
-  with `_order` files for ordering
+- **Auto-generated sidebar from filesystem** -- add folders and markdown files,
+  run build, and the sidebar updates automatically. No hand-editing
+  `_sidebar.md`. Optional `_order` files control sequencing.
+- **Top navigation tabs from folder structure** -- top-level folders
+  automatically become a horizontal tab bar (like PyData Sphinx or Read the
+  Docs). Vanilla docsify has no concept of this.
+- **Single YAML config with defaults** -- one `bruha.yaml` controls everything
+  (themes, sidebar behavior, nav layout, code blocks). Every key has a sensible
+  default. Vanilla docsify requires wiring up each feature individually in
+  JavaScript.
+- **Coordinated theme system** -- 4 color themes with light/dark variants, vivid
+  code highlighting, and a theme picker UI, all toggled from one config. Vanilla
+  docsify gives you one static theme with no switching mechanism.
 
 ## Quick Start
 
