@@ -6,3 +6,5 @@
   path: css-classes.md
 - description: Navigation and event flow — click handling, hashchange, hooks, MutationObserver, and ?id= routing
   path: navigation-flow.md
+- description: CSS override pitfalls — code-one.css !important resets, how to override sidebar properties, bar indicator overlay technique
+  path: css-overrides.md

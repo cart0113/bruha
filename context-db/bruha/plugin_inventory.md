@@ -19,10 +19,12 @@ that overrides `--t-*` variables. The default Parchment palette is in code-one.c
 
 ### docsify-ext.css
 Extension styles: hamburger/github-corner hide rules, sidebar bar indicator
-(border-left on sub-section `<a>` elements, gated by `html.ext-inline-sidebar`),
+(continuous `border-left` on the active page's `<ul>`, with per-heading overlay
+segments via negative-margin `<a>` borders — gated by `html.ext-inline-sidebar`),
 collapsible folder chevrons (gated by `html.ext-folder-chevron`), page section
 collapse, top nav bar layout and active states. Kills vue.css dash markers
-(`.app-sub-sidebar li:before { content: "-" }`).
+(`.app-sub-sidebar li:before { content: "-" }`). See `docsify-structure/css-overrides.md`
+for the `!important` override chain required by code-one.css resets.
 
 ## JS Files
 
@@ -41,10 +43,12 @@ button to every fenced code block. Runs on `hook.doneEach`.
 ### sidebar-nav.js
 Sidebar bar indicator. Finds the active page's `<li>`, adds `.sb-active-page`
 class, marks current section's `<li>` with `.sb-current`. CSS handles the
-visual bar via `border-left` on sub-section `<a>` elements. Finding the
-active page: first checks for `.app-sub-sidebar` (most reliable), then
-URL matching, then docsify's `.active` class. Current section matched
-by `?id=` parameter only (base path may differ due to homepage aliasing).
+visual bar via a two-layer overlay: continuous `border-left` on the page's
+`<ul>`, with per-heading `<a>` elements using negative margin to overlay
+highlight segments on hover/click. Finding the active page: first checks
+for `.app-sub-sidebar` (most reliable), then URL matching, then docsify's
+`.active` class. Current section matched by `?id=` parameter only (base
+path may differ due to homepage aliasing).
 
 ### collapsible-folders.js
 Makes folder header elements (`<p>` or `<strong>`) clickable. Toggles
