@@ -1,3 +1,8 @@
+## Subfolders
+
+- description: Docsify runtime structure — sidebar DOM, CSS classes, navigation/event flow, and re-render pitfalls
+  path: docsify-structure/docsify-structure-toc.md
+
 ## Files
 
 - description: Architecture — how config flows from YAML through Python to JS runtime

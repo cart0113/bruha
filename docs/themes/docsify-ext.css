@@ -82,17 +82,24 @@ html.ext-folder-chevron.ext-inline-sidebar
   transform: rotate(-45deg);
 }
 
-/* --- Bar-level headings (H2) — border-left indicator --- */
+/* --- Continuous bar along entire page section list --- */
+html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul {
+  border-left: 4px solid color-mix(in srgb, var(--t-accent) 20%, transparent);
+  margin-left: calc(1em - 4.2px) !important;
+}
+
+/* --- Bar-level headings (H2) — highlight segment on hover/current --- */
 html.ext-inline-sidebar .sidebar-nav li.sb-bar-level > a {
-  border-left: 2px solid color-mix(in srgb, var(--t-accent) 20%, transparent) !important;
-  padding-left: 0.7em !important;
+  border-left: 4px solid transparent !important;
+  margin-left: -4px !important;
+  padding-left: 1em !important;
   transition: border-color 0.15s ease;
 }
 
 html.ext-inline-sidebar .sidebar-nav li.sb-bar-level > a:hover {
   border-left-color: color-mix(
     in srgb,
-    var(--t-accent) 50%,
+    var(--t-accent) 35%,
     transparent
   ) !important;
 }
@@ -105,7 +112,9 @@ html.ext-inline-sidebar .sidebar-nav li.sb-bar-level.sb-current > a {
 
 /* --- Text-level headings (H3+) — text highlight only, tight spacing --- */
 html.ext-inline-sidebar .sidebar-nav li.sb-text-level > a {
-  border: none !important;
+  border-left: 4px solid transparent !important;
+  margin-left: -10px !important;
+  padding-left: 1em !important;
   transition: color 0.15s ease;
   padding-top: 0.12em !important;
   padding-bottom: 0.12em !important;
@@ -122,7 +131,7 @@ html.ext-inline-sidebar .sidebar-nav li.sb-text-level.sb-current > a {
 
 /* --- Sub-sidebar indentation --- */
 html.ext-inline-sidebar .sidebar-nav li.sb-active-page > ul {
-  padding-left: 1em !important;
+  padding-left: 0 !important;
 }
 
 html.ext-inline-sidebar .sidebar-nav li.sb-active-page ul li > a {
