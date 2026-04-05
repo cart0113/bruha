@@ -119,6 +119,17 @@
         el.classList.remove('sb-bar-level', 'sb-text-level');
       });
 
+    /* Mark every page-link <li> (has a direct <a>, not inside sub-sidebar)
+       so CSS can show a collapsed chevron on non-active pages. */
+    var allLis = nav.querySelectorAll('li');
+    for (var i = 0; i < allLis.length; i++) {
+      var li = allLis[i];
+      if (li.closest('.app-sub-sidebar')) continue;
+      if (li.querySelector(':scope > a')) {
+        li.classList.add('sb-page-link');
+      }
+    }
+
     var pageLi = findActivePage(nav);
     if (pageLi) {
       pageLi.classList.add('sb-active-page');

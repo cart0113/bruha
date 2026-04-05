@@ -42,15 +42,15 @@ html.ext-inline-sidebar .sidebar-nav li.sb-has-sections > a {
   user-select: none;
 }
 
-/* Chevron on page title when it has sub-sections */
-html.ext-folder-chevron.ext-inline-sidebar .sidebar-nav li.sb-has-sections > a {
+/* Chevron on all page links (right-pointing ">", collapsed look) */
+html.ext-folder-chevron.ext-inline-sidebar .sidebar-nav li.sb-page-link > a {
   position: relative;
   padding-left: 2em !important;
 }
 
 html.ext-folder-chevron.ext-inline-sidebar
   .sidebar-nav
-  li.sb-has-sections
+  li.sb-page-link
   > a::before {
   content: '';
   display: inline-block;
@@ -58,7 +58,7 @@ html.ext-folder-chevron.ext-inline-sidebar
   height: 0.4em;
   border-right: 1.5px solid var(--t-sidebar-text);
   border-bottom: 1.5px solid var(--t-sidebar-text);
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
   transition: transform 0.15s ease;
   position: absolute;
   left: 0.8em;
@@ -66,6 +66,15 @@ html.ext-folder-chevron.ext-inline-sidebar
   margin-top: -0.25em;
 }
 
+/* Active page with sections: chevron points down (expanded) */
+html.ext-folder-chevron.ext-inline-sidebar
+  .sidebar-nav
+  li.sb-has-sections
+  > a::before {
+  transform: rotate(45deg);
+}
+
+/* Active page collapsed: chevron points right again */
 html.ext-folder-chevron.ext-inline-sidebar
   .sidebar-nav
   li.sb-has-sections.sb-page-collapsed
@@ -94,10 +103,12 @@ html.ext-inline-sidebar .sidebar-nav li.sb-bar-level.sb-current > a {
   font-weight: 600;
 }
 
-/* --- Text-level headings (H3+) — text highlight only --- */
+/* --- Text-level headings (H3+) — text highlight only, tight spacing --- */
 html.ext-inline-sidebar .sidebar-nav li.sb-text-level > a {
   border: none !important;
   transition: color 0.15s ease;
+  padding-top: 0.12em !important;
+  padding-bottom: 0.12em !important;
 }
 
 html.ext-inline-sidebar .sidebar-nav li.sb-text-level > a:hover {
