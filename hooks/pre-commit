@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+DOCS_DIR="${REPO_ROOT}/docs"
+
+# Only rebuild if docs/ or src/ files are being committed
+if ! git diff --cached --name-only | grep -qE '^(docs/|src/)'; then
+    exit 0
+fi
+
+PYTHONPATH="${REPO_ROOT}/src" python-main -c "
+import bruha.docsify_ext_config as ext_config
+import bruha.sidebar_builder as sb
+
+config = ext_config.load_config('${DOCS_DIR}')
+sb.write_sidebar('${DOCS_DIR}', config['top_level_folders_as_top_control'], config['content_folder'])
+ext_config.generate_config_js('${DOCS_DIR}')
+"
+
+# Cache-bust docs/index.html
+STAMP=$(date +%Y%m%d%H%M%S)
+sed -i '' "s/?v=[0-9a-zA-Z]*/?v=${STAMP}/g" "${DOCS_DIR}/index.html"
+
+# Stage generated files
+git add "${DOCS_DIR}/index.html"
+git add "${DOCS_DIR}/src/_sidebar.md"
+git add "${DOCS_DIR}/themes/bruha-config.js"
