@@ -25,10 +25,10 @@ generator merges user YAML on top of defaults.
 | `content_folder` | string | `src` | Subdirectory of docs/ containing markdown content |
 | `folder_chevron` | bool | `true` | Show collapse chevron on folder headers |
 | `page_section_collapsible` | bool | `true` | Allow collapsing page sub-sections by re-clicking the page header |
-| `search_style` | string | `magnify-glass` | Style of the search control in the top nav bar |
+| `search_style` | string | `magnify-glass` | Search control in top nav: `magnify-glass` (icon + overlay) or `box` (always-visible input) |
 | `sidebar_indent` | string | `1em` | CSS value for sidebar indentation depth (sets `--t-sidebar-indent`) |
-| `site_icon` | string | `""` | Path to SVG icon displayed in the top nav bar |
-| `social_links` | dict | `{}` | Social media links in top nav (keys: platform names, values: URLs) |
+| `site_icon` | string | `""` | Path to SVG icon displayed in the top nav bar and mobile header |
+| `social_links` | dict | `{}` | Social media links in top nav and mobile drawer. Platforms: `github`, `facebook`, `x`/`twitter`, `instagram`, `threads`, `bluesky` |
 
 ## Validation
 

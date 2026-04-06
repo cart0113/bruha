@@ -129,7 +129,10 @@ sidebar.
 **Type:** string  
 **Default:** `magnify-glass`
 
-Style of the search control in the top nav bar.
+Style of the search control in the top nav bar. Options:
+
+- `magnify-glass` — icon button that opens a search overlay
+- `box` — always-visible input field
 
 ### sidebar_indent
 
@@ -144,15 +147,16 @@ property.
 **Type:** string  
 **Default:** `""` (empty — no icon)
 
-Path to an SVG icon displayed in the top nav bar.
+Path to an SVG icon displayed in the top nav bar and mobile header.
 
 ### social_links
 
 **Type:** object  
 **Default:** `{}` (empty — no links)
 
-Social media links shown in the top nav bar. Keys are platform names, values are
-URLs:
+Social media links shown in the top nav bar and mobile drawer. Keys are platform
+names, values are URLs. Supported platforms: `github`, `facebook`, `x` (or
+`twitter`), `instagram`, `threads`, `bluesky`.
 
 ```yaml
 social_links:

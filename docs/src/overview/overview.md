@@ -6,13 +6,14 @@ CDN. bruha layers plugins and a build tool on top.
 
 ## Features
 
-- **Auto-generated sidebar from filesystem** -- add folders and markdown files,
-  run build, and the sidebar updates automatically. No hand-editing
-  `_sidebar.md`, which also means an LLM generating documentation never needs to
-  update a separate sidebar file. Optional `_order.md` files control sequencing.
+- **Auto-generated sidebar from filesystem** -- just add folders and markdown
+  files, run build (usually as commit hook), and the sidebar updates
+  automatically. No hand-editing `_sidebar.md`. This was designed so that an LLM
+  generating documentation never needs to update a separate sidebar file.
+  Optional `_order.md` files control sequencing.
 - **Top navigation tabs from folder structure** -- top-level folders
   automatically become a horizontal tab bar (like PyData Sphinx or Read the
-  Docs). Vanilla docsify has no concept of this.
+  Docs).
 - **Single YAML config with defaults** -- one `bruha.yaml` controls everything
   (themes, sidebar behavior, nav layout, code blocks). Every key has a sensible
   default. Vanilla docsify requires wiring up each feature individually in
@@ -32,30 +33,16 @@ CDN. bruha layers plugins and a build tool on top.
 
 ## How It Works
 
-1. Organize docs under `docs/src/` using `_order.md` files for ordering
+1. Organize docs under `docs/src/` using optional `_order.md` files for ordering
 2. Edit `bruha.yaml` to override any defaults you want to change
 3. Run the build to generate `_sidebar.md` and the JS config
-4. Serve with any static server (`docsify serve docs`, `python -m http.server`)
+4. Use `docs/bin/serve.sh` or use any static server (`docsify serve docs`,
+   `python -m http.server`)
 
-## Quick Start
+## Viewing Docs Locally
 
 ```bash
 docs/bin/build.sh
 docs/bin/serve.sh              # default port 3000
 docs/bin/serve.sh --port 4000  # custom port
 ```
-
-Or manually:
-
-```bash
-cd docs
-python-main -c "
-import bruha.sidebar_builder as sb
-import bruha.docsify_ext_config as cfg
-config = cfg.load_config('.')
-sb.write_sidebar('.', config['top_level_folders_as_top_control'], config['content_folder'])
-cfg.generate_config_js('.')
-"
-```
-
-Then open `docs/index.html` in a browser or run `docsify serve docs`.

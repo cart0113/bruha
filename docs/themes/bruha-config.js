@@ -2,7 +2,7 @@ window.__docsifyExtConfig = {
   "light_theme": "parchment",
   "dark_theme": "near-midnight",
   "theme_controls": "theme_picker",
-  "dark_mode_default": false,
+  "dark_mode_default": true,
   "code_highlighter": "vivid",
   "document_inline_sidebar_selector": true,
   "document_header_depth": 3,

@@ -14,13 +14,9 @@ and h3 headings.
 
 ### Header Depth
 
-With `document_header_depth: 3`, the sidebar shows:
-
-- The document title (this page: "Docsify Features")
-- h2 headings ("Search", "Sidebar Navigation", etc.)
-
-You can see these in the sidebar right now. Clicking one scrolls to that
-section.
+With `document_header_depth: 3`, the sidebar shows the document title, h2
+headings, and h3 headings. You can see these in the sidebar right now — clicking
+one scrolls to that section.
 
 ### Collapsible Folders
 

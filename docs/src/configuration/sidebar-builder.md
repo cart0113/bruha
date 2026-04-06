@@ -38,21 +38,20 @@ Mixing raises an error.
 
 ### Ordering with \_order.md files
 
-Each directory can contain a file named `_order.md` that lists entries one per
-line in the desired display order:
+Each directory can contain an `_order.md` file that lists entries as a markdown
+list:
 
-```
-overview
-configuration
-examples
+```markdown
+- overview
+- configuration
+- examples
 ```
 
 Rules:
 
-- Items listed in `_order.md` appear in that order
-- Items on disk but not in `_order.md` are appended alphabetically
-- Items in `_order.md` that don't exist on disk are silently ignored
-- Lines starting with `#` are comments
+- Items appear in listed order; unlisted items are appended alphabetically
+- Missing items are silently ignored; lines starting with `#` are comments
+- Plain text (one entry per line, no `-` prefix) is also accepted
 
 ### Default ordering (no \_order.md file)
 
