@@ -1,3 +1,5 @@
+- **Overview**
+  - [Overview](overview/overview.md)
 - **Configuration**
   - [Configuration Reference](configuration/config-reference.md)
   - [Local Development](configuration/local-development.md)
@@ -9,5 +11,3 @@
   - **Theme Demos**
     - [Code Blocks](examples/theme-demos/code-blocks.md)
     - [Typography](examples/theme-demos/typography.md)
-- **Overview**
-  - [Overview](overview/overview.md)

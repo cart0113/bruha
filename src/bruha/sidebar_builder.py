@@ -73,7 +73,7 @@ def _read_order_file(directory):
         return None
     lines = order_path.read_text(encoding="utf-8").splitlines()
     return [
-        line.strip()
+        line.strip().lstrip("- ")
         for line in lines
         if line.strip() and not line.strip().startswith("#")
     ]

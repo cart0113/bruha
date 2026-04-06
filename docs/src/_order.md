@@ -1,1 +1,3 @@
-overview configuration examples
+- overview
+- configuration
+- examples

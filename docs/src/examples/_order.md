@@ -1,1 +1,2 @@
-general theme-demos
+- general
+- theme-demos
