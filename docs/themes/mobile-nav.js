@@ -22,9 +22,10 @@
 
 (function () {
   var cfg = window.__docsifyExtConfig || {};
-  var DARK_KEY = 'doc-dark-mode';
-  var THEME_KEY = 'doc-theme';
-  var CODE_KEY = 'doc-code-highlighter';
+  var pfx = (window.location.pathname.replace(/\/+$/, '') || '') + ':';
+  var DARK_KEY = pfx + 'doc-dark-mode';
+  var THEME_KEY = pfx + 'doc-theme';
+  var CODE_KEY = pfx + 'doc-code-highlighter';
 
   var THEMES = [
     { id: 'parchment', label: 'Parchment', color: '#4a6591' },

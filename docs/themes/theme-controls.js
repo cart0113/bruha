@@ -21,9 +21,10 @@
  */
 
 (function () {
-  var DARK_KEY = 'doc-dark-mode';
-  var THEME_KEY = 'doc-theme';
-  var CODE_KEY = 'doc-code-highlighter';
+  var pfx = (window.location.pathname.replace(/\/+$/, '') || '') + ':';
+  var DARK_KEY = pfx + 'doc-dark-mode';
+  var THEME_KEY = pfx + 'doc-theme';
+  var CODE_KEY = pfx + 'doc-code-highlighter';
   var cfg = window.__docsifyExtConfig || {};
 
   var THEMES = [
