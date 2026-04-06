@@ -3,3 +3,5 @@ __pycache__/
 .DS_Store
 node_modules/
 .playwright-mcp/
+context-db/local-repos-to-update/
+bin/sync-to-repos.sh

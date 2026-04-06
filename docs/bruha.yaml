@@ -1,3 +1,17 @@
+site_name: bruha
+site_description: A docsify extension
+og_image: assets/og-image.png
+home_path: overview/overview
+prism_languages:
+  - python
+  - bash
+  - markdown
+  - yaml
+  - javascript
+  - toml
+  - rest
+  - css
+  - json
 light_theme: parchment
 dark_theme: near-midnight
 theme_controls: theme_picker

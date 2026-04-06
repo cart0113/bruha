@@ -18,7 +18,22 @@ window.__docsifyExtConfig = {
   "social_links": {
     "github": "https://github.com/cart0113/bruha"
   },
-  "style": "code-one"
+  "style": "code-one",
+  "site_name": "bruha",
+  "site_description": "A docsify extension",
+  "og_image": "assets/og-image.png",
+  "home_path": "overview/overview",
+  "prism_languages": [
+    "python",
+    "bash",
+    "markdown",
+    "yaml",
+    "javascript",
+    "toml",
+    "rest",
+    "css",
+    "json"
+  ]
 };
 (function(c) {
   document.documentElement.classList.add('theme-' + c.light_theme);

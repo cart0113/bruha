@@ -12,6 +12,11 @@ generator merges user YAML on top of defaults.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| `site_name` | string | `""` | Project name — used in `<title>`, OG tags, and docsify `name` |
+| `site_description` | string | `""` | Short description — used in `og:description` |
+| `og_image` | string | `assets/og-image.svg` | Path to OG image (relative to docs/). Full URL is derived from `social_links.github` |
+| `home_path` | string | `overview/overview` | Default landing page hash (e.g. `overview/overview` → `#/overview/overview`) |
+| `prism_languages` | list | `[python, bash, markdown, yaml, javascript, json]` | Prism syntax highlighting languages to load from CDN |
 | `light_theme` | string | `parchment` | Theme for light mode: `parchment`, `pylab` (Eclipse-inspired), `blossom` (lavender pastel), or `near-midnight` (soft dark) |
 | `dark_theme` | string | `light_theme` | Theme for dark mode (defaults to `light_theme` if not set). Set to a different theme to swap themes when toggling dark mode |
 | `theme_controls` | string | `dark_toggle` | Bottom-right UI: `none`, `dark_toggle` (moon/sun), or `theme_picker` (palette panel with swatches, dark toggle, vivid code toggle) |
