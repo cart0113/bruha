@@ -1,5 +1,7 @@
 ---
-description: Navigation and event flow — click handling, hashchange, hooks, MutationObserver, and ?id= routing
+description:
+  Navigation and event flow — click handling, hashchange, hooks,
+  MutationObserver, and ?id= routing
 ---
 
 # Navigation and Event Flow
@@ -7,6 +9,7 @@ description: Navigation and event flow — click handling, hashchange, hooks, Mu
 ## URL Structure
 
 Docsify uses hash-based routing:
+
 ```
 http://localhost:3000/#/overview/overview?id=quick-start
                       ├── page path ────┤├── section ──┤
@@ -23,6 +26,7 @@ The click handler is attached in **capture phase** (third arg `true`) on
 docsify sees them.
 
 Guard checks (bail out if any fail):
+
 1. Click target must be an `<a>` element
 2. Closest `<li>` must have `sb-active-page`
 3. The `<a>` must be a direct child of the `<li>` (not a sub-sidebar link)
@@ -42,29 +46,31 @@ prevent docsify from re-rendering (see sidebar-dom.md for why this matters).
 
 Setting `window.location.hash` directly triggers docsify's router, which
 re-renders the page and destroys the `app-sub-sidebar`. Using
-`history.pushState` changes the URL without triggering docsify, then
-manually dispatching `hashchange` updates only our sidebar state classes
-(via `sidebar-indicator.js` listener).
+`history.pushState` changes the URL without triggering docsify, then manually
+dispatching `hashchange` updates only our sidebar state classes (via
+`sidebar-indicator.js` listener).
 
 ## Event/Hook Lifecycle
 
 ### Docsify Hooks (registered by plugins)
 
-| Hook | When | Used By |
-|------|------|---------|
-| `hook.ready` | DOM ready, once | `sidebar-indicator.js` (MutationObserver + hashchange listener), `collapsible-folders.js` (click handler) |
+| Hook            | When                    | Used By                                                                                                                                         |
+| --------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hook.ready`    | DOM ready, once         | `sidebar-indicator.js` (MutationObserver + hashchange listener), `collapsible-folders.js` (click handler)                                       |
 | `hook.doneEach` | After every page render | `sidebar-indicator.js` (applyActiveStates), `collapsible-folders.js` (setupFolders), `top-nav.js` (buildTopNav + applyFolderState + scrollToId) |
 
 ### hashchange Listeners
 
-- `sidebar-indicator.js`: calls `applyActiveStates()` — clears and re-applies all `sb-*` classes
-- `top-nav.js`: calls `applyFolderState()` — updates active tab and folder visibility;
-  also calls `scrollToId()` via `requestAnimationFrame` to scroll the `?id=` heading
-  into view with the top nav offset
+- `sidebar-indicator.js`: calls `applyActiveStates()` — clears and re-applies
+  all `sb-*` classes
+- `top-nav.js`: calls `applyFolderState()` — updates active tab and folder
+  visibility; also calls `scrollToId()` via `requestAnimationFrame` to scroll
+  the `?id=` heading into view with the top nav offset
 
 ### MutationObserver (sidebar-indicator.js)
 
 Watches `.sidebar-nav` for `class` attribute changes on any descendant:
+
 - Fires `applyActiveStates()` when classes change
 - Disconnects itself before making changes (prevents infinite loop)
 - Reconnects after changes are applied
@@ -75,6 +81,7 @@ This ensures sidebar state stays correct when other plugins modify classes
 ## Folder Collapse (setupFolders)
 
 Runs on every `doneEach`. For each `<li>` with a `<p>` or `<strong>` header:
+
 1. Marks it with `ext-folder` class (once)
 2. Attaches click listener on the header to toggle `ext-folder-collapsed`
 3. Auto-expands folders containing the current page path

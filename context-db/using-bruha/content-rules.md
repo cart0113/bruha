@@ -1,5 +1,7 @@
 ---
-description: Content structure rules — no mixing, _order.md files, display names, skipped items
+description:
+  Content structure rules — no mixing, _order.md files, display names, skipped
+  items
 ---
 
 # Content Rules
@@ -38,11 +40,11 @@ src/
 If a folder needs an introductory page, put it in a child folder or name the
 file so it sorts first inside a files-only directory.
 
-## Ordering with _order.md Files
+## Ordering with \_order.md Files
 
-Any directory can contain a file named `_order.md` that controls the
-display order in the sidebar. List entry names one per line (folder names or
-file stems without `.md`).
+Any directory can contain a file named `_order.md` that controls the display
+order in the sidebar. List entry names one per line (folder names or file stems
+without `.md`).
 
 ```
 # _order.md — comments start with #
@@ -52,13 +54,16 @@ reference
 ```
 
 Rules:
+
 - Listed items appear in the specified order.
-- Items on disk but not listed are appended alphabetically after the listed ones.
+- Items on disk but not listed are appended alphabetically after the listed
+  ones.
 - Items listed but not on disk are silently ignored (no error).
 
 When no `_order.md` file exists:
-1. A file whose stem matches its parent folder name sorts first
-   (e.g. `overview.md` inside `overview/`).
+
+1. A file whose stem matches its parent folder name sorts first (e.g.
+   `overview.md` inside `overview/`).
 2. Everything else sorts alphabetically.
 
 ## Display Names
@@ -71,6 +76,7 @@ When no `_order.md` file exists:
 ## Skipped Items
 
 The sidebar builder ignores:
+
 - Files or directories starting with `_` or `.`
 - `_sidebar.md`, `_navbar.md`, `_coverpage.md`, `_order.md`
 - Directories with no `.md` files anywhere inside them

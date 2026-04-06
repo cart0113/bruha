@@ -1,5 +1,7 @@
 ---
-description: How to add new folders and sections — folder structure, _order.md, rebuilding the sidebar
+description:
+  How to add new folders and sections — folder structure, _order.md, rebuilding
+  the sidebar
 ---
 
 # Adding Sections
@@ -9,7 +11,8 @@ description: How to add new folders and sections — folder structure, _order.md
 1. Create the folder under `docs/src/`.
 2. Remember: the folder must contain either only files or only sub-folders —
    never both.
-3. Add an `_order.md` file if the default alphabetical sort is not what you want.
+3. Add an `_order.md` file if the default alphabetical sort is not what you
+   want.
 4. Run `bin/build.sh` to regenerate `_sidebar.md`.
 
 Example — adding a "Tutorials" section:

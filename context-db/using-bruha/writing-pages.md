@@ -1,5 +1,6 @@
 ---
-description: How to write a markdown page — headings, links, what docsify renders
+description:
+  How to write a markdown page — headings, links, what docsify renders
 ---
 
 # Writing Pages
@@ -44,17 +45,13 @@ Use blockquote syntax with a `[!type]` marker to create styled callout boxes.
 Four types are available:
 
 ```markdown
-> [!note]
-> Blue info box — background context or references.
+> [!note] Blue info box — background context or references.
 
-> [!tip]
-> Green tip box — helpful suggestions (renders in italic).
+> [!tip] Green tip box — helpful suggestions (renders in italic).
 
-> [!important]
-> Amber box — key information the reader should not miss.
+> [!important] Amber box — key information the reader should not miss.
 
-> [!warning]
-> Red box — dangerous pitfalls or breaking changes.
+> [!warning] Red box — dangerous pitfalls or breaking changes.
 ```
 
 Each renders as a colored box with a bold uppercase label and left border.

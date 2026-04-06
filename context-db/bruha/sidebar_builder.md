@@ -1,13 +1,14 @@
 ---
-description: Sidebar builder — content rules, _order.md files, validation, output format
+description:
+  Sidebar builder — content rules, _order.md files, validation, output format
 ---
 
 # Sidebar Builder
 
 ## Problem
 
-Docsify requires a hand-maintained `_sidebar.md`. This gets out of sync as
-pages are added or removed.
+Docsify requires a hand-maintained `_sidebar.md`. This gets out of sync as pages
+are added or removed.
 
 ## Solution
 
@@ -46,7 +47,7 @@ docs/
 
 ## Ordering
 
-### _order.md files
+### \_order.md files
 
 Each directory can contain a file named `_order.md` that lists entries one per
 line in the desired display order.
@@ -58,23 +59,24 @@ general
 ```
 
 Rules:
+
 - Items listed in `_order.md` appear in that order
 - Items on disk but not in `_order.md` are appended alphabetically
 - Items in `_order.md` that don't exist on disk are silently ignored
 
-### Default ordering (no _order.md file)
+### Default ordering (no \_order.md file)
 
 When no `_order.md` file exists:
-1. A file whose stem matches the folder name sorts first
-   (e.g. `overview.md` inside `overview/`)
+
+1. A file whose stem matches the folder name sorts first (e.g. `overview.md`
+   inside `overview/`)
 2. Remaining items sort alphabetically
 
 ## Display Names
 
 Files: first `# heading` in the file, or filename with dashes/underscores
-replaced by spaces and title-cased.
-Folders: directory name with dashes/underscores replaced by spaces and
-title-cased.
+replaced by spaces and title-cased. Folders: directory name with
+dashes/underscores replaced by spaces and title-cased.
 
 ## Skipped Items
 
@@ -91,8 +93,8 @@ title-cased.
   - [Config Reference](src/configuration/config-reference.md)
 ```
 
-Links are relative to the docs root (include `src/` prefix).
-Files become links. Folders become bold labels.
+Links are relative to the docs root (include `src/` prefix). Files become links.
+Folders become bold labels.
 
 ## API
 
@@ -101,5 +103,5 @@ Files become links. Folders become bold labels.
 
 ## Integration
 
-`docs/bin/build.sh` reads `content_folder` from the YAML config and passes it
-to the sidebar builder.
+`docs/bin/build.sh` reads `content_folder` from the YAML config and passes it to
+the sidebar builder.

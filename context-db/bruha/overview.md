@@ -1,24 +1,26 @@
 ---
-description: What bruha is — a personal set of docsify extensions driven by YAML config
+description:
+  What bruha is — a personal set of docsify extensions driven by YAML config
 ---
 
 # bruha — Overview
 
-bruha is a personal set of extensions for docsify. It is not a fork of
-docsify (docsify is loaded via CDN), not a reusable theme library, and not
-trying to be general-purpose. It is one person's opinionated setup for
-making docsify documentation pages look and behave a specific way.
+bruha is a personal set of extensions for docsify. It is not a fork of docsify
+(docsify is loaded via CDN), not a reusable theme library, and not trying to be
+general-purpose. It is one person's opinionated setup for making docsify
+documentation pages look and behave a specific way.
 
 ## What It Does
 
 - Adds a YAML config file (`docs/bruha.yaml`) that controls all features
 - Every config key has a sensible default — users only override what they need
 - Generates a JavaScript config bridge so the browser reads the same settings
-- Provides a custom CSS theme (code-one) with 4 switchable color themes
-  (each with light + dark variants)
+- Provides a custom CSS theme (code-one) with 4 switchable color themes (each
+  with light + dark variants)
 - Adds sidebar enhancements: collapsible folders, bar position indicator
 - Adds a horizontal top navigation bar for top-level doc sections
-- Auto-generates `_sidebar.md` from filesystem with `_order.md` files for ordering
+- Auto-generates `_sidebar.md` from filesystem with `_order.md` files for
+  ordering
 - Hides docsify defaults (hamburger menu, GitHub corner) when configured
 - Formats all JS, CSS, MD with prettier
 

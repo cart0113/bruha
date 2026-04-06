@@ -1,5 +1,6 @@
 ---
-description: YAML config schema — all keys, types, defaults, and what they control
+description:
+  YAML config schema — all keys, types, defaults, and what they control
 ---
 
 # Config Schema
@@ -10,34 +11,33 @@ generator merges user YAML on top of defaults.
 
 ## Keys
 
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| `site_name` | string | `""` | Project name — used in `<title>`, OG tags, and docsify `name` |
-| `site_description` | string | `""` | Short description — used in `og:description` |
-| `og_image` | string | `assets/og-image.svg` | Path to OG image (relative to docs/). Full URL is derived from `social_links.github` |
-| `home_path` | string | `overview/overview` | Default landing page hash (e.g. `overview/overview` → `#/overview/overview`) |
-| `prism_languages` | list | `[python, bash, markdown, yaml, javascript, json]` | Prism syntax highlighting languages to load from CDN |
-| `light_theme` | string | `parchment` | Theme for light mode: `parchment`, `pylab` (Eclipse-inspired), `blossom` (lavender pastel), or `near-midnight` (soft dark) |
-| `dark_theme` | string | `light_theme` | Theme for dark mode (defaults to `light_theme` if not set). Set to a different theme to swap themes when toggling dark mode |
-| `theme_controls` | string | `dark_toggle` | Bottom-right UI: `none`, `dark_toggle` (moon/sun), or `theme_picker` (palette panel with swatches, dark toggle, vivid code toggle) |
-| `dark_mode_default` | bool | `false` | Start in dark mode (every theme has light + dark variants) |
-| `code_highlighter` | string | `vivid` | Syntax coloring: `classic` (muted) or `vivid` (high-saturation) |
-| `document_inline_sidebar_selector` | bool | `true` | Show the sidebar bar indicator for document sections |
-| `document_header_depth` | int | `3` | How many heading levels to show in sidebar (3 = title + h2 + h3) |
-| `top_level_folders_as_top_control` | bool | `true` | Render top-level folders as a horizontal nav bar at page top |
-| `hamburger_menu` | bool | `false` | Show the docsify sidebar toggle button |
-| `github_corner` | bool | `false` | Show the GitHub corner link |
-| `content_folder` | string | `src` | Subdirectory of docs/ containing markdown content |
-| `folder_chevron` | bool | `true` | Show collapse chevron on folder headers |
-| `page_section_collapsible` | bool | `true` | Allow collapsing page sub-sections by re-clicking the page header |
-| `search_style` | string | `magnify-glass` | Search control in top nav: `magnify-glass` (icon + overlay) or `box` (always-visible input) |
-| `sidebar_indent` | string | `1em` | CSS value for sidebar indentation depth (sets `--t-sidebar-indent`) |
-| `site_icon` | string | `""` | Path to SVG icon displayed in the top nav bar and mobile header |
-| `social_links` | dict | `{}` | Social media links in top nav and mobile drawer. Platforms: `github`, `facebook`, `x`/`twitter`, `instagram`, `threads`, `bluesky` |
+| Key                                | Type   | Default                                            | Description                                                                                                                        |
+| ---------------------------------- | ------ | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `site_name`                        | string | `""`                                               | Project name — used in `<title>`, OG tags, and docsify `name`                                                                      |
+| `site_description`                 | string | `""`                                               | Short description — used in `og:description`                                                                                       |
+| `og_image`                         | string | `assets/og-image.svg`                              | Path to OG image (relative to docs/). Full URL is derived from `social_links.github`                                               |
+| `home_path`                        | string | `overview/overview`                                | Default landing page hash (e.g. `overview/overview` → `#/overview/overview`)                                                       |
+| `prism_languages`                  | list   | `[python, bash, markdown, yaml, javascript, json]` | Prism syntax highlighting languages to load from CDN                                                                               |
+| `light_theme`                      | string | `parchment`                                        | Theme for light mode: `parchment`, `pylab` (Eclipse-inspired), `blossom` (lavender pastel), or `near-midnight` (soft dark)         |
+| `dark_theme`                       | string | `light_theme`                                      | Theme for dark mode (defaults to `light_theme` if not set). Set to a different theme to swap themes when toggling dark mode        |
+| `theme_controls`                   | string | `dark_toggle`                                      | Bottom-right UI: `none`, `dark_toggle` (moon/sun), or `theme_picker` (palette panel with swatches, dark toggle, vivid code toggle) |
+| `dark_mode_default`                | bool   | `false`                                            | Start in dark mode (every theme has light + dark variants)                                                                         |
+| `code_highlighter`                 | string | `vivid`                                            | Syntax coloring: `classic` (muted) or `vivid` (high-saturation)                                                                    |
+| `document_inline_sidebar_selector` | bool   | `true`                                             | Show the sidebar bar indicator for document sections                                                                               |
+| `document_header_depth`            | int    | `3`                                                | How many heading levels to show in sidebar (3 = title + h2 + h3)                                                                   |
+| `top_level_folders_as_top_control` | bool   | `true`                                             | Render top-level folders as a horizontal nav bar at page top                                                                       |
+| `hamburger_menu`                   | bool   | `false`                                            | Show the docsify sidebar toggle button                                                                                             |
+| `github_corner`                    | bool   | `false`                                            | Show the GitHub corner link                                                                                                        |
+| `content_folder`                   | string | `src`                                              | Subdirectory of docs/ containing markdown content                                                                                  |
+| `folder_chevron`                   | bool   | `true`                                             | Show collapse chevron on folder headers                                                                                            |
+| `page_section_collapsible`         | bool   | `true`                                             | Allow collapsing page sub-sections by re-clicking the page header                                                                  |
+| `search_style`                     | string | `magnify-glass`                                    | Search control in top nav: `magnify-glass` (icon + overlay) or `box` (always-visible input)                                        |
+| `sidebar_indent`                   | string | `1em`                                              | CSS value for sidebar indentation depth (sets `--t-sidebar-indent`)                                                                |
+| `site_icon`                        | string | `""`                                               | Path to SVG icon displayed in the top nav bar and mobile header                                                                    |
+| `social_links`                     | dict   | `{}`                                               | Social media links in top nav and mobile drawer. Platforms: `github`, `facebook`, `x`/`twitter`, `instagram`, `threads`, `bluesky` |
 
 ## Validation
 
-When `top_level_folders_as_top_control` is true, the sidebar builder
-enforces that all top-level items in the content folder are directories.
-No loose `.md` files are allowed at the root level. Violation raises
-`SidebarError`.
+When `top_level_folders_as_top_control` is true, the sidebar builder enforces
+that all top-level items in the content folder are directories. No loose `.md`
+files are allowed at the root level. Violation raises `SidebarError`.

@@ -1,16 +1,22 @@
 # AGENTS.md
 
-This file provides guidance to AI assistants when working with code in this repository.
+This file provides guidance to AI assistants when working with code in this
+repository.
 
 ## CRITICAL: Read Global User Context First
 
-**BEFORE PROCEEDING, read `~/.context.md` and follow all advice there.** That file contains my general coding preferences, style guidelines, and critical instructions that apply to ALL projects. The instructions in ~/.context.md override any conflicting defaults.
+**BEFORE PROCEEDING, read `~/.context.md` and follow all advice there.** That
+file contains my general coding preferences, style guidelines, and critical
+instructions that apply to ALL projects. The instructions in ~/.context.md
+override any conflicting defaults.
 
 If ~/.context.md doesn't exist, notify the user.
 
 ## Project Overview
 
-bruha is a personal set of docsify extensions. Not a framework, not a library — just one person's config-driven setup for making docsify pages look and behave a specific way.
+bruha is a personal set of docsify extensions. Not a framework, not a library —
+just one person's config-driven setup for making docsify pages look and behave a
+specific way.
 
 ## Code Structure
 
@@ -39,7 +45,8 @@ context-db/                 Project knowledge database (context-db format)
 docs/bin/build.sh
 ```
 
-This rebuilds `_sidebar.md` + `bruha-config.js` from the YAML config and filesystem, then runs prettier on all JS, CSS, and MD files.
+This rebuilds `_sidebar.md` + `bruha-config.js` from the YAML config and
+filesystem, then runs prettier on all JS, CSS, and MD files.
 
 ### Serving
 
@@ -65,11 +72,12 @@ ruff-main src/             # Python formatting
 
 ## Sidebar Ordering
 
-Sidebar order is controlled by `_order.md` files in each directory under `docs/`.
-Each `_order.md` lists filenames/dirnames one per line. Items not listed sort
-alphabetically at the end. If no `_order.md` exists, everything is alphabetical.
+Sidebar order is controlled by `_order.md` files in each directory under
+`docs/`. Each `_order.md` lists filenames/dirnames one per line. Items not
+listed sort alphabetically at the end. If no `_order.md` exists, everything is
+alphabetical.
 
 ## context-db
 
-Read `context-db/context-db-instructions.md` — it contains all rules for reading,
-writing, and maintaining the project knowledge database.
+Read `context-db/context-db-instructions.md` — it contains all rules for
+reading, writing, and maintaining the project knowledge database.

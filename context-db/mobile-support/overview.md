@@ -1,5 +1,7 @@
 ---
-description: Mobile responsive layout — breakpoint, hamburger drawer, how to add mobile versions of new features
+description:
+  Mobile responsive layout — breakpoint, hamburger drawer, how to add mobile
+  versions of new features
 ---
 
 # Mobile Support
@@ -11,14 +13,14 @@ behaviour lives behind `@media (max-width: 768px)` in `mobile-nav.css`.
 
 ## What Changes on Mobile
 
-| Desktop element | Mobile behaviour |
-|---|---|
-| Top nav bar (`.ext-top-nav`) | Hidden; replaced by hamburger drawer |
-| Sidebar (`.sidebar`) | Hidden; sidebar tree cloned into drawer |
-| Theme controls (`.tc-wrap`) | Hidden; toggles appear in drawer footer |
-| Search (top bar magnify/box) | Hidden; search input in drawer |
-| Social links (top bar) | Hidden; links in drawer footer |
-| Content area | Full-width, reduced padding |
+| Desktop element              | Mobile behaviour                        |
+| ---------------------------- | --------------------------------------- |
+| Top nav bar (`.ext-top-nav`) | Hidden; replaced by hamburger drawer    |
+| Sidebar (`.sidebar`)         | Hidden; sidebar tree cloned into drawer |
+| Theme controls (`.tc-wrap`)  | Hidden; toggles appear in drawer footer |
+| Search (top bar magnify/box) | Hidden; search input in drawer          |
+| Social links (top bar)       | Hidden; links in drawer footer          |
+| Content area                 | Full-width, reduced padding             |
 
 ## Hamburger Drawer Layout
 
@@ -45,10 +47,10 @@ Header, search, and footer stay pinned. The middle (tabs + tree) scrolls.
 
 ## Files
 
-| File | Purpose |
-|---|---|
-| `docs/themes/mobile-nav.css` | All mobile styles + the `@media` block that hides desktop / shows mobile elements |
-| `docs/themes/mobile-nav.js` | Docsify plugin: builds hamburger button, drawer DOM, syncs sidebar on each navigation |
+| File                         | Purpose                                                                               |
+| ---------------------------- | ------------------------------------------------------------------------------------- |
+| `docs/themes/mobile-nav.css` | All mobile styles + the `@media` block that hides desktop / shows mobile elements     |
+| `docs/themes/mobile-nav.js`  | Docsify plugin: builds hamburger button, drawer DOM, syncs sidebar on each navigation |
 
 ## How to Add Mobile Support for a New Feature
 
@@ -64,10 +66,10 @@ Header, search, and footer stay pinned. The middle (tabs + tree) scrolls.
 
 ## Plugin Load Order
 
-`mobileNavPlugin` runs **before** `topNavPlugin` in the docsify plugins
-array. This matters because `mobileNavPlugin.syncDrawer()` clones the
-sidebar HTML before `topNavPlugin` modifies it (adding `ext-top-hidden`
-classes, hiding folder headers).
+`mobileNavPlugin` runs **before** `topNavPlugin` in the docsify plugins array.
+This matters because `mobileNavPlugin.syncDrawer()` clones the sidebar HTML
+before `topNavPlugin` modifies it (adding `ext-top-hidden` classes, hiding
+folder headers).
 
 ## Drawer Sidebar Sync
 
