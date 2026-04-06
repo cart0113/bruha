@@ -8,7 +8,8 @@ CDN. bruha layers plugins and a build tool on top.
 
 - **Auto-generated sidebar from filesystem** -- add folders and markdown files,
   run build, and the sidebar updates automatically. No hand-editing
-  `_sidebar.md`. Optional `_order` files control sequencing.
+  `_sidebar.md`, which also means an LLM generating documentation never needs to
+  update a separate sidebar file. Optional `_order.md` files control sequencing.
 - **Top navigation tabs from folder structure** -- top-level folders
   automatically become a horizontal tab bar (like PyData Sphinx or Read the
   Docs). Vanilla docsify has no concept of this.
@@ -31,7 +32,7 @@ CDN. bruha layers plugins and a build tool on top.
 
 ## How It Works
 
-1. Organize docs under `docs/src/` using `_order` files for ordering
+1. Organize docs under `docs/src/` using `_order.md` files for ordering
 2. Edit `bruha.yaml` to override any defaults you want to change
 3. Run the build to generate `_sidebar.md` and the JS config
 4. Serve with any static server (`docsify serve docs`, `python -m http.server`)

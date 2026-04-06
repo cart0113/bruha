@@ -16,12 +16,12 @@ bruha is a personal set of docsify extensions. Not a framework, not a library â€
 
 ```
 src/bruha/                  Python tools
-  sidebar_builder.py        Generates _sidebar.md from filesystem + _order files
+  sidebar_builder.py        Generates _sidebar.md from filesystem + _order.md files
   docsify_ext_config.py     Reads YAML config, generates JS config bridge
 docs/                       Docsify site root (served as static files)
   bruha.yaml                Config (single source of truth)
   src/                      Markdown content (parallel to themes/)
-    _order                  Top-level folder ordering
+    _order.md               Top-level folder ordering
     overview/               Folders contain EITHER files OR sub-folders, never both
     configuration/
     examples/
@@ -65,9 +65,9 @@ ruff-main src/             # Python formatting
 
 ## Sidebar Ordering
 
-Sidebar order is controlled by `_order` files in each directory under `docs/`.
-Each `_order` lists filenames/dirnames one per line. Items not listed sort
-alphabetically at the end. If no `_order` exists, everything is alphabetical.
+Sidebar order is controlled by `_order.md` files in each directory under `docs/`.
+Each `_order.md` lists filenames/dirnames one per line. Items not listed sort
+alphabetically at the end. If no `_order.md` exists, everything is alphabetical.
 
 ## context-db â€” IMPORTANT: Read AND Write
 

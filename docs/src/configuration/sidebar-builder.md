@@ -10,14 +10,14 @@ Content lives under `docs/src/`, separate from themes and config:
 ```
 docs/
 ├── src/                    ← markdown content
-│   ├── _order              ← top-level folder ordering
+│   ├── _order.md           ← top-level folder ordering
 │   ├── overview/
 │   │   └── overview.md
 │   ├── configuration/
 │   │   ├── config-reference.md
 │   │   └── sidebar-builder.md
 │   └── examples/
-│       ├── _order
+│       ├── _order.md
 │       ├── general/
 │       │   ├── docsify-features.md
 │       │   └── tables-and-lists.md
@@ -36,10 +36,10 @@ docs/
 A directory must contain EITHER markdown files OR sub-directories, never both.
 Mixing raises an error.
 
-### Ordering with \_order files
+### Ordering with \_order.md files
 
-Each directory can contain a file named `_order` that lists entries one per line
-in the desired display order:
+Each directory can contain a file named `_order.md` that lists entries one per
+line in the desired display order:
 
 ```
 overview
@@ -49,14 +49,14 @@ examples
 
 Rules:
 
-- Items listed in `_order` appear in that order
-- Items on disk but not in `_order` are appended alphabetically
-- Items in `_order` that don't exist on disk are silently ignored
+- Items listed in `_order.md` appear in that order
+- Items on disk but not in `_order.md` are appended alphabetically
+- Items in `_order.md` that don't exist on disk are silently ignored
 - Lines starting with `#` are comments
 
-### Default ordering (no \_order file)
+### Default ordering (no \_order.md file)
 
-When no `_order` file exists:
+When no `_order.md` file exists:
 
 1. A file whose stem matches the folder name sorts first (e.g. `overview.md`
    inside `overview/`)

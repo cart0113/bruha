@@ -10,7 +10,7 @@ description: Architecture — how config flows from YAML through Python to JS ru
 2. `docs/bin/build.sh` runs Python:
    - `docsify_ext_config.load_config()` reads YAML and merges with defaults
    - `docsify_ext_config.generate_config_js()` writes `docs/themes/bruha-config.js`
-   - `sidebar_builder.write_sidebar()` reads `_order` files and generates `_sidebar.md`
+   - `sidebar_builder.write_sidebar()` reads `_order.md` files and generates `_sidebar.md`
 3. `docs/bin/build.sh` runs prettier on all JS, CSS, and MD files
 4. Generated JS file is loaded first in `<head>`:
    - Sets `window.__docsifyExtConfig` object

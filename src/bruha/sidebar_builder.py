@@ -1,7 +1,7 @@
 """Generate a docsify _sidebar.md from the filesystem.
 
 Content lives under a configurable subdirectory (default: src/) parallel
-to themes/. Ordering is controlled by optional _order files; if absent,
+to themes/. Ordering is controlled by optional _order.md files; if absent,
 a file whose stem matches the folder name sorts first, then the rest
 alphabetically. Folders must not mix files and sub-folders.
 """
@@ -9,9 +9,9 @@ alphabetically. Folders must not mix files and sub-folders.
 import pathlib
 import re
 
-SKIP_NAMES = {"_sidebar.md", "_navbar.md", "_coverpage.md", "_order"}
+SKIP_NAMES = {"_sidebar.md", "_navbar.md", "_coverpage.md", "_order.md"}
 H1_RE = re.compile(r"^#\s+(.+)", re.MULTILINE | re.IGNORECASE)
-ORDER_FILENAME = "_order"
+ORDER_FILENAME = "_order.md"
 
 
 class SidebarError(Exception):

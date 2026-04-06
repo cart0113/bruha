@@ -18,7 +18,7 @@ making docsify documentation pages look and behave a specific way.
   (each with light + dark variants)
 - Adds sidebar enhancements: collapsible folders, bar position indicator
 - Adds a horizontal top navigation bar for top-level doc sections
-- Auto-generates `_sidebar.md` from filesystem with `_order` files for ordering
+- Auto-generates `_sidebar.md` from filesystem with `_order.md` files for ordering
 - Hides docsify defaults (hamburger menu, GitHub corner) when configured
 - Formats all JS, CSS, MD with prettier
 
@@ -30,7 +30,7 @@ docs/                       Docsify site root
 docs/themes/                CSS + JS plugins
 docs/bruha.yaml             Config (source of truth)
 docs/themes/bruha-config.js Generated JS config (do not edit)
-docs/*/_order               Ordering files (one per directory)
+docs/*/_order.md            Ordering files (one per directory)
 bin/                        Build, format, serve scripts
 context-db/                 Project knowledge for AI assistants
 ```
@@ -39,7 +39,7 @@ context-db/                 Project knowledge for AI assistants
 
 - YAML is the single source of truth. Python generates JS from it.
 - All config keys have defaults. Users only override what they need.
-- `_order` files control sidebar ordering; no numeric prefixes on filenames.
+- `_order.md` files control sidebar ordering; no numeric prefixes on filenames.
 - CSS is layered: base theme, color palettes, extension styles.
 - All JS plugins are standard docsify plugins (functions receiving `hook`).
 - Prettier enforces consistent formatting for JS, CSS, and MD.

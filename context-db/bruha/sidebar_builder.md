@@ -1,5 +1,5 @@
 ---
-description: Sidebar builder — content rules, _order files, validation, output format
+description: Sidebar builder — content rules, _order.md files, validation, output format
 ---
 
 # Sidebar Builder
@@ -46,9 +46,9 @@ docs/
 
 ## Ordering
 
-### _order files
+### _order.md files
 
-Each directory can contain a file named `_order` that lists entries one per
+Each directory can contain a file named `_order.md` that lists entries one per
 line in the desired display order.
 
 ```
@@ -58,13 +58,13 @@ general
 ```
 
 Rules:
-- Items listed in `_order` appear in that order
-- Items on disk but not in `_order` are appended alphabetically
-- Items in `_order` that don't exist on disk are silently ignored
+- Items listed in `_order.md` appear in that order
+- Items on disk but not in `_order.md` are appended alphabetically
+- Items in `_order.md` that don't exist on disk are silently ignored
 
-### Default ordering (no _order file)
+### Default ordering (no _order.md file)
 
-When no `_order` file exists:
+When no `_order.md` file exists:
 1. A file whose stem matches the folder name sorts first
    (e.g. `overview.md` inside `overview/`)
 2. Remaining items sort alphabetically
@@ -79,7 +79,7 @@ title-cased.
 ## Skipped Items
 
 - Files starting with `_` or `.`
-- `_sidebar.md`, `_navbar.md`, `_coverpage.md`, `_order`
+- `_sidebar.md`, `_navbar.md`, `_coverpage.md`, `_order.md`
 - Directories with no `.md` files anywhere inside
 
 ## Output Format

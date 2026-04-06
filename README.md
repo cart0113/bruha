@@ -7,7 +7,7 @@ loaded via CDN. bruha adds structure, config, and theming on top.
 
 - **Auto-generated sidebar from filesystem** -- add folders and markdown files,
   run build, and the sidebar updates automatically. No hand-editing
-  `_sidebar.md`. Optional `_order` files control sequencing.
+  `_sidebar.md`. Optional `_order.md` files control sequencing.
 - **Top navigation tabs from folder structure** -- top-level folders
   automatically become a horizontal tab bar (like PyData Sphinx or Read the
   Docs). Vanilla docsify has no concept of this.
