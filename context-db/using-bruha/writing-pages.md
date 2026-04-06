@@ -38,12 +38,35 @@ directory. Reference them with a relative path from the docs root:
 ![diagram](src/guides/_assets/architecture.png)
 ```
 
+## Callout Boxes
+
+Use blockquote syntax with a `[!type]` marker to create styled callout boxes.
+Four types are available:
+
+```markdown
+> [!note]
+> Blue info box — background context or references.
+
+> [!tip]
+> Green tip box — helpful suggestions (renders in italic).
+
+> [!important]
+> Amber box — key information the reader should not miss.
+
+> [!warning]
+> Red box — dangerous pitfalls or breaking changes.
+```
+
+Each renders as a colored box with a bold uppercase label and left border.
+Colors adapt to dark mode automatically.
+
+**Requires:** `callouts.css` and `callouts.js` in `docs/themes/`. If present,
+`build.sh` includes them in `index.html` automatically — no manual setup.
+
 ## Docsify-Specific Markdown
 
 Docsify extends standard markdown with a few extras:
 
-- `!> **Warning** text` renders a warning callout.
-- `?> **Tip** text` renders a tip/info callout.
 - `:id=custom-id` after a heading sets the anchor slug.
 
 Standard GitHub-flavored markdown (tables, fenced code blocks, task lists) all
