@@ -1,24 +1,24 @@
 window.__docsifyExtConfig = {
-  light_theme: 'parchment',
-  dark_theme: 'near-midnight',
+  light_theme: 'sage',
+  dark_theme: 'sage',
   theme_controls: 'theme_picker',
   dark_mode_default: false,
   code_highlighter: 'vivid',
   document_inline_sidebar_selector: true,
-  document_header_depth: 3,
+  document_header_depth: 2,
   top_level_folders_as_top_control: false,
   hamburger_menu: false,
   github_corner: false,
   content_folder: 'src',
-  folder_chevron: true,
+  folder_chevron: false,
   page_section_collapsible: true,
   search_style: 'magnify-glass',
   sidebar_indent: '1em',
   site_icon: '',
   social_links: {
-    github: 'https://github.com/cart0113/bruha',
+    github: 'https://github.com/cart0113',
   },
-  style: 'code-one',
+  style: 'blog',
 };
 (function (c) {
   document.documentElement.classList.add('theme-' + c.light_theme);

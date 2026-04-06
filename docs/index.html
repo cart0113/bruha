@@ -26,29 +26,37 @@
   <!-- base docsify layout (required for structure) -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <!-- theme -->
-  <link rel="stylesheet" href="themes/code-one.css?v=20260405214453">
+  <link rel="stylesheet" href="themes/code-one.css?v=20260406003016">
   <!-- color theme overrides (light + dark variants) -->
-  <link rel="stylesheet" href="themes/color-themes.css?v=20260405214453">
+  <link rel="stylesheet" href="themes/color-themes.css?v=20260406003016">
   <!-- extension styles (indicator, collapsible folders, top nav, toggles) -->
-  <link rel="stylesheet" href="themes/bruha.css?v=20260405214453">
+  <link rel="stylesheet" href="themes/bruha.css?v=20260406003016">
+  <!-- callout styling (admonition boxes) -->
+  <link rel="stylesheet" href="themes/callouts.css?v=20260406003016">
+  <!-- blog style overrides (active only when style=blog) -->
+  <link rel="stylesheet" href="themes/blog.css?v=20260406003016">
   <!-- mobile responsive layout (hamburger drawer) -->
-  <link rel="stylesheet" href="themes/mobile-nav.css?v=20260405214453">
+  <link rel="stylesheet" href="themes/mobile-nav.css?v=20260406003016">
   <!-- generated config (applies CSS classes before render) -->
-  <script src="themes/bruha-config.js?v=20260405214453"></script>
+  <script src="themes/bruha-config.js?v=20260406003016"></script>
   <!-- theme controls (applies saved choice before render) -->
-  <script src="themes/theme-controls.js?v=20260405214453"></script>
+  <script src="themes/theme-controls.js?v=20260406003016"></script>
+  <!-- callout blockquote conversion -->
+  <script src="themes/callouts.js?v=20260406003016"></script>
+  <!-- published date rendering -->
+  <script src="themes/published-date.js?v=20260406003016"></script>
   <!-- code enhancements plugin (load before docsify) -->
-  <script src="themes/code-enhancements.js?v=20260405214453"></script>
+  <script src="themes/code-enhancements.js?v=20260406003016"></script>
   <!-- sidebar bar indicator (load before docsify) -->
-  <script src="themes/sidebar-indicator.js?v=20260405214453"></script>
+  <script src="themes/sidebar-indicator.js?v=20260406003016"></script>
   <!-- collapsible folder sections -->
-  <script src="themes/collapsible-folders.js?v=20260405214453"></script>
+  <script src="themes/collapsible-folders.js?v=20260406003016"></script>
   <!-- mobile hamburger + drawer (replaces top nav on small screens) -->
-  <script src="themes/mobile-nav.js?v=20260405214453"></script>
+  <script src="themes/mobile-nav.js?v=20260406003016"></script>
   <!-- top-level folder navigation bar -->
-  <script src="themes/top-nav.js?v=20260405214453"></script>
+  <script src="themes/top-nav.js?v=20260406003016"></script>
   <!-- redirect folder-only URLs to first child page -->
-  <script src="themes/folder-redirect.js?v=20260405214453"></script>
+  <script src="themes/folder-redirect.js?v=20260406003016"></script>
 </head>
 <body>
   <!-- SVG sprite — hidden, reused via <use href="#icon-name"/> -->
@@ -116,6 +124,8 @@
         hideOtherSidebarContent: false,
       },
       plugins: [
+        calloutsPlugin,
+        publishedDatePlugin,
         codeEnhancementsPlugin,
         collapsibleFoldersPlugin,
         cfg.theme_controls !== 'none' ? themeControlsPlugin : null,

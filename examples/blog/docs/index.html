@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>flat-example</title>
+  <title>blog</title>
   <script>
     (function() {
       var h = window.location.hash;
       if (!h || h === '#/' || h === '#/README') {
-        window.location.hash = '#/file0';
+        window.location.hash = '#/tools-for-agentic-coding';
       }
     })();
   </script>
@@ -16,18 +16,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <link rel="stylesheet" href="themes/code-one.css?v=20260406002428">
-  <link rel="stylesheet" href="themes/color-themes.css?v=20260406002428">
-  <link rel="stylesheet" href="themes/bruha.css?v=20260406002428">
-  <link rel="stylesheet" href="themes/mobile-nav.css?v=20260406002428">
-  <script src="themes/bruha-config.js?v=20260406002428"></script>
-  <script src="themes/theme-controls.js?v=20260406002428"></script>
-  <script src="themes/code-enhancements.js?v=20260406002428"></script>
-  <script src="themes/sidebar-indicator.js?v=20260406002428"></script>
-  <script src="themes/collapsible-folders.js?v=20260406002428"></script>
-  <script src="themes/mobile-nav.js?v=20260406002428"></script>
-  <script src="themes/top-nav.js?v=20260406002428"></script>
-  <script src="themes/folder-redirect.js?v=20260406002428"></script>
+  <link rel="stylesheet" href="themes/code-one.css?v=20260406002433">
+  <link rel="stylesheet" href="themes/color-themes.css?v=20260406002433">
+  <link rel="stylesheet" href="themes/bruha.css?v=20260406002433">
+  <link rel="stylesheet" href="themes/callouts.css?v=20260406002433">
+  <link rel="stylesheet" href="themes/blog.css?v=20260406002433">
+  <link rel="stylesheet" href="themes/mobile-nav.css?v=20260406002433">
+  <script src="themes/bruha-config.js?v=20260406002433"></script>
+  <script src="themes/theme-controls.js?v=20260406002433"></script>
+  <script src="themes/callouts.js?v=20260406002433"></script>
+  <script src="themes/published-date.js?v=20260406002433"></script>
+  <script src="themes/code-enhancements.js?v=20260406002433"></script>
+  <script src="themes/sidebar-indicator.js?v=20260406002433"></script>
+  <script src="themes/collapsible-folders.js?v=20260406002433"></script>
+  <script src="themes/mobile-nav.js?v=20260406002433"></script>
+  <script src="themes/top-nav.js?v=20260406002433"></script>
+  <script src="themes/folder-redirect.js?v=20260406002433"></script>
 </head>
 <body>
   <svg style="display:none" aria-hidden="true">
@@ -59,20 +63,22 @@
   <script>
     var cfg = window.__docsifyExtConfig;
     window.$docsify = {
-      name: 'flat-example',
-      nameLink: '#/file0',
+      name: 'blog',
+      nameLink: '#/tools-for-agentic-coding',
       basePath: 'src/',
       loadSidebar: true,
       subMaxLevel: cfg.document_header_depth,
       auto2top: true,
-      topMargin: 75,
+      topMargin: 0,
       search: {
-        placeholder: 'Search docs',
+        placeholder: 'Search posts',
         noData: 'No results.',
         depth: 3,
         hideOtherSidebarContent: false,
       },
       plugins: [
+        calloutsPlugin,
+        publishedDatePlugin,
         codeEnhancementsPlugin,
         collapsibleFoldersPlugin,
         cfg.theme_controls !== 'none' ? themeControlsPlugin : null,

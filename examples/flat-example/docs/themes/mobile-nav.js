@@ -27,12 +27,21 @@
   var THEME_KEY = pfx + 'doc-theme';
   var CODE_KEY = pfx + 'doc-code-highlighter';
 
-  var THEMES = [
-    { id: 'parchment', label: 'Parchment', color: '#4a6591' },
-    { id: 'pylab', label: 'Pylab', color: '#2160bb' },
-    { id: 'blossom', label: 'Blossom', color: '#9668c4' },
-    { id: 'near-midnight', label: 'Near-Midnight', color: '#6c71c4' },
-  ];
+  var STYLE_THEMES = {
+    'code-one': [
+      { id: 'parchment', label: 'Parchment', color: '#4a6591' },
+      { id: 'pylab', label: 'Pylab', color: '#2160bb' },
+      { id: 'blossom', label: 'Blossom', color: '#9668c4' },
+      { id: 'near-midnight', label: 'Near-Midnight', color: '#6c71c4' },
+    ],
+    blog: [
+      { id: 'ink', label: 'Ink', color: '#333333' },
+      { id: 'sage', label: 'Sage', color: '#5a7a5a' },
+      { id: 'dusk', label: 'Dusk', color: '#b87333' },
+    ],
+  };
+
+  var THEMES = STYLE_THEMES[cfg.style] || STYLE_THEMES['code-one'];
 
   var SOCIAL_ICON_MAP = {
     github: 'icon-github',
@@ -49,6 +58,7 @@
   var tabsEl = null;
   var navEl = null;
   var folderData = [];
+  var headerSectionEl = null;
 
   function getCurrentPath() {
     return (window.location.hash || '#/').split('?')[0];
@@ -137,6 +147,10 @@
       (nameEl2 ? nameEl2.textContent.trim() : 'bruha') +
       '</span>';
     mobileHeader.appendChild(headerBrand);
+
+    headerSectionEl = document.createElement('span');
+    headerSectionEl.className = 'mobile-header-section';
+    mobileHeader.appendChild(headerSectionEl);
 
     document.body.appendChild(mobileHeader);
 
@@ -427,7 +441,18 @@
       allLinks[k].addEventListener('click', closeDrawer);
     }
 
-    activateTab(findActiveIndex());
+    var activeIdx = findActiveIndex();
+    activateTab(activeIdx);
+
+    if (headerSectionEl) {
+      if (folderData.length > 1) {
+        headerSectionEl.textContent = folderData[activeIdx].label;
+        headerSectionEl.style.display = '';
+      } else {
+        headerSectionEl.textContent = '';
+        headerSectionEl.style.display = 'none';
+      }
+    }
   }
 
   /* ---- Docsify plugin entry point ---- */

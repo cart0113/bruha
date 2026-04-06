@@ -17,7 +17,8 @@ window.__docsifyExtConfig = {
   "site_icon": "assets/bruha-icon.svg",
   "social_links": {
     "github": "https://github.com/cart0113/bruha"
-  }
+  },
+  "style": "code-one"
 };
 (function(c) {
   document.documentElement.classList.add('theme-' + c.light_theme);
@@ -27,4 +28,5 @@ window.__docsifyExtConfig = {
   if (c.folder_chevron) document.documentElement.classList.add('ext-folder-chevron');
   if (c.document_inline_sidebar_selector) document.documentElement.classList.add('ext-inline-sidebar');
   if (c.sidebar_indent) document.documentElement.style.setProperty('--t-sidebar-indent', c.sidebar_indent);
+  if (c.style) document.documentElement.classList.add('style-' + c.style);
 })(window.__docsifyExtConfig);

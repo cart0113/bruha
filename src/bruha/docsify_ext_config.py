@@ -29,6 +29,7 @@ DEFAULTS = {
     "sidebar_indent": "1em",
     "site_icon": "",
     "social_links": {},
+    "style": "code-one",
 }
 
 JS_TEMPLATE = """\
@@ -41,6 +42,7 @@ window.__docsifyExtConfig = {config_json};
   if (c.folder_chevron) document.documentElement.classList.add('ext-folder-chevron');
   if (c.document_inline_sidebar_selector) document.documentElement.classList.add('ext-inline-sidebar');
   if (c.sidebar_indent) document.documentElement.style.setProperty('--t-sidebar-indent', c.sidebar_indent);
+  if (c.style) document.documentElement.classList.add('style-' + c.style);
 }})(window.__docsifyExtConfig);
 """
 
