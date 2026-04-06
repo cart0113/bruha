@@ -1,7 +1,5 @@
 ---
-description:
-  CSS class system — all sb-* and ext-* classes, what sets them, what they
-  control
+description: CSS class system — all sb-* and ext-* classes, what sets them, what they control
 ---
 
 # CSS Class System

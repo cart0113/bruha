@@ -1,7 +1,5 @@
 ---
-description:
-  How to add new folders and sections — folder structure, _order.md, rebuilding
-  the sidebar
+description: How to add new folders and sections — folder structure, _order.md, rebuilding the sidebar
 ---
 
 # Adding Sections
@@ -41,5 +39,10 @@ This regenerates `docs/_sidebar.md` from the filesystem. Never edit
 
 ## Top-Level Navigation Bar
 
-If `navbar` is enabled in `bruha.yaml`, only top-level folders under `src/`
-appear in the horizontal nav bar. Nested folders appear only in the sidebar.
+If `top_level_folders_as_top_control: true` in `bruha.yaml` (the default), the
+top-level folders under `src/` become horizontal nav buttons. Nested folders
+appear only in the sidebar.
+
+**Constraint:** when this mode is active, `src/` must contain only directories —
+no loose `.md` files at the top level. The sidebar builder will error if you mix
+files and folders at the `src/` root.

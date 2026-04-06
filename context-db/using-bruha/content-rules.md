@@ -1,7 +1,5 @@
 ---
-description:
-  Content structure rules — no mixing, _order.md files, display names, skipped
-  items
+description: Content structure rules — no mixing, _order.md files, display names, skipped items
 ---
 
 # Content Rules

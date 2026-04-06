@@ -1,7 +1,5 @@
 ---
-description:
-  CSS override pitfalls — code-one.css !important resets, how to override
-  sidebar properties, bar indicator overlay technique
+description: CSS override pitfalls — code-one.css !important resets, how to override sidebar properties, bar indicator overlay technique
 ---
 
 # CSS Override Patterns

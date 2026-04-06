@@ -1,6 +1,5 @@
 ---
-description:
-  What bruha is — a personal set of docsify extensions driven by YAML config
+description: What bruha is — a personal set of docsify extensions driven by YAML config
 ---
 
 # bruha — Overview

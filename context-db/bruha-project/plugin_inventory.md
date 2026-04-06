@@ -1,6 +1,5 @@
 ---
-description:
-  CSS and JS plugin inventory — what each file does and how they interact
+description: CSS and JS plugin inventory — what each file does and how they interact
 ---
 
 # Plugin Inventory

@@ -1,6 +1,5 @@
 ---
-description:
-  How to write a markdown page — headings, links, what docsify renders
+description: How to write a markdown page — headings, links, what docsify renders
 ---
 
 # Writing Pages

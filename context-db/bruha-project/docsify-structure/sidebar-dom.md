@@ -1,7 +1,5 @@
 ---
-description:
-  Sidebar DOM — how docsify builds the sidebar, the app-sub-sidebar, and when
-  re-renders destroy state
+description: Sidebar DOM — how docsify builds the sidebar, the app-sub-sidebar, and when re-renders destroy state
 ---
 
 # Sidebar DOM Structure

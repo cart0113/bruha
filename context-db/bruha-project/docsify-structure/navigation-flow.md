@@ -1,7 +1,5 @@
 ---
-description:
-  Navigation and event flow — click handling, hashchange, hooks,
-  MutationObserver, and ?id= routing
+description: Navigation and event flow — click handling, hashchange, hooks, MutationObserver, and ?id= routing
 ---
 
 # Navigation and Event Flow

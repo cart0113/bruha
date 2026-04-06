@@ -1,6 +1,5 @@
 ---
-description:
-  Architecture — how config flows from YAML through Python to JS runtime
+description: Architecture — how config flows from YAML through Python to JS runtime
 ---
 
 # Architecture

@@ -1,6 +1,5 @@
 ---
-description:
-  YAML config schema — all keys, types, defaults, and what they control
+description: YAML config schema — all keys, types, defaults, and what they control
 ---
 
 # Config Schema

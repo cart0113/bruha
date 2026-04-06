@@ -1,0 +1,35 @@
+---
+description: Rules and workflow for writing bruha documentation content
+alwaysApply: true
+---
+
+This project's documentation is built with bruha, a YAML-driven set of docsify
+extensions.
+
+## Content Rules
+
+All docs content lives under `docs/src/`.
+
+- A directory must contain EITHER markdown files OR sub-directories — never
+  both. The sidebar builder will error if you mix them.
+- Start every `.md` page with a `# heading` — this becomes the sidebar label and
+  browser tab title.
+- Use `_order.md` files to control sidebar order (one entry per line, file stems
+  without `.md`). Default is alphabetical.
+- Links are relative to `docs/`, not to the file. Always include `src/` prefix:
+  `[label](src/section/page.md)`.
+- Callout boxes: `> [!note]`, `> [!tip]`, `> [!important]`, `> [!warning]`.
+
+## Generated Files — Do Not Edit
+
+- `docs/_sidebar.md` — generated from filesystem + `_order.md`
+- `docs/themes/bruha-config.js` — generated from `docs/bruha.yaml`
+- `docs/index.html` — generated from `docs/bruha.yaml`
+
+## Build Step
+
+After adding, removing, or renaming content:
+
+```bash
+docs/bin/build.sh
+```

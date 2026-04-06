@@ -1,6 +1,5 @@
 ---
-description:
-  Sidebar builder — content rules, _order.md files, validation, output format
+description: Sidebar builder — content rules, _order.md files, validation, output format
 ---
 
 # Sidebar Builder
