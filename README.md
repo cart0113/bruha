@@ -31,19 +31,19 @@ documentation generation.
 1. Organize docs under `docs/src/` using optional `_order.md` files for ordering
 2. Edit `bruha.yaml` to override any defaults you want to change
 3. Run `build.sh` to generate `index.html`, `_sidebar.md`, and the JS config --
-   or use `serve.sh` to build and run a local server
+   intended to be put in a git commit hook.
+4. Use `serve.sh` to build docs and run a local server for development.
 
 ## Structure
 
 ```
 docs/
-  bruha.yaml            Config (override defaults here)
-  src/                  Markdown content
-  themes/               CSS + JS plugins
-  bin/                  Build, format, serve scripts
-src/bruha/              Python tools (sidebar builder, config generator)
-templates/              Sample AGENTS.md and skills for adopting projects
-context-db/             Project knowledge database (context-db format)
+  index.html            ← Auto generated main page.
+  bruha.yaml            ← Config (override defaults here)
+  src/                  ← Markdown content and auto generated _sidebar.md.
+  themes/               ← CSS + JS plugins
+  bin/                  ← build.sh and serve.sh scripts
+templates/              ← Sample AGENTS.md and skills on how to write bruha docs.
 ```
 
 Full docs: https://cart0113.github.io/bruha/

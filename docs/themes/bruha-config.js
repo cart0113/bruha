@@ -7,7 +7,7 @@ window.__docsifyExtConfig = {
   "document_inline_sidebar_selector": true,
   "document_header_depth": 3,
   "top_level_folders_as_top_control": true,
-  "hamburger_menu": false,
+  "hamburger_menu": true,
   "github_corner": false,
   "content_folder": "src",
   "folder_chevron": true,
@@ -37,7 +37,8 @@ window.__docsifyExtConfig = {
 };
 (function(c) {
   document.documentElement.classList.add('theme-' + c.light_theme);
-  if (!c.hamburger_menu) document.documentElement.classList.add('ext-no-hamburger');
+  document.documentElement.classList.add('ext-no-hamburger');
+  if (c.hamburger_menu) document.documentElement.classList.add('ext-hamburger');
   if (!c.github_corner) document.documentElement.classList.add('ext-no-github-corner');
   document.documentElement.classList.add('ext-has-top-nav');
   if (c.folder_chevron) document.documentElement.classList.add('ext-folder-chevron');

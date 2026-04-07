@@ -24,7 +24,7 @@ DEFAULTS = {
     "document_inline_sidebar_selector": True,
     "document_header_depth": 3,
     "top_level_folders_as_top_control": True,
-    "hamburger_menu": False,
+    "hamburger_menu": True,
     "github_corner": False,
     "content_folder": "src",
     "folder_chevron": True,
@@ -45,7 +45,8 @@ JS_TEMPLATE = """\
 window.__docsifyExtConfig = {config_json};
 (function(c) {{
   document.documentElement.classList.add('theme-' + c.light_theme);
-  if (!c.hamburger_menu) document.documentElement.classList.add('ext-no-hamburger');
+  document.documentElement.classList.add('ext-no-hamburger');
+  if (c.hamburger_menu) document.documentElement.classList.add('ext-hamburger');
   if (!c.github_corner) document.documentElement.classList.add('ext-no-github-corner');
   document.documentElement.classList.add('ext-has-top-nav');
   if (c.folder_chevron) document.documentElement.classList.add('ext-folder-chevron');
