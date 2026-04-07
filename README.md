@@ -17,12 +17,14 @@ documentation generation.
   (themes, sidebar behavior, nav layout, code blocks). Currently, there are four
   color themes with light/dark variants, code highlighting, and a theme picker
   UI.
-- **Rich content widgets**: 8 callout types (`note`, `tip`, `important`,
+- **Multiple content widgets**: 8 callout types (`note`, `tip`, `important`,
   `warning`, `success`, `danger`, `example`, `quote`), table style variants
   (striped, bordered, compact, borderless — combinable), inline badges,
-  keyboard key styling, and collapsible sections.
+  keyboard key styling, and collapsible sections. See the
+  [examples](https://cart0113.github.io/bruha/#/examples/callouts).
 - **LaTeX math equations**: opt-in KaTeX support for inline and display math.
-  Set `katex: true` in `bruha.yaml` to render `$...$` and `$$...$$` syntax.
+  Set `katex: true` in `bruha.yaml` to render `$...$` and `$$...$$` syntax. See
+  the [math equations example](https://cart0113.github.io/bruha/#/examples/math-equations).
 - **Copy-based install**: to use `bruha`, copy `docs/themes/` and `docs/bin/`
   into your project. Currently, the process is manual and you need to check back
   for updates and recopy assets when necessary.

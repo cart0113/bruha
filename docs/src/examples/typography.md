@@ -5,8 +5,8 @@ shows the markdown source, then the rendered result.
 
 ## Headings
 
-The page title uses `# H1`. Sections use `## H2` and subsections `### H3`. Since
-H1 and H2 are used structurally on this page, only H3 is shown rendered.
+The page title uses `# H1`. Sections use `## H2`. Since H1 and H2 are used
+structurally on this page, only H3 and H4 are shown rendered.
 
 ```markdown
 ## Second-Level Heading
