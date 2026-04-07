@@ -1,6 +1,5 @@
 - **Overview**
   - [Overview](overview/overview.md)
-  - [Docsify Features](overview/docsify-features.md)
 - **Configuration**
   - [Configuration Reference](configuration/config-reference.md)
   - [Local Development](configuration/local-development.md)

@@ -1,52 +1,66 @@
 window.__docsifyExtConfig = {
-  "light_theme": "parchment",
-  "dark_theme": "near-midnight",
-  "theme_controls": "theme_picker",
-  "dark_mode_default": true,
-  "code_highlighter": "vivid",
-  "document_inline_sidebar_selector": true,
-  "document_header_depth": 3,
-  "top_level_folders_as_top_control": true,
-  "hamburger_sidebar_toggle": true,
-  "github_corner": false,
-  "content_folder": "src",
-  "folder_chevron": true,
-  "page_section_collapsible": true,
-  "search_style": "magnify-glass",
-  "sidebar_indent": "1em",
-  "site_icon": "assets/bruha-icon.svg",
-  "katex": true,
-  "social_links": {
-    "github": "https://github.com/cart0113/bruha"
+  light_theme: 'parchment',
+  dark_theme: 'near-midnight',
+  theme_controls: 'theme_picker',
+  dark_mode_default: true,
+  code_highlighter: 'vivid',
+  document_inline_sidebar_selector: true,
+  document_header_depth: 3,
+  top_level_folders_as_top_control: true,
+  hamburger_sidebar_toggle: true,
+  github_corner: false,
+  content_folder: 'src',
+  folder_chevron: true,
+  page_section_collapsible: true,
+  search_style: 'magnify-glass',
+  sidebar_indent: '1em',
+  site_icon: 'assets/bruha-icon.svg',
+  katex: true,
+  social_links: {
+    github: 'https://github.com/cart0113/bruha',
   },
-  "style": "code-one",
-  "site_name": "bruha",
-  "site_description": "A docsify extension",
-  "og_image": "assets/og-image.png",
-  "home_path": "overview/overview",
-  "prism_languages": [
-    "python",
-    "bash",
-    "markdown",
-    "yaml",
-    "javascript",
-    "toml",
-    "rest",
-    "css",
-    "json"
-  ]
+  style: 'code-one',
+  site_name: 'bruha',
+  site_description: 'A docsify extension',
+  og_image: 'assets/og-image.png',
+  home_path: 'overview/overview',
+  prism_languages: [
+    'python',
+    'bash',
+    'markdown',
+    'yaml',
+    'javascript',
+    'toml',
+    'rest',
+    'css',
+    'json',
+  ],
 };
-(function(c) {
+(function (c) {
   document.documentElement.classList.add('theme-' + c.light_theme);
   document.documentElement.classList.add('ext-no-hamburger');
   if (c.hamburger_sidebar_toggle) {
     document.documentElement.classList.add('ext-hamburger');
-    try { if (localStorage.getItem(window.location.pathname + ':sidebar-collapsed') === 'true') document.documentElement.classList.add('ext-sidebar-collapsed'); } catch (_) {}
+    try {
+      if (
+        localStorage.getItem(
+          window.location.pathname + ':sidebar-collapsed',
+        ) === 'true'
+      )
+        document.documentElement.classList.add('ext-sidebar-collapsed');
+    } catch (_) {}
   }
-  if (!c.github_corner) document.documentElement.classList.add('ext-no-github-corner');
+  if (!c.github_corner)
+    document.documentElement.classList.add('ext-no-github-corner');
   document.documentElement.classList.add('ext-has-top-nav');
-  if (c.folder_chevron) document.documentElement.classList.add('ext-folder-chevron');
-  if (c.document_inline_sidebar_selector) document.documentElement.classList.add('ext-inline-sidebar');
-  if (c.sidebar_indent) document.documentElement.style.setProperty('--t-sidebar-indent', c.sidebar_indent);
+  if (c.folder_chevron)
+    document.documentElement.classList.add('ext-folder-chevron');
+  if (c.document_inline_sidebar_selector)
+    document.documentElement.classList.add('ext-inline-sidebar');
+  if (c.sidebar_indent)
+    document.documentElement.style.setProperty(
+      '--t-sidebar-indent',
+      c.sidebar_indent,
+    );
   if (c.style) document.documentElement.classList.add('style-' + c.style);
 })(window.__docsifyExtConfig);
