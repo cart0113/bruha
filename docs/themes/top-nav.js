@@ -308,12 +308,6 @@
         var collapsed = document.documentElement.classList.contains('ext-sidebar-collapsed');
         try { localStorage.setItem(window.location.pathname + ':sidebar-collapsed', collapsed); } catch (_) {}
       });
-      /* Restore saved state */
-      try {
-        if (localStorage.getItem(window.location.pathname + ':sidebar-collapsed') === 'true') {
-          document.documentElement.classList.add('ext-sidebar-collapsed');
-        }
-      } catch (_) {}
       brand.appendChild(hamburger);
     }
 

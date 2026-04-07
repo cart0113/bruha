@@ -46,7 +46,10 @@ window.__docsifyExtConfig = {config_json};
 (function(c) {{
   document.documentElement.classList.add('theme-' + c.light_theme);
   document.documentElement.classList.add('ext-no-hamburger');
-  if (c.hamburger_menu) document.documentElement.classList.add('ext-hamburger');
+  if (c.hamburger_menu) {{
+    document.documentElement.classList.add('ext-hamburger');
+    try {{ if (localStorage.getItem(window.location.pathname + ':sidebar-collapsed') === 'true') document.documentElement.classList.add('ext-sidebar-collapsed'); }} catch (_) {{}}
+  }}
   if (!c.github_corner) document.documentElement.classList.add('ext-no-github-corner');
   document.documentElement.classList.add('ext-has-top-nav');
   if (c.folder_chevron) document.documentElement.classList.add('ext-folder-chevron');
