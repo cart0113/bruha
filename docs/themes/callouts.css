@@ -158,3 +158,124 @@ html.dark-mode .callout-warning .callout-title {
 html.dark-mode .callout-warning p {
   color: #b0a0a0;
 }
+
+/* ------------------------------------------------------------------ */
+/* Success — green (stronger than tip, for confirmed outcomes)         */
+/* ------------------------------------------------------------------ */
+
+.callout-success {
+  background: #d4edda;
+  border-left-color: #28a745;
+}
+
+.callout-success .callout-title {
+  color: #1e7e34;
+}
+
+.callout-success p {
+  color: #555555;
+}
+
+html.dark-mode .callout-success {
+  background: #162b19;
+  border-left-color: #28a745;
+}
+
+html.dark-mode .callout-success .callout-title {
+  color: #48c864;
+}
+
+html.dark-mode .callout-success p {
+  color: #a0b0a0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Danger — deep red (stronger than warning, for critical issues)      */
+/* ------------------------------------------------------------------ */
+
+.callout-danger {
+  background: #f5c6cb;
+  border-left-color: #c0392b;
+}
+
+.callout-danger .callout-title {
+  color: #922b21;
+}
+
+.callout-danger p {
+  color: #555555;
+}
+
+html.dark-mode .callout-danger {
+  background: #2e1215;
+  border-left-color: #a93226;
+}
+
+html.dark-mode .callout-danger .callout-title {
+  color: #e06050;
+}
+
+html.dark-mode .callout-danger p {
+  color: #b0a0a0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Example — purple                                                    */
+/* ------------------------------------------------------------------ */
+
+.callout-example {
+  background: #e8def8;
+  border-left-color: #7e57c2;
+}
+
+.callout-example .callout-title {
+  color: #5e3d82;
+}
+
+.callout-example p {
+  color: #555555;
+}
+
+html.dark-mode .callout-example {
+  background: #1e1830;
+  border-left-color: #7e57c2;
+}
+
+html.dark-mode .callout-example .callout-title {
+  color: #a07ee0;
+}
+
+html.dark-mode .callout-example p {
+  color: #a8a0b8;
+}
+
+/* ------------------------------------------------------------------ */
+/* Quote — gray, for attributed quotes                                 */
+/* ------------------------------------------------------------------ */
+
+.callout-quote {
+  background: #eaeaea;
+  border-left-color: #888888;
+}
+
+.callout-quote .callout-title {
+  color: #666666;
+}
+
+.callout-quote p {
+  color: #555555;
+  font-style: italic;
+}
+
+html.dark-mode .callout-quote {
+  background: #222222;
+  border-left-color: #666666;
+}
+
+html.dark-mode .callout-quote .callout-title {
+  color: #999999;
+}
+
+html.dark-mode .callout-quote p {
+  color: #a0a0a0;
+}

@@ -26,3 +26,9 @@ After any content change:
 ```bash
 docs/bin/build.sh
 ```
+
+## Content Features Reference
+
+For syntax and rendered examples of callouts, table styles, badges, keyboard
+keys, collapsible sections, and math equations, see the bruha docs:
+https://cart0113.github.io/bruha/#/examples/callouts

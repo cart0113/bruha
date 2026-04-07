@@ -17,10 +17,16 @@ documentation generation.
   (themes, sidebar behavior, nav layout, code blocks). Currently, there are four
   color themes with light/dark variants, code highlighting, and a theme picker
   UI.
+- **Rich content widgets**: 8 callout types (`note`, `tip`, `important`,
+  `warning`, `success`, `danger`, `example`, `quote`), table style variants
+  (striped, bordered, compact, borderless — combinable), inline badges,
+  keyboard key styling, and collapsible sections.
+- **LaTeX math equations**: opt-in KaTeX support for inline and display math.
+  Set `katex: true` in `bruha.yaml` to render `$...$` and `$$...$$` syntax.
 - **Copy-based install**: to use `bruha`, copy `docs/themes/` and `docs/bin/`
   into your project. Currently, the process is manual and you need to check back
   for updates and recopy assets when necessary.
-- **Context-db files provided** -- this project uses
+- **Context-db files provided** — this project uses
   [context-db](https://cart0113.github.io/context-db) and provides
   `context-db/using-bruha/` context files. In addition, a `templates/` directory
   provides a sample `AGENTS.md` and a `using-bruha/SKILLS.md` you can
@@ -30,7 +36,7 @@ documentation generation.
 
 1. Organize docs under `docs/src/` using optional `_order.md` files for ordering
 2. Edit `bruha.yaml` to override any defaults you want to change
-3. Run `build.sh` to generate `index.html`, `_sidebar.md`, and the JS config --
+3. Run `build.sh` to generate `index.html`, `_sidebar.md`, and the JS config —
    intended to be put in a git commit hook.
 4. Use `serve.sh` to build docs and run a local server for development.
 
@@ -41,9 +47,13 @@ docs/
   index.html            ← Auto generated main page.
   bruha.yaml            ← Config (override defaults here)
   src/                  ← Markdown content and auto generated _sidebar.md.
+    examples/           ← Syntax reference for all content features.
   themes/               ← CSS + JS plugins
   bin/                  ← build.sh and serve.sh scripts
 templates/              ← Sample AGENTS.md and skills on how to write bruha docs.
 ```
+
+For syntax and examples of all content features (callouts, table styles, badges,
+etc.), see `docs/src/examples/` or the live docs.
 
 Full docs: https://cart0113.github.io/bruha/

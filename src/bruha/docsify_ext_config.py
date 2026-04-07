@@ -32,6 +32,7 @@ DEFAULTS = {
     "search_style": "magnify-glass",
     "sidebar_indent": "1em",
     "site_icon": "",
+    "katex": False,
     "social_links": {},
     "style": "code-one",
     "site_name": "",
@@ -89,9 +90,10 @@ def generate_config_js(docs_folder):
 # ---------------------------------------------------------------------------
 
 # Optional theme files: included in index.html only when present on disk.
-_OPTIONAL_CSS = ["callouts.css", "blog.css"]
+_OPTIONAL_CSS = ["callouts.css", "content-widgets.css", "blog.css"]
 _OPTIONAL_JS = [
     ("callouts.js", "calloutsPlugin"),
+    ("content-widgets.js", "contentWidgetsPlugin"),
     ("published-date.js", "publishedDatePlugin"),
 ]
 
@@ -195,8 +197,19 @@ def generate_index_html(docs_folder):
     for f, _ in optional_js:
         opt_js_tags += f'\n    <script src="themes/{f}?v=CACHEBUST"></script>'
 
+    # KaTeX (opt-in via config)
+    katex_css_tag = ""
+    katex_js_tags = ""
+    katex_head_tag = ""
+    if config["katex"]:
+        katex_css_tag = '\n  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">'
+        katex_js_tags = '\n  <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>'
+        katex_head_tag = '\n  <script src="themes/katex-plugin.js?v=CACHEBUST"></script>'
+
     # Build plugins array
     plugins = [p for _, p in optional_js] + _CORE_PLUGINS
+    if config["katex"]:
+        plugins.insert(0, "katexPlugin")
     plugins_js = ",\n          ".join(plugins)
 
     # Build Prism script tags
@@ -252,7 +265,7 @@ def generate_index_html(docs_folder):
   <!-- extension styles -->
   <link rel="stylesheet" href="themes/bruha.css?v=CACHEBUST">{opt_css_tags}
   <!-- mobile responsive layout -->
-  <link rel="stylesheet" href="themes/mobile-nav.css?v=CACHEBUST">
+  <link rel="stylesheet" href="themes/mobile-nav.css?v=CACHEBUST">{katex_css_tag}
   <!-- generated config (applies CSS classes before render) -->
   <script src="themes/bruha-config.js?v=CACHEBUST"></script>
   <!-- theme controls (applies saved choice before render) -->
@@ -262,7 +275,7 @@ def generate_index_html(docs_folder):
   <script src="themes/collapsible-folders.js?v=CACHEBUST"></script>
   <script src="themes/mobile-nav.js?v=CACHEBUST"></script>
   <script src="themes/top-nav.js?v=CACHEBUST"></script>
-  <script src="themes/folder-redirect.js?v=CACHEBUST"></script>
+  <script src="themes/folder-redirect.js?v=CACHEBUST"></script>{katex_head_tag}
 </head>
 <body>
   <!-- SVG sprite — hidden, reused via <use href="#icon-name"/> -->
@@ -292,7 +305,7 @@ def generate_index_html(docs_folder):
           {plugins_js},
       ].filter(Boolean),
     }}
-  </script>
+  </script>{katex_js_tags}
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <!-- Prism language support -->

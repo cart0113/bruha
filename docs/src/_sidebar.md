@@ -1,13 +1,14 @@
 - **Overview**
   - [Overview](overview/overview.md)
+  - [Docsify Features](overview/docsify-features.md)
 - **Configuration**
   - [Configuration Reference](configuration/config-reference.md)
   - [Local Development](configuration/local-development.md)
   - [Sidebar Builder](configuration/sidebar-builder.md)
 - **Examples**
-  - **General**
-    - [Docsify Features](examples/general/docsify-features.md)
-    - [Tables and Lists](examples/general/tables-and-lists.md)
-  - **Theme Demos**
-    - [Code Blocks](examples/theme-demos/code-blocks.md)
-    - [Typography](examples/theme-demos/typography.md)
+  - [Typography](examples/typography.md)
+  - [Callouts](examples/callouts.md)
+  - [Tables](examples/tables.md)
+  - [Lists](examples/lists.md)
+  - [Code Blocks](examples/code-blocks.md)
+  - [Math Equations](examples/math-equations.md)

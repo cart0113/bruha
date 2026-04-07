@@ -1,2 +1,6 @@
-- general
-- theme-demos
+- typography
+- callouts
+- tables
+- lists
+- code-blocks
+- math-equations

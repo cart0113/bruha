@@ -17,6 +17,10 @@
     tip: { label: 'Tip', cssClass: 'callout-tip' },
     important: { label: 'Important', cssClass: 'callout-important' },
     warning: { label: 'Warning', cssClass: 'callout-warning' },
+    success: { label: 'Success', cssClass: 'callout-success' },
+    danger: { label: 'Danger', cssClass: 'callout-danger' },
+    example: { label: 'Example', cssClass: 'callout-example' },
+    quote: { label: 'Quote', cssClass: 'callout-quote' },
   };
 
   function calloutsPlugin(hook) {
@@ -25,7 +29,7 @@
         /<blockquote>([\s\S]*?)<\/blockquote>/g,
         function (full, inner) {
           var m = inner.match(
-            /^\s*<p>\s*\[!(note|tip|important|warning)\]\s*/i
+            /^\s*<p>\s*\[!(note|tip|important|warning|success|danger|example|quote)\]\s*/i
           );
           if (!m) return full;
           var type = m[1].toLowerCase();
