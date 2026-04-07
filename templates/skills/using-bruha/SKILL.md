@@ -13,8 +13,9 @@ Follow these rules when writing documentation content:
 6. Callout boxes: `> [!note]`, `> [!tip]`, `> [!important]`, `> [!warning]`,
    `> [!success]`, `> [!danger]`, `> [!example]`, `> [!quote]`.
 7. Table styles via HTML comment before a table: `<!-- table-striped -->`,
-   `<!-- table-bordered -->`, `<!-- table-compact -->`, `<!-- table-borderless -->`.
-8. Never edit `docs/_sidebar.md`, `docs/themes/bruha-config.js`, or
+   `<!-- table-bordered -->`, `<!-- table-compact -->`,
+   `<!-- table-borderless -->`.
+8. Never edit `docs/src/_sidebar.md`, `docs/themes/bruha-config.js`, or
    `docs/index.html` — they are generated.
 9. After any content change, run `docs/bin/build.sh`.
 

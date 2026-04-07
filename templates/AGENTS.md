@@ -15,7 +15,7 @@ extensions. Content is authored as Markdown under `docs/src/`.
 
 ## Generated Files — Do Not Edit
 
-- `docs/_sidebar.md`
+- `docs/src/_sidebar.md`
 - `docs/themes/bruha-config.js`
 - `docs/index.html`
 
