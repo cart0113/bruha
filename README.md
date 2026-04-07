@@ -3,9 +3,9 @@
 A [docsify](https://docsify.js.org/) extension theme designed for LLM
 documentation generation.
 
-- **Auto-generated sidebar from filesystem**: just add folders and markdown files
-  to a `docs/src` directory. Then a provided `build.sh` script (designed to be
-  used as a commit hook) will generate all necessary files, such as the
+- **Auto-generated sidebar from filesystem**: just add folders and markdown
+  files to a `docs/src` directory. Then a provided `build.sh` script (designed
+  to be used as a commit hook) will generate all necessary files, such as the
   `index.html` and `_sidebar.md`. This was designed so that an LLM does not need
   to remember to update ancillary files when updating core documentation.
 - **Optional ordering control**: an optional `_order.md` can be maintained to
@@ -25,14 +25,6 @@ documentation generation.
   `context-db/using-bruha/` context files. In addition, a `templates/` directory
   provides a sample `AGENTS.md` and a `using-bruha/SKILLS.md` you can
   incorporate into your project.
-
-## Quick Start
-
-```bash
-docs/bin/build.sh              # generate sidebar + config
-docs/bin/serve.sh              # build + launch dev server at localhost:3000
-docs/bin/serve.sh --port 4000  # custom port
-```
 
 ## How It Works
 
