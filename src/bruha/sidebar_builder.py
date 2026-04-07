@@ -83,13 +83,19 @@ def _sort_items(items, directory):
     order = _read_order_file(directory)
 
     if order is not None:
-        name_to_item = {item.name: item for item in items}
+        name_to_item = {}
+        for item in items:
+            name_to_item[item.name] = item
+            if item.is_file():
+                name_to_item[item.stem] = item
         ordered = []
         seen = set()
         for name in order:
             if name in name_to_item:
-                ordered.append(name_to_item[name])
-                seen.add(name)
+                item = name_to_item[name]
+                if item not in ordered:
+                    ordered.append(item)
+                    seen.add(item.name)
         remaining = sorted(
             [item for item in items if item.name not in seen],
             key=lambda p: p.name.lower(),
