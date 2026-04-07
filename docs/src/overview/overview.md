@@ -30,8 +30,8 @@ documentation generation.
 - **Context-db files provided** — this project uses
   [context-db](https://cart0113.github.io/context-db) and provides
   `context-db/using-bruha/` context files. In addition, a `templates/` directory
-  provides a sample `AGENTS.md` and a `using-bruha/SKILLS.md` you can
-  incorporate into your project.
+  provides a sample `AGENTS.md` and a `using-bruha/SKILL.md` you can incorporate
+  into your project.
 
 ## How It Works
 

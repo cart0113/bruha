@@ -1,7 +1,7 @@
 # Documentation (bruha)
 
 This project's documentation is built with
-[bruha](https://github.com/cart0113/bruha), a YAML-driven set of docsify
+[bruha](https://github.com/cart0113/bruha), a JSON-driven set of docsify
 extensions. Content is authored as Markdown under `docs/src/`.
 
 ## Key Rules
