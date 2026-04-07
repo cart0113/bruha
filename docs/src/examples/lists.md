@@ -37,7 +37,7 @@
 ## Mixed Content Lists
 
 ```markdown
-- **Configuration**: edit `bruha.yaml` to control features
+- **Configuration**: edit `bruha.json` to control features
 - **Sidebar builder**: auto-generates `_sidebar.md` from filesystem
 - **Theme controls**: 4 color themes saved to localStorage
   1. Parchment (warm, traditional)
@@ -46,7 +46,7 @@
   4. Near-Midnight (cool, dark)
 ```
 
-- **Configuration**: edit `bruha.yaml` to control features
+- **Configuration**: edit `bruha.json` to control features
 - **Sidebar builder**: auto-generates `_sidebar.md` from filesystem
 - **Theme controls**: 4 color themes saved to localStorage
   1. Parchment (warm, traditional)
@@ -61,7 +61,7 @@
   filesystem. Returns the content as a string.
 - **`write_sidebar(docs_folder, ...)`** — Writes `_sidebar.md` to the content
   folder. Returns the file path.
-- **`load_config(docs_folder)`** — Reads `bruha.yaml` and returns the config
+- **`load_config(docs_folder)`** — Reads `bruha.json` and returns the config
   dict with defaults applied.
 - **`generate_config_js(docs_folder)`** — Writes the generated JS config file.
   Returns the output path.
@@ -71,7 +71,7 @@
   filesystem. Returns the content as a string.
 - **`write_sidebar(docs_folder, ...)`** — Writes `_sidebar.md` to the content
   folder. Returns the file path.
-- **`load_config(docs_folder)`** — Reads `bruha.yaml` and returns the config
+- **`load_config(docs_folder)`** — Reads `bruha.json` and returns the config
   dict with defaults applied.
 - **`generate_config_js(docs_folder)`** — Writes the generated JS config file.
   Returns the output path.
@@ -79,7 +79,7 @@
 ## Task Lists
 
 ```markdown
-- [x] Create YAML config schema
+- [x] Create JSON config schema
 - [x] Build Python config generator
 - [ ] Add KaTeX support
 - [ ] Write migration guide
@@ -87,7 +87,7 @@
   - [ ] Add upgrade script
 ```
 
-- [x] Create YAML config schema
+- [x] Create JSON config schema
 - [x] Build Python config generator
 - [ ] Add KaTeX support
 - [ ] Write migration guide
@@ -100,20 +100,20 @@ Use HTML `<dl>`, `<dt>`, `<dd>` for term/definition pairs.
 
 ```markdown
 <dl>
-<dt>bruha.yaml</dt>
+<dt>bruha.json</dt>
 <dd>Single source of truth for all configuration. Edited by hand.</dd>
 <dt>_sidebar.md</dt>
 <dd>Auto-generated from the filesystem. Do not edit directly.</dd>
 <dt>index.html</dt>
-<dd>Auto-generated from bruha.yaml. Do not edit directly.</dd>
+<dd>Auto-generated from bruha.json. Do not edit directly.</dd>
 </dl>
 ```
 
 <dl>
-<dt>bruha.yaml</dt>
+<dt>bruha.json</dt>
 <dd>Single source of truth for all configuration. Edited by hand.</dd>
 <dt>_sidebar.md</dt>
 <dd>Auto-generated from the filesystem. Do not edit directly.</dd>
 <dt>index.html</dt>
-<dd>Auto-generated from bruha.yaml. Do not edit directly.</dd>
+<dd>Auto-generated from bruha.json. Do not edit directly.</dd>
 </dl>

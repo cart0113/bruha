@@ -12,7 +12,7 @@ docs/themes/    →  your-project/docs/themes/
 docs/bin/       →  your-project/docs/bin/
 ```
 
-Then create your own `docs/bruha.yaml` and `docs/src/` content. `build.sh`
+Then create your own `docs/bruha.json` and `docs/src/` content. `build.sh`
 generates `index.html`, `_sidebar.md`, and `bruha-config.js`.
 
 To pick up bruha updates, re-copy `docs/themes/` and `docs/bin/`.
@@ -28,6 +28,6 @@ docs/bin/format.sh             # prettier on docs content and theme files
 
 ## Requirements
 
-- `python-main` with PyYAML
+- `python3` (stdlib only — no external packages)
 - `docsify-cli` (`npm install -g docsify-cli`)
 - `prettier` (via npx or installed locally)

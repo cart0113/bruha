@@ -1,5 +1,6 @@
 ---
-description: Sidebar builder — content rules, _order.md files, validation, output format
+description:
+  Sidebar builder — content rules, _order.md files, validation, output format
 ---
 
 # Sidebar Builder
@@ -41,7 +42,7 @@ docs/
   src/        ← markdown content
   themes/     ← CSS + JS plugins
   index.html
-  bruha.yaml
+  bruha.json
 ```
 
 ## Ordering
@@ -102,5 +103,5 @@ Folders become bold labels.
 
 ## Integration
 
-`docs/bin/build.sh` reads `content_folder` from the YAML config and passes it to
+`docs/bin/build.sh` reads `content_folder` from the JSON config and passes it to
 the sidebar builder.

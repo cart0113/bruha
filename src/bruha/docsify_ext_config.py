@@ -1,19 +1,17 @@
-"""Read bruha.yaml and generate config JS + index.html for the browser.
+"""Read bruha.json and generate config JS + index.html for the browser.
 
-The YAML file is the single source of truth for all bruha extension
+The JSON file is the single source of truth for all bruha extension
 settings. This module reads it, applies defaults for any missing keys,
 and writes a JS file that sets window.__docsifyExtConfig plus applies
 immediate CSS classes to <html> before docsify renders.
 
 It also generates index.html so that per-project values (site name,
 description, OG image, home path, prism languages) are driven entirely
-from bruha.yaml — no manual HTML editing required.
+from bruha.json — no manual HTML editing required.
 """
 
 import json
 import pathlib
-
-import yaml
 
 DEFAULTS = {
     "light_theme": "parchment",
@@ -62,11 +60,11 @@ window.__docsifyExtConfig = {config_json};
 
 
 def load_config(docs_folder):
-    """Read bruha.yaml and return the config dict with defaults applied."""
-    config_path = pathlib.Path(docs_folder) / "bruha.yaml"
+    """Read bruha.json and return the config dict with defaults applied."""
+    config_path = pathlib.Path(docs_folder) / "bruha.json"
     config = dict(DEFAULTS)
     if config_path.exists():
-        raw = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+        raw = json.loads(config_path.read_text(encoding="utf-8"))
         if raw:
             config.update(raw)
     if config["dark_theme"] is None:
@@ -75,7 +73,7 @@ def load_config(docs_folder):
 
 
 def generate_config_js(docs_folder):
-    """Generate docs/themes/bruha-config.js from the YAML config."""
+    """Generate docs/themes/bruha-config.js from the JSON config."""
     config = load_config(docs_folder)
     docs_root = pathlib.Path(docs_folder)
     config_json = json.dumps(config, indent=2)
@@ -166,7 +164,7 @@ def _build_og_image_url(config):
 
 
 def generate_index_html(docs_folder):
-    """Generate docs/index.html from the YAML config.
+    """Generate docs/index.html from the JSON config.
 
     Optional theme files (callouts, blog, published-date) are included
     only when present on disk, so downstream repos automatically get the

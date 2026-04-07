@@ -13,18 +13,19 @@ documentation generation.
 - **Top navigation tabs from folder structure**: a default option allows
   top-level folders to automatically become a horizontal tab bar (like PyData
   Sphinx or Read the Docs).
-- **Single YAML config with defaults**: one `bruha.yaml` controls everything
+- **Single JSON config with defaults**: one `bruha.json` controls everything
   (themes, sidebar behavior, nav layout, code blocks). Currently, there are four
   color themes with light/dark variants, code highlighting, and a theme picker
   UI.
 - **Multiple content widgets**: 8 callout types (`note`, `tip`, `important`,
   `warning`, `success`, `danger`, `example`, `quote`), table style variants
-  (striped, bordered, compact, borderless — combinable), inline badges,
-  keyboard key styling, and collapsible sections. See the
+  (striped, bordered, compact, borderless — combinable), inline badges, keyboard
+  key styling, and collapsible sections. See the
   [examples](https://cart0113.github.io/bruha/#/examples/callouts).
 - **LaTeX math equations**: opt-in KaTeX support for inline and display math.
-  Set `katex: true` in `bruha.yaml` to render `$...$` and `$$...$$` syntax. See
-  the [math equations example](https://cart0113.github.io/bruha/#/examples/math-equations).
+  Set `katex: true` in `bruha.json` to render `$...$` and `$$...$$` syntax. See
+  the
+  [math equations example](https://cart0113.github.io/bruha/#/examples/math-equations).
 - **Copy-based install**: to use `bruha`, copy `docs/themes/` and `docs/bin/`
   into your project. Currently, the process is manual and you need to check back
   for updates and recopy assets when necessary.
@@ -37,7 +38,7 @@ documentation generation.
 ## How It Works
 
 1. Organize docs under `docs/src/` using optional `_order.md` files for ordering
-2. Edit `bruha.yaml` to override any defaults you want to change
+2. Edit `bruha.json` to override any defaults you want to change
 3. Run `build.sh` to generate `index.html`, `_sidebar.md`, and the JS config —
    intended to be put in a git commit hook.
 4. Use `serve.sh` to build docs and run a local server for development.
@@ -47,7 +48,7 @@ documentation generation.
 ```
 docs/
   index.html            ← Auto generated main page.
-  bruha.yaml            ← Config (override defaults here)
+  bruha.json            ← Config (override defaults here)
   src/                  ← Markdown content and auto generated _sidebar.md.
     examples/           ← Syntax reference for all content features.
   themes/               ← CSS + JS plugins

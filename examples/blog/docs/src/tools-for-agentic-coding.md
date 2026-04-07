@@ -76,7 +76,7 @@ The documentation is live at
 
 What it provides:
 
-- **YAML configuration** — one file (`bruha.yaml`) controls everything: themes,
+- **JSON configuration** — one file (`bruha.json`) controls everything: themes,
   sidebar behavior, navigation style, code highlighting
 - **Auto-generated sidebars** — the sidebar is built from the filesystem using
   `_order.md` files for sequencing, so you never hand-edit `_sidebar.md`

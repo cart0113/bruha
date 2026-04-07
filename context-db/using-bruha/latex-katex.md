@@ -1,17 +1,18 @@
 ---
-description: "Optional: math equations — enable KaTeX and use LaTeX syntax in markdown"
+description:
+  'Optional: math equations — enable KaTeX and use LaTeX syntax in markdown'
 status: stable
 ---
 
 # LaTeX Math with KaTeX
 
 Bruha can render LaTeX math equations via the
-[docsify-katex](https://github.com/upupming/docsify-katex) plugin. It is
-opt-in — disabled by default.
+[docsify-katex](https://github.com/upupming/docsify-katex) plugin. It is opt-in
+— disabled by default.
 
 ## Enabling
 
-Set `katex: true` in `bruha.yaml` and rebuild. This loads KaTeX CSS/JS and the
+Set `katex: true` in `bruha.json` and rebuild. This loads KaTeX CSS/JS and the
 docsify-katex plugin from CDN. No local files are needed.
 
 ## Syntax
@@ -29,8 +30,8 @@ $$
 
 KaTeX covers most LaTeX math: fractions, exponents, subscripts, Greek letters,
 matrices (`pmatrix`, `bmatrix`, `vmatrix`), summations, integrals, limits,
-aligned equations, and common operators. See
-https://katex.org/docs/supported for the full list.
+aligned equations, and common operators. See https://katex.org/docs/supported
+for the full list.
 
 ## Gotchas
 

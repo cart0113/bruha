@@ -1,12 +1,13 @@
 ---
-description: YAML config schema — all keys, types, defaults, and what they control
+description:
+  JSON config schema — all keys, types, defaults, and what they control
 ---
 
 # Config Schema
 
-The config file lives at `docs/bruha.yaml`. All keys have sensible defaults —
+The config file lives at `docs/bruha.json`. All keys have sensible defaults —
 users only need to include keys they want to override. The Python config
-generator merges user YAML on top of defaults.
+generator merges user JSON on top of defaults.
 
 ## Keys
 
@@ -25,7 +26,7 @@ generator merges user YAML on top of defaults.
 | `document_inline_sidebar_selector` | bool   | `true`                                             | Show the sidebar bar indicator for document sections                                                                               |
 | `document_header_depth`            | int    | `3`                                                | How many heading levels to show in sidebar (3 = title + h2 + h3)                                                                   |
 | `top_level_folders_as_top_control` | bool   | `true`                                             | Render top-level folders as a horizontal nav bar at page top                                                                       |
-| `hamburger_sidebar_toggle`                   | bool   | `true`                                             | Show sidebar toggle button in the top nav brand area                                                                               |
+| `hamburger_sidebar_toggle`         | bool   | `true`                                             | Show sidebar toggle button in the top nav brand area                                                                               |
 | `katex`                            | bool   | `false`                                            | Enable KaTeX math rendering (`$...$` inline, `$$...$$` display). Loads KaTeX + docsify-katex from CDN                              |
 | `github_corner`                    | bool   | `false`                                            | Show the GitHub corner link                                                                                                        |
 | `content_folder`                   | string | `src`                                              | Subdirectory of docs/ containing markdown content                                                                                  |

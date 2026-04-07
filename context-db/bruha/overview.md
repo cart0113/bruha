@@ -1,5 +1,6 @@
 ---
-description: What bruha is — a personal set of docsify extensions driven by YAML config
+description:
+  What bruha is — a personal set of docsify extensions driven by JSON config
 ---
 
 # bruha — Overview
@@ -11,7 +12,7 @@ documentation pages look and behave a specific way.
 
 ## What It Does
 
-- Adds a YAML config file (`docs/bruha.yaml`) that controls all features
+- Adds a JSON config file (`docs/bruha.json`) that controls all features
 - Every config key has a sensible default — users only override what they need
 - Generates a JavaScript config bridge so the browser reads the same settings
 - Provides a custom CSS theme (code-one) with 4 switchable color themes (each
@@ -29,7 +30,7 @@ documentation pages look and behave a specific way.
 src/bruha/                  Python tools (sidebar builder, config generator)
 docs/                       Docsify site root
 docs/themes/                CSS + JS plugins
-docs/bruha.yaml             Config (source of truth)
+docs/bruha.json             Config (source of truth)
 docs/themes/bruha-config.js Generated JS config (do not edit)
 docs/*/_order.md            Ordering files (one per directory)
 bin/                        Build, format, serve scripts
@@ -38,7 +39,7 @@ context-db/                 Project knowledge for AI assistants
 
 ## Key Design Decisions
 
-- YAML is the single source of truth. Python generates JS from it.
+- JSON is the single source of truth. Python generates JS from it.
 - All config keys have defaults. Users only override what they need.
 - `_order.md` files control sidebar ordering; no numeric prefixes on filenames.
 - CSS is layered: base theme, color palettes, extension styles.

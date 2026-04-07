@@ -59,11 +59,11 @@ Callouts are styled alert boxes using blockquote syntax.
 ### Example
 
 ```markdown
-> [!example] Set `theme_controls: theme_picker` in `bruha.yaml` to enable the
+> [!example] Set `theme_controls: theme_picker` in `bruha.json` to enable the
 > palette button.
 ```
 
-> [!example] Set `theme_controls: theme_picker` in `bruha.yaml` to enable the
+> [!example] Set `theme_controls: theme_picker` in `bruha.json` to enable the
 > palette button.
 
 ### Quote
@@ -106,7 +106,7 @@ Use HTML `<details>` and `<summary>` for expandable content.
 <details>
 <summary>Click to expand — configuration example</summary>
 
-Set these keys in `bruha.yaml`:
+Set these keys in `bruha.json`:
 
 - `light_theme` — base color theme
 - `dark_theme` — override for dark mode
@@ -118,7 +118,7 @@ Set these keys in `bruha.yaml`:
 <details>
 <summary>Click to expand — configuration example</summary>
 
-Set these keys in `bruha.yaml`:
+Set these keys in `bruha.json`:
 
 - `light_theme` — base color theme
 - `dark_theme` — override for dark mode
@@ -133,8 +133,8 @@ Set these keys in `bruha.yaml`:
 1. Run `bin/build.sh` to regenerate all files
 2. Check `docs/index.html` was updated
 3. Hard-refresh the browser (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>)
-4. Verify the YAML syntax with
-   `python -c "import yaml; yaml.safe_load(open('docs/bruha.yaml'))"`
+4. Verify the JSON syntax with
+   `python3 -c "import json; json.load(open('docs/bruha.json'))"`
 
 </details>
 ```
@@ -145,8 +145,8 @@ Set these keys in `bruha.yaml`:
 1. Run `bin/build.sh` to regenerate all files
 2. Check `docs/index.html` was updated
 3. Hard-refresh the browser (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>)
-4. Verify the YAML syntax with
-   `python -c "import yaml; yaml.safe_load(open('docs/bruha.yaml'))"`
+4. Verify the JSON syntax with
+   `python3 -c "import json; json.load(open('docs/bruha.json'))"`
 
 </details>
 

@@ -105,7 +105,7 @@ REPO_ROOT="$(git rev-parse --show-toplevel)"
 DOCS_DIR="${REPO_ROOT}/docs"
 
 echo "Building sidebar..."
-PYTHONPATH="${REPO_ROOT}/src" python-main -c "
+PYTHONPATH="${REPO_ROOT}/src" python3 -c "
 import bruha.docsify_ext_config as cfg
 import bruha.sidebar_builder as sb
 config = cfg.load_config('${DOCS_DIR}')
@@ -125,7 +125,7 @@ REPO_ROOT="$(git rev-parse --show-toplevel)"
 DOCS_DIR="${REPO_ROOT}/docs"
 
 echo "Building sidebar..."
-PYTHONPATH="${REPO_ROOT}/src" python-main -c "
+PYTHONPATH="${REPO_ROOT}/src" python3 -c "
 import bruha.docsify_ext_config as cfg
 import bruha.sidebar_builder as sb
 config = cfg.load_config('${DOCS_DIR}')

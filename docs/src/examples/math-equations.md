@@ -1,10 +1,12 @@
 # Math Equations
 
 Bruha supports LaTeX math rendering via [KaTeX](https://katex.org/). Enable it
-in `bruha.yaml`:
+in `bruha.json`:
 
-```yaml
-katex: true
+```json
+{
+  "katex": true
+}
 ```
 
 Use `$...$` for inline math and `$$...$$` for display (block) math.
