@@ -7,7 +7,7 @@ window.__docsifyExtConfig = {
   document_inline_sidebar_selector: true,
   document_header_depth: 2,
   top_level_folders_as_top_control: false,
-  hamburger_menu: false,
+  hamburger_sidebar_toggle: true,
   github_corner: false,
   content_folder: 'src',
   folder_chevron: false,
@@ -19,11 +19,26 @@ window.__docsifyExtConfig = {
     github: 'https://github.com/cart0113',
   },
   style: 'blog',
+  site_name: '',
+  site_description: '',
+  og_image: 'assets/og-image.svg',
+  home_path: 'overview/overview',
+  prism_languages: ['python', 'bash', 'markdown', 'yaml', 'javascript', 'json'],
 };
 (function (c) {
   document.documentElement.classList.add('theme-' + c.light_theme);
-  if (!c.hamburger_menu)
-    document.documentElement.classList.add('ext-no-hamburger');
+  document.documentElement.classList.add('ext-no-hamburger');
+  if (c.hamburger_sidebar_toggle) {
+    document.documentElement.classList.add('ext-hamburger');
+    try {
+      if (
+        localStorage.getItem(
+          window.location.pathname + ':sidebar-collapsed'
+        ) === 'true'
+      )
+        document.documentElement.classList.add('ext-sidebar-collapsed');
+    } catch (_) {}
+  }
   if (!c.github_corner)
     document.documentElement.classList.add('ext-no-github-corner');
   document.documentElement.classList.add('ext-has-top-nav');

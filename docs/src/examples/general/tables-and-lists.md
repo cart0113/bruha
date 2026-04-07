@@ -18,7 +18,7 @@
 | `theme_controls`                   | string | `dark_toggle` | `none`, `dark_toggle`, or `theme_picker` |
 | `document_inline_sidebar_selector` | bool   | `true`        | Bar indicator tracks your position       |
 | `top_level_folders_as_top_control` | bool   | `true`        | Horizontal nav bar at top                |
-| `hamburger_menu`                   | bool   | `false`       | Toggle button for sidebar                |
+| `hamburger_sidebar_toggle`         | bool   | `false`       | Toggle button for sidebar                |
 | `github_corner`                    | bool   | `false`       | Corner ribbon links to repo              |
 
 ## Data Table

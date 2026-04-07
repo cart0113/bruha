@@ -79,7 +79,7 @@ code_highlighter: vivid
 document_inline_sidebar_selector: true
 document_header_depth: 3
 top_level_folders_as_top_control: true
-hamburger_menu: false
+hamburger_sidebar_toggle: false
 github_corner: false
 ```
 

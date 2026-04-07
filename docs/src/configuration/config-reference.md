@@ -34,7 +34,7 @@ social_links:
 | `document_inline_sidebar_selector` | `true`          | Vertical bar indicator showing current section                                                         |
 | `folder_chevron`                   | `true`          | Collapse arrows on folder headers                                                                      |
 | `page_section_collapsible`         | `true`          | Allow collapsing page sub-sections in sidebar                                                          |
-| `hamburger_menu`                   | `true`          | Show sidebar toggle button in the top nav brand area                                                   |
+| `hamburger_sidebar_toggle`         | `true`          | Show sidebar toggle button in the top nav brand area                                                   |
 | `sidebar_indent`                   | `1em`           | CSS indentation depth for sidebar nesting                                                              |
 | `search_style`                     | `magnify-glass` | Search UI. Options: `magnify-glass`, `box`                                                             |
 

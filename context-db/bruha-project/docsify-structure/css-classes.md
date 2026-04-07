@@ -11,7 +11,7 @@ Set by `bruha-config.js` on page load. Gate entire feature sets:
 | Class                      | Config Key                         | Effect                                         |
 | -------------------------- | ---------------------------------- | ---------------------------------------------- |
 | `ext-no-hamburger`         | always                             | Hides docsify's built-in sidebar toggle button |
-| `ext-hamburger`            | `hamburger_menu: true`             | Shows custom hamburger in top nav brand area   |
+| `ext-hamburger`            | `hamburger_sidebar_toggle: true`             | Shows custom hamburger in top nav brand area   |
 | `ext-sidebar-collapsed`    | hamburger click (runtime)          | Hides sidebar, expands content to full width   |
 | `ext-no-github-corner`     | `github_corner: false`             | Hides repo ribbon                              |
 | `ext-has-top-nav`          | `top_level_folders_as_top_control` | Shifts layout for top bar                      |

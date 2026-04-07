@@ -295,7 +295,7 @@
       : 'bruha';
     brand.appendChild(title);
 
-    if (cfg.hamburger_menu) {
+    if (cfg.hamburger_sidebar_toggle) {
       var hamburger = document.createElement('button');
       hamburger.className = 'ext-top-hamburger';
       hamburger.title = 'Toggle sidebar';

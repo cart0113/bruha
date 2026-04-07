@@ -24,7 +24,7 @@ DEFAULTS = {
     "document_inline_sidebar_selector": True,
     "document_header_depth": 3,
     "top_level_folders_as_top_control": True,
-    "hamburger_menu": True,
+    "hamburger_sidebar_toggle": True,
     "github_corner": False,
     "content_folder": "src",
     "folder_chevron": True,
@@ -46,7 +46,7 @@ window.__docsifyExtConfig = {config_json};
 (function(c) {{
   document.documentElement.classList.add('theme-' + c.light_theme);
   document.documentElement.classList.add('ext-no-hamburger');
-  if (c.hamburger_menu) {{
+  if (c.hamburger_sidebar_toggle) {{
     document.documentElement.classList.add('ext-hamburger');
     try {{ if (localStorage.getItem(window.location.pathname + ':sidebar-collapsed') === 'true') document.documentElement.classList.add('ext-sidebar-collapsed'); }} catch (_) {{}}
   }}
