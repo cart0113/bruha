@@ -1,7 +1,9 @@
 # Sidebar Builder
 
-The sidebar builder generates `_sidebar.md` from the filesystem structure under
-`docs/src/`.
+`docs/bin/build.sh` generates `_sidebar.md`, `bruha-config.js`, and `index.html`
+from the filesystem structure under `docs/src/`. Run it after any content
+change, or add it as a pre-commit hook so the sidebar stays in sync
+automatically.
 
 ## Content Rules
 
@@ -33,32 +35,3 @@ sorts first, then alphabetical.
 ## Skipped Items
 
 Files starting with `_` or `.`, non-`.md` files, and empty directories.
-
-## Pre-Commit Hook
-
-Auto-rebuild sidebar and config on commits touching `docs/`:
-
-```bash
-#!/usr/bin/env bash
-set -euo pipefail
-
-REPO_ROOT="$(git rev-parse --show-toplevel)"
-DOCS_DIR="${REPO_ROOT}/docs"
-SIDEBAR="${DOCS_DIR}/src/_sidebar.md"
-
-if ! git diff --cached --name-only | grep -q '^docs/'; then
-    exit 0
-fi
-
-PYTHONPATH="${REPO_ROOT}/src" python-main -c "
-import bruha.docsify_ext_config as ext_config
-import bruha.sidebar_builder as sb
-
-config = ext_config.load_config('${DOCS_DIR}')
-sb.write_sidebar('${DOCS_DIR}', config['top_level_folders_as_top_control'], config['content_folder'])
-ext_config.generate_config_js('${DOCS_DIR}')
-"
-
-git add "${SIDEBAR}"
-git add "${DOCS_DIR}/themes/bruha-config.js"
-```

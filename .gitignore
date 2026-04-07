@@ -4,4 +4,6 @@ __pycache__/
 node_modules/
 .playwright-mcp/
 context-db/local-repos-to-update/
+context-db/coding-standards
+context-db/writing-standards
 bin/sync-to-repos.sh
