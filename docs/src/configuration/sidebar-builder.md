@@ -1,45 +1,16 @@
 # Sidebar Builder
 
-The sidebar builder generates `_sidebar.md` from the filesystem structure of the
-`docs/src/` folder (or whichever `content_folder` is configured).
-
-## Filesystem Structure
-
-Content lives under `docs/src/`, separate from themes and config:
-
-```
-docs/
-├── src/                    ← markdown content
-│   ├── _order.md           ← top-level folder ordering
-│   ├── overview/
-│   │   └── overview.md
-│   ├── configuration/
-│   │   ├── config-reference.md
-│   │   └── sidebar-builder.md
-│   └── examples/
-│       ├── _order.md
-│       ├── general/
-│       │   ├── docsify-features.md
-│       │   └── tables-and-lists.md
-│       └── theme-demos/
-│           ├── code-blocks.md
-│           └── typography.md
-├── themes/                 ← CSS + JS plugins
-├── bruha.yaml              ← config
-└── index.html
-```
+The sidebar builder generates `_sidebar.md` from the filesystem structure under
+`docs/src/`.
 
 ## Content Rules
 
-### No mixing files and folders
+**No mixing files and folders.** A directory must contain EITHER markdown files
+OR sub-directories, never both. Mixing raises an error.
 
-A directory must contain EITHER markdown files OR sub-directories, never both.
-Mixing raises an error.
+## Ordering with \_order.md
 
-### Ordering with \_order.md files
-
-Each directory can contain an `_order.md` file that lists entries as a markdown
-list:
+Each directory can contain an `_order.md` file listing entries one per line:
 
 ```markdown
 - overview
@@ -47,68 +18,25 @@ list:
 - examples
 ```
 
-Rules:
-
 - Items appear in listed order; unlisted items are appended alphabetically
 - Missing items are silently ignored; lines starting with `#` are comments
-- Plain text (one entry per line, no `-` prefix) is also accepted
 
-### Default ordering (no \_order.md file)
-
-When no `_order.md` file exists:
-
-1. A file whose stem matches the folder name sorts first (e.g. `overview.md`
-   inside `overview/`)
-2. Remaining items sort alphabetically
+**Default ordering** (no `_order.md`): a file whose stem matches the folder name
+sorts first, then alphabetical.
 
 ## Display Names
 
-For `.md` files, the sidebar link text comes from:
-
-1. The first `# heading` in the file (if present)
-2. Otherwise, the filename with dashes/underscores replaced by spaces and
-   title-cased
-
-Folders use their directory name with the same cleanup logic.
-
-## Generated Output
-
-The builder produces standard docsify sidebar markdown:
-
-```markdown
-- **Overview**
-  - [Overview](overview/overview.md)
-- **Configuration**
-  - [Configuration Reference](configuration/config-reference.md)
-  - [Sidebar Builder](configuration/sidebar-builder.md)
-```
+- **Files**: first `# heading` in the file, or the filename cleaned up
+  (dashes/underscores to spaces, title-cased)
+- **Folders**: directory name with the same cleanup
 
 ## Skipped Items
 
-- `_sidebar.md`, `_navbar.md`, `_coverpage.md`
-- Files starting with `_` or `.`
-- Non-`.md` files
-- Directories with no `.md` files inside them (e.g., `themes/`)
-
-## API
-
-```python
-import bruha.sidebar_builder as sb
-
-content = sb.build_sidebar("docs", True, "src")
-
-sb.write_sidebar("docs", True, "src")
-```
-
-- `docs_folder` — path to the docs root
-- `top_level_folders_only` — when `True`, enforces that all top-level items are
-  directories
-- `content_folder` — subdirectory containing markdown content (e.g. `"src"`)
+Files starting with `_` or `.`, non-`.md` files, and empty directories.
 
 ## Pre-Commit Hook
 
-A pre-commit hook auto-rebuilds the sidebar and config on any commit touching
-`docs/`:
+Auto-rebuild sidebar and config on commits touching `docs/`:
 
 ```bash
 #!/usr/bin/env bash
