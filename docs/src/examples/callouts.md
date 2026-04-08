@@ -130,7 +130,7 @@ Set these keys in `bruha.json`:
 <details>
 <summary>Click to expand — troubleshooting steps</summary>
 
-1. Run `bin/build.sh` to regenerate all files
+1. Run `docs/bin/build.sh` to regenerate all files
 2. Check `docs/index.html` was updated
 3. Hard-refresh the browser (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>)
 4. Verify the JSON syntax with
@@ -142,7 +142,7 @@ Set these keys in `bruha.json`:
 <details>
 <summary>Click to expand — troubleshooting steps</summary>
 
-1. Run `bin/build.sh` to regenerate all files
+1. Run `docs/bin/build.sh` to regenerate all files
 2. Check `docs/index.html` was updated
 3. Hard-refresh the browser (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>)
 4. Verify the JSON syntax with

@@ -19,6 +19,27 @@ This is NOT an audit of context-db. Context-db is for agents; docs are for
 people. You will _read_ context-db for ground truth, but you are _auditing_
 docs.
 
+## First — ask for automation level
+
+Before doing anything else, ask the user:
+
+> How hands-on do you want to be? Pick a level from 1 to 5:
+>
+> 1. **Very manual** — confirm almost every edit before I make it
+> 2. **Mostly manual** — confirm non-trivial edits, fix obvious things silently
+> 3. **Balanced** — I'll fix clear problems and ask about judgment calls
+> 4. **Mostly automated** — I'll make changes and summarize what I did; ask only
+>    when genuinely unsure
+> 5. **Fully automated** — do everything, only ask if I'm truly stuck
+
+Wait for their answer before proceeding. Store their choice and use it to
+calibrate all interaction throughout the audit — how often you ask before
+editing, how much you explain along the way, and whether you batch changes or
+present them one by one. The phase instructions below say things like "ask
+before editing" and "wait for confirmation" — treat those as the **level 1–2
+behavior**. At higher levels, use your judgment: fix things directly, summarize
+in batches, and only pause when something is genuinely ambiguous.
+
 ## Target
 
 If `$ARGUMENTS` is provided, treat it as the docs path to audit (e.g.
@@ -182,26 +203,39 @@ This phase is advisory. Report findings and let the user decide what to fix.
 
 ## Interaction style
 
-**Be very chatty.** Talk through what you're doing and finding. This is a
-conversation, not a report. Explain your reasoning so the user can correct your
-understanding.
+Calibrate your interaction to the **automation level** the user chose.
 
-**Ask for feedback often.** After each phase, summarize what you found and ask:
-"Does this match your understanding? Anything I'm missing? Should I proceed with
-these fixes?"
+**At levels 1–2 (manual):**
 
-**Ask for guidance before writing.** When you're about to update a doc, describe
-what you plan to change and why. Wait for a thumbs-up before editing — unless
-the problem is unambiguously wrong (e.g., referencing a file confirmed deleted
-from the repo).
+- Be very chatty. Talk through what you're doing and finding.
+- Ask for feedback after each phase: "Does this match your understanding?
+  Anything I'm missing? Should I proceed with these fixes?"
+- Describe what you plan to change and wait for a thumbs-up before editing —
+  unless the problem is unambiguously wrong (e.g., referencing a file confirmed
+  deleted from the repo).
 
-**Point out what's good.** If a doc page is well-written, accurate, and
-complete, say so. The audit isn't just about finding problems.
+**At level 3 (balanced):**
 
-**Respect the user's voice.** Docs are for humans. They have personality, tone,
-and style choices that matter. Don't flatten everything into generic technical
-writing. If writing standards exist, follow them. If not, match the existing
-voice.
+- Fix clear-cut problems directly and tell the user what you changed.
+- Ask before making judgment calls (reorganizing, rewriting for tone, removing
+  content).
+- Summarize findings at the end of each phase.
+
+**At levels 4–5 (automated):**
+
+- Make changes, then report what you did in a concise summary.
+- Only ask when you're genuinely unsure — ambiguous deletions, style choices
+  that could go either way, structural reorganization with trade-offs.
+- At level 5, batch your summaries — a single report at the end is fine unless
+  something blocks you.
+
+**At all levels:**
+
+- Point out what's good. The audit isn't just about finding problems.
+- Respect the user's voice. Docs are for humans. They have personality, tone,
+  and style choices that matter. Don't flatten everything into generic technical
+  writing. If writing standards exist, follow them. If not, match the existing
+  voice.
 
 ## When making edits
 

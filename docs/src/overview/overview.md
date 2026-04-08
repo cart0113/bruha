@@ -1,10 +1,3 @@
----
-description:
-  What bruha is — a docsify extension theme for LLM documentation generation,
-  with sub-100ms auto-generated sidebar, tab navigation, JSON config, content
-  widgets, and copy-based install
----
-
 # bruha
 
 A [docsify](https://docsify.js.org/) extension theme designed for LLM
