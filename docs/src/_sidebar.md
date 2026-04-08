@@ -4,7 +4,6 @@
   - [Configuration Reference](configuration/config-reference.md)
   - [Sidebar Builder](configuration/sidebar-builder.md)
   - [Local Development](configuration/local-development.md)
-  - [Blog Mode](configuration/blog-mode.md)
 - **Examples**
   - [Typography](examples/typography.md)
   - [Callouts](examples/callouts.md)
