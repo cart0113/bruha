@@ -36,5 +36,3 @@ print('Built _sidebar.md + bruha-config.js')
 STAMP=$(date +%Y%m%d%H%M%S)
 sed -i '' "s/?v=[0-9a-zA-Z]*/?v=${STAMP}/g" "$DOCS_DIR/index.html"
 echo "Cache bust: v=${STAMP}"
-
-npx prettier --write "$DOCS_DIR/src/**/*.md" "$DOCS_DIR/themes/bruha-config.js" 2>&1 | tail -1

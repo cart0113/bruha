@@ -33,11 +33,10 @@ content files (markdown) and `bruha.json`. Everything else is derived.
    - `sidebar_builder.write_sidebar()` reads `_order.md` files and generates
      `_sidebar.md`
 3. `docs/bin/build.sh` applies cache-bust timestamps to all asset URLs
-4. `docs/bin/build.sh` runs prettier on generated files
-5. Generated JS file is loaded first in `<head>`:
+4. Generated JS file is loaded first in `<head>`:
    - Sets `window.__docsifyExtConfig` object
    - Applies CSS classes to `<html>` before docsify renders
-6. Generated `index.html` auto-detects optional plugins (callouts, blog,
+5. Generated `index.html` auto-detects optional plugins (callouts, blog,
    published-date) by checking which theme files exist on disk
 
 ## CSS Classes Applied by Config
@@ -78,10 +77,9 @@ child page.
    classes, plus vivid code highlighter via `.code-vivid`
 4. `bruha.css` — extension styles (indicator, folders, top nav, toggles)
 
-## Build and Formatting
+## Build
 
-- Python: `python3`, formatted with `ruff-main`
-- JS/CSS/MD: formatted with prettier (config in `.prettierrc`)
-- `docs/bin/build.sh` — rebuild sidebar + config, run prettier
-- `docs/bin/format.sh` — run prettier only
+- `docs/bin/build.sh` — rebuild sidebar + config + index.html
 - `docs/bin/serve.sh` — build + launch docsify dev server (`--port` flag)
+- Formatting (prettier, ruff) is a project-level concern handled by the
+  pre-commit hook from GIT_STANDARDS — bruha does not format files

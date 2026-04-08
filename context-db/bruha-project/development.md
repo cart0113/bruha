@@ -1,5 +1,5 @@
 ---
-description: Building, serving, formatting, sidebar ordering, and dependencies
+description: Building, serving, sidebar ordering, and dependencies
 ---
 
 # Development Workflow
@@ -10,8 +10,8 @@ description: Building, serving, formatting, sidebar ordering, and dependencies
 docs/bin/build.sh
 ```
 
-This rebuilds `_sidebar.md` + `bruha-config.js` from the JSON config and
-filesystem, then runs prettier on all JS, CSS, and MD files.
+This rebuilds `_sidebar.md` + `bruha-config.js` + `index.html` from the JSON
+config and filesystem.
 
 ## Serving
 
@@ -23,9 +23,12 @@ Runs build then `docsify serve docs`. Supports `--port` flag (default 3000).
 
 ## Formatting
 
+Formatting is handled by the project's pre-commit hook (from GIT_STANDARDS), not
+by bruha. The hook runs prettier on staged MD/JS/CSS/HTML files and ruff on
+staged Python files before every commit.
+
 ```bash
-docs/bin/format.sh              # prettier on JS, CSS, MD
-ruff-main src/             # Python formatting
+ruff-main src/             # Python formatting (manual)
 ```
 
 ## Dependencies
@@ -33,7 +36,6 @@ ruff-main src/             # Python formatting
 - Python 3 (stdlib only — no external packages)
 - Use `python3`
 - Use `ruff-main` for Python formatting
-- Node: prettier (installed via npm, `node_modules/`)
 
 ## Sidebar Ordering
 

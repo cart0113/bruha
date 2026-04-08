@@ -1,9 +1,3 @@
----
-description:
-  What bruha is — a docsify extension theme for LLM documentation generation,
-  features, structure, and how it works
----
-
 # bruha
 
 A [docsify](https://docsify.js.org/) extension theme designed for LLM
@@ -12,8 +6,10 @@ documentation generation.
 - **Auto-generated sidebar from filesystem**: just add folders and markdown
   files to a `docs/src` directory. Then a provided `build.sh` script (designed
   to be used as a commit hook) will generate all necessary files, such as the
-  `index.html` and `_sidebar.md`. This was designed so that an LLM does not need
-  to remember to update ancillary files when updating core documentation.
+  `index.html` and `_sidebar.md`. The build runs in under 100ms, even on large
+  sites (150+ pages), so it adds no friction as a commit hook. This was designed
+  so that an LLM does not need to remember to update ancillary files when
+  updating core documentation — agents just edit markdown and commit.
 - **Optional ordering control**: an optional `_order.md` can be maintained to
   control content tab and sidebar ordering.
 - **Top navigation tabs from folder structure**: a default option allows

@@ -3,10 +3,10 @@ __pycache__/
 .DS_Store
 node_modules/
 .playwright-mcp/
-context-db/bruha-project/overview.md
 context-db/local-repos-to-update/
 context-db/coding-standards/general-coding-standards
 context-db/writing-standards
 context-db/agent-behavior
 bin/sync-to-repos.sh
 .claude
+.sphinx-test/

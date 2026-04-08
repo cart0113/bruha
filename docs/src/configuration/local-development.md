@@ -22,12 +22,10 @@ To pick up bruha updates, re-copy `docs/themes/` and `docs/bin/`.
 ```bash
 docs/bin/serve.sh              # build + dev server at localhost:3000
 docs/bin/serve.sh --port 4000  # custom port
-docs/bin/build.sh              # generate sidebar + config, run prettier
-docs/bin/format.sh             # prettier on docs content and theme files
+docs/bin/build.sh              # generate sidebar + config + index.html
 ```
 
 ## Requirements
 
 - `python3` (stdlib only — no external packages)
 - `docsify-cli` (`npm install -g docsify-cli`)
-- `prettier` (via npx or installed locally)
