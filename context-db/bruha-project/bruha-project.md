@@ -1,7 +1,7 @@
 ---
 description:
-  bruha — JSON-driven docsify extensions, config schema, architecture, and
-  plugins
+  bruha project knowledge — docsify extensions, config schema, architecture,
+  plugins, and documentation rules
 ---
 
 bruha is a personal set of docsify extensions driven by a single JSON config
@@ -12,4 +12,5 @@ traces the config flow from JSON through Python to the JS runtime.
 `config_schema.md` lists every config key with types and defaults.
 `plugin_inventory.md` documents each CSS and JS file. `docsify-structure/`
 covers the sidebar DOM, CSS override patterns, and navigation event flow.
-`mobile-support/` covers the responsive hamburger drawer.
+`mobile-support/` covers the responsive hamburger drawer. `writing-docs/`
+contains rules for maintaining this project's documentation files.

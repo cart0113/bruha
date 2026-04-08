@@ -49,11 +49,16 @@ documentation generation.
 docs/
   index.html            ← Auto generated main page.
   bruha.json            ← Config (override defaults here)
-  src/                  ← Markdown content and auto generated _sidebar.md.
-    examples/           ← Syntax reference for all content features.
+  src/                  ← Markdown content.
+    overview/           ← Project overview (synced w/ README)
+    examples/           ← Syntax reference for all features.
   themes/               ← CSS + JS plugins
   bin/                  ← build.sh and serve.sh scripts
-templates/              ← Sample AGENTS.md and skills on how to write bruha docs.
+context-db/
+  bruha-project/        ← Project-specific knowledge
+    writing-docs/       ← Rules for this project's docs
+  coding-standards/     ← Symlinked shared standards
+templates/              ← Sample AGENTS.md and skills.
 ```
 
 For syntax and examples of all content features (callouts, table styles, badges,

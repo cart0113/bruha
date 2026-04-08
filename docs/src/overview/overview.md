@@ -1,4 +1,10 @@
-# Overview
+---
+description:
+  What bruha is — a docsify extension theme for LLM documentation generation,
+  features, structure, and how it works
+---
+
+# bruha
 
 A [docsify](https://docsify.js.org/) extension theme designed for LLM
 documentation generation.
@@ -20,10 +26,12 @@ documentation generation.
 - **Multiple content widgets**: 8 callout types (`note`, `tip`, `important`,
   `warning`, `success`, `danger`, `example`, `quote`), table style variants
   (striped, bordered, compact, borderless — combinable), inline badges, keyboard
-  key styling, and collapsible sections. See the [examples](examples/callouts).
+  key styling, and collapsible sections. See the
+  [examples](https://cart0113.github.io/bruha/#/examples/callouts).
 - **LaTeX math equations**: opt-in KaTeX support for inline and display math.
   Set `katex: true` in `bruha.json` to render `$...$` and `$$...$$` syntax. See
-  the [math equations example](examples/math-equations).
+  the
+  [math equations example](https://cart0113.github.io/bruha/#/examples/math-equations).
 - **Copy-based install**: to use `bruha`, copy `docs/themes/` and `docs/bin/`
   into your project. Currently, the process is manual and you need to check back
   for updates and recopy assets when necessary.
@@ -47,14 +55,19 @@ documentation generation.
 docs/
   index.html            ← Auto generated main page.
   bruha.json            ← Config (override defaults here)
-  src/                  ← Markdown content and auto generated _sidebar.md.
-    examples/           ← Syntax reference for all content features.
+  src/                  ← Markdown content.
+    overview/           ← Project overview (synced w/ README)
+    examples/           ← Syntax reference for all features.
   themes/               ← CSS + JS plugins
   bin/                  ← build.sh and serve.sh scripts
-templates/              ← Sample AGENTS.md and skills on how to write bruha docs.
+context-db/
+  bruha-project/        ← Project-specific knowledge
+    writing-docs/       ← Rules for this project's docs
+  coding-standards/     ← Symlinked shared standards
+templates/              ← Sample AGENTS.md and skills.
 ```
 
 For syntax and examples of all content features (callouts, table styles, badges,
-etc.), see the [Examples](examples/typography) section in the sidebar.
+etc.), see `docs/src/examples/` or the live docs.
 
 Full docs: https://cart0113.github.io/bruha/
