@@ -74,28 +74,28 @@ when the key is omitted.
 
 ## Theme & Display
 
-| Key                 | Default                | Description                                                                            |
-| ------------------- | ---------------------- | -------------------------------------------------------------------------------------- |
-| `light_theme`       | `parchment`            | Light mode theme. Options: `parchment`, `pylab`, `blossom`, `near-midnight`            |
-| `dark_theme`        | value of `light_theme` | Dark mode theme. In `dark_toggle`/`none` modes, toggling dark mode also switches theme |
-| `dark_mode_default` | `false`                | Start in dark mode                                                                     |
-| `code_highlighter`  | `vivid`                | Syntax coloring. Options: `classic` (muted), `vivid` (high-saturation)                 |
-| `theme_controls`    | `dark_toggle`          | Bottom-right UI. Options: `none`, `dark_toggle`, `theme_picker`                        |
-| `style`             | `code-one`             | Base style variant                                                                     |
+| Key                 | Default                | Description                                                                                        |
+| ------------------- | ---------------------- | -------------------------------------------------------------------------------------------------- |
+| `light_theme`       | `parchment`            | Light mode theme. Options: `parchment`, `pylab`, `blossom`, `near-midnight`, `ink`, `sage`, `dusk` |
+| `dark_theme`        | value of `light_theme` | Dark mode theme. In `dark_toggle`/`none` modes, toggling dark mode also switches theme             |
+| `dark_mode_default` | `false`                | Start in dark mode                                                                                 |
+| `code_highlighter`  | `vivid`                | Syntax coloring. Options: `classic` (muted), `vivid` (high-saturation)                             |
+| `theme_controls`    | `dark_toggle`          | Bottom-right UI. Options: `none`, `dark_toggle`, `theme_picker`                                    |
+| `style`             | `code-one`             | Base style variant. Options: `code-one` (technical docs), `blog` (serif editorial)                 |
 
 ## Navigation & Sidebar
 
-| Key                                | Default         | Description                                          |
-| ---------------------------------- | --------------- | ---------------------------------------------------- |
-| `top_level_folders_as_top_control` | `true`          | Top-level folders become horizontal nav bar buttons  |
-| `content_folder`                   | `src`           | Subdirectory of `docs/` containing markdown content  |
-| `document_header_depth`            | `3`             | Heading levels shown in sidebar for active document  |
-| `document_inline_sidebar_selector` | `true`          | Vertical bar indicator showing current section       |
-| `folder_chevron`                   | `true`          | Collapse arrows on folder headers                    |
-| `page_section_collapsible`         | `true`          | Allow collapsing page sub-sections in sidebar        |
-| `hamburger_sidebar_toggle`         | `true`          | Show sidebar toggle button in the top nav brand area |
-| `sidebar_indent`                   | `1em`           | CSS indentation depth for sidebar nesting            |
-| `search_style`                     | `magnify-glass` | Search UI. Options: `magnify-glass`, `box`           |
+| Key                                | Default         | Description                                                                               |
+| ---------------------------------- | --------------- | ----------------------------------------------------------------------------------------- |
+| `top_level_folders_as_top_control` | `true`          | Top-level folders become horizontal nav bar buttons                                       |
+| `content_folder`                   | `src`           | Subdirectory of `docs/` containing markdown content                                       |
+| `document_header_depth`            | `3`             | Heading levels shown in sidebar for active document                                       |
+| `document_inline_sidebar_selector` | `true`          | Vertical bar indicator showing current section                                            |
+| `folder_chevron`                   | `true`          | Collapse arrows on folder headers                                                         |
+| `page_section_collapsible`         | `true`          | Allow collapsing page sub-sections in sidebar                                             |
+| `hamburger_sidebar_toggle`         | `true`          | Show sidebar toggle button in the top nav brand area                                      |
+| `sidebar_indent`                   | `1em`           | CSS indentation depth for sidebar nesting                                                 |
+| `search_style`                     | `magnify-glass` | Search UI. `magnify-glass`: icon that opens an overlay. `box`: always-visible input field |
 
 ## Metadata & Links
 
@@ -110,3 +110,10 @@ when the key is omitted.
 | `katex`            | `false`               | Enable LaTeX math rendering via KaTeX                                                       |
 | `social_links`     | `{}`                  | Social links in nav bar. Keys: `github`, `facebook`, `x`, `instagram`, `threads`, `bluesky` |
 | `prism_languages`  | `[python, bash, ...]` | Syntax highlighting languages loaded from CDN                                               |
+
+## Mobile
+
+Bruha is mobile-responsive. On screens 768px and below, the desktop top nav and
+sidebar are replaced by a hamburger menu with a slide-out drawer containing
+folder tabs, search, theme controls, and social links. This activates
+automatically — no configuration needed.

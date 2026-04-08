@@ -25,6 +25,29 @@ docs/bin/serve.sh --port 4000  # custom port
 docs/bin/build.sh              # generate sidebar + config + index.html
 ```
 
+## Pre-commit Hook
+
+To keep generated files in sync automatically, add `build.sh` to a git
+pre-commit hook:
+
+```bash
+# In your project's .git/hooks/pre-commit (or an existing hook script):
+docs/bin/build.sh
+git add docs/index.html docs/src/_sidebar.md docs/themes/bruha-config.js
+```
+
+This regenerates the sidebar, config JS, and index.html on every commit so you
+never forget to run the build after editing content.
+
+## Example Projects
+
+The bruha repo includes two example projects in `examples/`:
+
+- **`examples/blog/`** — blog-style site with serif typography, published dates,
+  and the sage theme.
+- **`examples/flat-example/`** — flat site without top nav tabs, using
+  `top_level_folders_as_top_control: false`.
+
 ## Requirements
 
 - `python3` (stdlib only — no external packages)
