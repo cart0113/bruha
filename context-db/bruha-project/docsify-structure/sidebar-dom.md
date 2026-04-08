@@ -1,5 +1,7 @@
 ---
-description: Sidebar DOM — how docsify builds the sidebar, the app-sub-sidebar, and when re-renders destroy state
+description:
+  Sidebar DOM — how docsify builds the sidebar, the app-sub-sidebar, and when
+  re-renders destroy state
 ---
 
 # Sidebar DOM Structure
@@ -54,7 +56,7 @@ and injects it as a child of the active page's `<li>`. It is:
 - **Rebuilt on every page navigation** — docsify removes the old one and creates
   a new one
 - **Controlled by `subMaxLevel`** in `index.html` docsify config (set to
-  `document_header_depth` from YAML)
+  `document_header_depth` from JSON config)
 - Contains `?id=` links for scrolling to sections within the page
 
 ### H3+ nesting: sibling `<ul>`, not child of `<li>`

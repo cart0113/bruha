@@ -11,10 +11,11 @@ browser tab title.
 
 ## Links
 
-Relative to `docs/`, not the file. Always include the `src/` prefix:
+Relative to the content folder (`docs/src/`), not to `docs/`. Do not include the
+`src/` prefix — docsify's `basePath` already points there:
 
 ```markdown
-[config reference](src/configuration/config-reference.md)
+[config reference](configuration/config-reference.md)
 ```
 
 ## Images
@@ -28,14 +29,9 @@ Place in the same folder or `src/_assets/`. Reference from docs root:
 ## Callout Boxes
 
 ```markdown
-> [!note] Blue info box.
-> [!tip] Green tip box.
-> [!important] Amber box.
-> [!warning] Red box.
-> [!success] Green success box.
-> [!danger] Red critical box.
-> [!example] Purple example box.
-> [!quote] Gray attributed quote.
+> [!note] Blue info box. [!tip] Green tip box. [!important] Amber box.
+> [!warning] Red box. [!success] Green success box. [!danger] Red critical box.
+> [!example] Purple example box. [!quote] Gray attributed quote.
 ```
 
 ## Table Styles
@@ -52,6 +48,6 @@ Add an HTML comment before a table to apply a style variant:
 
 ## More Content Features
 
-For full syntax and rendered examples of all content features (badges,
-keyboard keys, collapsible sections, math equations, etc.), see the Examples
-section in the bruha docs: https://cart0113.github.io/bruha/#/examples/callouts
+For full syntax and rendered examples of all content features (badges, keyboard
+keys, collapsible sections, math equations, etc.), see the Examples section in
+the bruha docs: https://cart0113.github.io/bruha/#/examples/callouts
