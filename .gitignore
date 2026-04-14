@@ -11,4 +11,5 @@ context-db/bruha-project/overview.md
 context-db/using-context-db
 bin/sync-to-repos.sh
 .claude
+.cursor
 .sphinx-test/
