@@ -20,10 +20,18 @@ To pick up bruha updates, re-copy `docs/themes/` and `docs/bin/`.
 ## Scripts
 
 ```bash
-docs/bin/serve.sh              # build + dev server at localhost:3000
-docs/bin/serve.sh --port 4000  # custom port
-docs/bin/build.sh              # generate sidebar + config + index.html
+docs/bin/serve.sh                # build + python static server at localhost:3000
+docs/bin/serve.sh --port 4000    # custom port
+docs/bin/serve.sh --live-reload  # use docsify-cli for auto-refresh on edits
+docs/bin/build.sh                # generate sidebar + config + index.html
 ```
+
+By default `serve.sh` uses Python's stdlib `http.server` — no extra
+dependencies. Pass `--live-reload` to use `docsify serve` instead for browser
+auto-refresh on file changes; this requires `docsify-cli`
+(`npm install -g docsify-cli`). The bruha repo's own docs are typically
+developed with `--live-reload`; downstream projects can stay on the python
+default.
 
 ## Pre-commit Hook
 
@@ -51,4 +59,5 @@ The bruha repo includes two example projects in `examples/`:
 ## Requirements
 
 - `python3` (stdlib only — no external packages)
-- `docsify-cli` (`npm install -g docsify-cli`)
+- `docsify-cli` _(optional)_ — only required for `serve.sh --live-reload`.
+  Install with `npm install -g docsify-cli`.

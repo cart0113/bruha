@@ -19,7 +19,11 @@ config and filesystem.
 docs/bin/serve.sh
 ```
 
-Runs build then `docsify serve docs`. Supports `--port` flag (default 3000).
+Runs build then serves `docs/`. Default uses `python3 -m http.server` (no Node
+dependency); pass `--live-reload` to opt into `docsify serve` instead, which
+requires `docsify-cli` (`npm install -g docsify-cli`). The bruha repo itself is
+usually developed with `--live-reload`; downstream projects copying `docs/bin/`
+get the python default.
 
 ## Formatting
 
